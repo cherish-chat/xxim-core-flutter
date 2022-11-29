@@ -1,6 +1,10 @@
 # xxim-core-flutter
 
-[![Pub](https://img.shields.io/pub/v/xxim_core_flutter.svg?style=flat-square)](https://pub.dev/packages/xxim_core_flutter)
+[![pub](https://img.shields.io/pub/v/xxim_core_flutter.svg?style=flat-square)](https://pub.dev/packages/xxim_core_flutter)
+[![support](https://img.shields.io/badge/platform-android%20ios%20linux%20macos%20web%20windows-ff69b4.svg?style=flat-square)](https://pub.dev/packages/xxim_core_flutter)
+[![stars](https://img.shields.io/github/stars/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
+[![stars](https://img.shields.io/github/forks/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
+[![stars](https://img.shields.io/github/commit-activity/m/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
 
 支持Flutter6端开发。惺惺是一个100%开源社交平台，每个人都可以搭建自己的服务器，掌握数据的所有权。
 
