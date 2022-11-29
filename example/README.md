@@ -1,7 +1,7 @@
 # xxim-core-flutter
 
-[![pub](https://img.shields.io/pub/v/xxim_core_flutter.svg?style=flat-square)](https://pub.dev/packages/xxim_core_flutter)
-[![support](https://img.shields.io/badge/platform-android%20ios%20linux%20macos%20web%20windows-ff69b4.svg?style=flat-square)](https://pub.dev/packages/xxim_core_flutter)
+[![pub](https://img.shields.io/pub/v/xxim_core_flutter)](https://pub.dev/packages/xxim_core_flutter)
+[![support](https://img.shields.io/badge/platform-android%20ios%20linux%20macos%20web%20windows-347dc0)](https://pub.dev/packages/xxim_core_flutter)
 [![commit](https://img.shields.io/github/commit-activity/m/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
 [![forks](https://img.shields.io/github/forks/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
 [![stars](https://img.shields.io/github/stars/cherish-chat/xxim-core-flutter)](https://github.com/cherish-chat/xxim-core-flutter)
