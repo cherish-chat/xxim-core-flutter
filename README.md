@@ -19,8 +19,7 @@
        connectListener: ConnectListener(
          onConnecting: () {},
          onSuccess: () {},
-         onError: (error) {},
-         onClose: () {},
+         onClose: ({error}) {},
        ),
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},

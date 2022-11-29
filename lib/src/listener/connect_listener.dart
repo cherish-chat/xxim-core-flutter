@@ -2,13 +2,11 @@
 class ConnectListener {
   final Function()? onConnecting; // 连接中
   final Function()? onSuccess; // 连接成功
-  final Function(dynamic error)? onError; // 发生错误
-  final Function()? onClose; // 连接关闭
+  final Function({String? error})? onClose; // 连接关闭
 
   ConnectListener({
     this.onConnecting,
     this.onSuccess,
-    this.onError,
     this.onClose,
   });
 
@@ -20,11 +18,7 @@ class ConnectListener {
     if (onSuccess != null) onSuccess!();
   }
 
-  void error(dynamic error) {
-    if (onError != null) onError!(error);
-  }
-
-  void close() {
-    if (onClose != null) onClose!();
+  void close({String? error}) {
+    if (onClose != null) onClose!(error: error);
   }
 }

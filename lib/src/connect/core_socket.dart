@@ -32,7 +32,9 @@ class CoreSocket {
         connectListener?.connecting();
       },
       onError: (error) {
-        connectListener?.error(error);
+        coreHttp.disconnect();
+        disconnect();
+        connectListener?.close(error: error);
       },
       onClose: () {
         coreHttp.disconnect();
