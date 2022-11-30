@@ -100,13 +100,9 @@
          MsgData(
            clientMsgId: "",
            clientTime: "",
-           sender: "",
-           senderInfo: "",
-           senderConvInfo: "",
-           receiver: MsgData_Receiver(
-             userId: "",
-             groupId: "",
-           ),
+           senderId: "",
+           senderInfo: utf8.encode(""),
+           senderConvInfo: utf8.encode(""),
            convId: "",
            atUsers: [],
            contentType: ContentType.TEXT,

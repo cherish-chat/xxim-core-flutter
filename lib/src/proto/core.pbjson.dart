@@ -136,25 +136,17 @@ const MsgData$json = const {
     const {'1': 'serverMsgId', '3': 2, '4': 1, '5': 9, '10': 'serverMsgId'},
     const {'1': 'clientTime', '3': 3, '4': 1, '5': 9, '10': 'clientTime'},
     const {'1': 'serverTime', '3': 4, '4': 1, '5': 9, '10': 'serverTime'},
-    const {'1': 'sender', '3': 11, '4': 1, '5': 9, '10': 'sender'},
-    const {'1': 'senderInfo', '3': 12, '4': 1, '5': 9, '10': 'senderInfo'},
+    const {'1': 'senderId', '3': 11, '4': 1, '5': 9, '10': 'senderId'},
+    const {'1': 'senderInfo', '3': 12, '4': 1, '5': 12, '10': 'senderInfo'},
     const {
       '1': 'senderConvInfo',
       '3': 13,
       '4': 1,
-      '5': 9,
+      '5': 12,
       '10': 'senderConvInfo'
     },
-    const {
-      '1': 'receiver',
-      '3': 21,
-      '4': 1,
-      '5': 11,
-      '6': '.pb.MsgData.Receiver',
-      '10': 'receiver'
-    },
-    const {'1': 'convId', '3': 22, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'atUsers', '3': 23, '4': 3, '5': 9, '10': 'atUsers'},
+    const {'1': 'convId', '3': 21, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'atUsers', '3': 22, '4': 3, '5': 9, '10': 'atUsers'},
     const {
       '1': 'contentType',
       '3': 31,
@@ -183,11 +175,7 @@ const MsgData$json = const {
     },
     const {'1': 'ext', '3': 100, '4': 1, '5': 12, '10': 'ext'},
   ],
-  '3': const [
-    MsgData_OfflinePush$json,
-    MsgData_Options$json,
-    MsgData_Receiver$json
-  ],
+  '3': const [MsgData_OfflinePush$json, MsgData_Options$json],
 };
 
 @$core.Deprecated('Use msgDataDescriptor instead')
@@ -225,38 +213,9 @@ const MsgData_Options$json = const {
   ],
 };
 
-@$core.Deprecated('Use msgDataDescriptor instead')
-const MsgData_Receiver$json = const {
-  '1': 'Receiver',
-  '2': const [
-    const {
-      '1': 'userId',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '9': 0,
-      '10': 'userId',
-      '17': true
-    },
-    const {
-      '1': 'groupId',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '9': 1,
-      '10': 'groupId',
-      '17': true
-    },
-  ],
-  '8': const [
-    const {'1': '_userId'},
-    const {'1': '_groupId'},
-  ],
-};
-
 /// Descriptor for `MsgData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgDataDescriptor = $convert.base64Decode(
-    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhYKBnNlbmRlchgLIAEoCVIGc2VuZGVyEh4KCnNlbmRlckluZm8YDCABKAlSCnNlbmRlckluZm8SJgoOc2VuZGVyQ29udkluZm8YDSABKAlSDnNlbmRlckNvbnZJbmZvEjAKCHJlY2VpdmVyGBUgASgLMhQucGIuTXNnRGF0YS5SZWNlaXZlclIIcmVjZWl2ZXISFgoGY29udklkGBYgASgJUgZjb252SWQSGAoHYXRVc2VycxgXIAMoCVIHYXRVc2VycxIxCgtjb250ZW50VHlwZRgfIAEoDjIPLnBiLkNvbnRlbnRUeXBlUgtjb250ZW50VHlwZRIYCgdjb250ZW50GCAgASgMUgdjb250ZW50EhAKA3NlcRghIAEoCVIDc2VxEi0KB29wdGlvbnMYKSABKAsyEy5wYi5Nc2dEYXRhLk9wdGlvbnNSB29wdGlvbnMSOQoLb2ZmbGluZVB1c2gYKiABKAsyFy5wYi5Nc2dEYXRhLk9mZmxpbmVQdXNoUgtvZmZsaW5lUHVzaBIQCgNleHQYZCABKAxSA2V4dBpXCgtPZmZsaW5lUHVzaBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGAoHY29udGVudBgCIAEoCVIHY29udGVudBIYCgdwYXlsb2FkGAMgASgJUgdwYXlsb2FkGucBCgdPcHRpb25zEiAKC29mZmxpbmVQdXNoGAEgASgIUgtvZmZsaW5lUHVzaBIqChBzdG9yYWdlRm9yU2VydmVyGAIgASgIUhBzdG9yYWdlRm9yU2VydmVyEioKEHN0b3JhZ2VGb3JDbGllbnQYAyABKAhSEHN0b3JhZ2VGb3JDbGllbnQSIAoLdW5yZWFkQ291bnQYBCABKAhSC3VucmVhZENvdW50EiAKC25lZWREZWNyeXB0GAUgASgIUgtuZWVkRGVjcnlwdBIeCgp1cGRhdGVDb252GAYgASgIUgp1cGRhdGVDb252Gl0KCFJlY2VpdmVyEhsKBnVzZXJJZBgBIAEoCUgAUgZ1c2VySWSIAQESHQoHZ3JvdXBJZBgCIAEoCUgBUgdncm91cElkiAEBQgkKB191c2VySWRCCgoIX2dyb3VwSWQ=');
+    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhoKCHNlbmRlcklkGAsgASgJUghzZW5kZXJJZBIeCgpzZW5kZXJJbmZvGAwgASgMUgpzZW5kZXJJbmZvEiYKDnNlbmRlckNvbnZJbmZvGA0gASgMUg5zZW5kZXJDb252SW5mbxIWCgZjb252SWQYFSABKAlSBmNvbnZJZBIYCgdhdFVzZXJzGBYgAygJUgdhdFVzZXJzEjEKC2NvbnRlbnRUeXBlGB8gASgOMg8ucGIuQ29udGVudFR5cGVSC2NvbnRlbnRUeXBlEhgKB2NvbnRlbnQYICABKAxSB2NvbnRlbnQSEAoDc2VxGCEgASgJUgNzZXESLQoHb3B0aW9ucxgpIAEoCzITLnBiLk1zZ0RhdGEuT3B0aW9uc1IHb3B0aW9ucxI5CgtvZmZsaW5lUHVzaBgqIAEoCzIXLnBiLk1zZ0RhdGEuT2ZmbGluZVB1c2hSC29mZmxpbmVQdXNoEhAKA2V4dBhkIAEoDFIDZXh0GlcKC09mZmxpbmVQdXNoEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIYCgdjb250ZW50GAIgASgJUgdjb250ZW50EhgKB3BheWxvYWQYAyABKAlSB3BheWxvYWQa5wEKB09wdGlvbnMSIAoLb2ZmbGluZVB1c2gYASABKAhSC29mZmxpbmVQdXNoEioKEHN0b3JhZ2VGb3JTZXJ2ZXIYAiABKAhSEHN0b3JhZ2VGb3JTZXJ2ZXISKgoQc3RvcmFnZUZvckNsaWVudBgDIAEoCFIQc3RvcmFnZUZvckNsaWVudBIgCgt1bnJlYWRDb3VudBgEIAEoCFILdW5yZWFkQ291bnQSIAoLbmVlZERlY3J5cHQYBSABKAhSC25lZWREZWNyeXB0Eh4KCnVwZGF0ZUNvbnYYBiABKAhSCnVwZGF0ZUNvbnY=');
 @$core.Deprecated('Use msgDataListDescriptor instead')
 const MsgDataList$json = const {
   '1': 'MsgDataList',

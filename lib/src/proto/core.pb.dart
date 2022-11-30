@@ -883,109 +883,6 @@ class MsgData_Options extends $pb.GeneratedMessage {
   void clearUpdateConv() => clearField(6);
 }
 
-class MsgData_Receiver extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'MsgData.Receiver',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pb'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'userId',
-        protoName: 'userId')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'groupId',
-        protoName: 'groupId')
-    ..hasRequiredFields = false;
-
-  MsgData_Receiver._() : super();
-
-  factory MsgData_Receiver({
-    $core.String? userId,
-    $core.String? groupId,
-  }) {
-    final _result = create();
-    if (userId != null) {
-      _result.userId = userId;
-    }
-    if (groupId != null) {
-      _result.groupId = groupId;
-    }
-    return _result;
-  }
-
-  factory MsgData_Receiver.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-
-  factory MsgData_Receiver.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  MsgData_Receiver clone() => MsgData_Receiver()..mergeFromMessage(this);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  MsgData_Receiver copyWith(void Function(MsgData_Receiver) updates) =>
-      super.copyWith((message) => updates(message as MsgData_Receiver))
-          as MsgData_Receiver; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static MsgData_Receiver create() => MsgData_Receiver._();
-
-  MsgData_Receiver createEmptyInstance() => create();
-
-  static $pb.PbList<MsgData_Receiver> createRepeated() =>
-      $pb.PbList<MsgData_Receiver>();
-
-  @$core.pragma('dart2js:noInline')
-  static MsgData_Receiver getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<MsgData_Receiver>(create);
-  static MsgData_Receiver? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get userId => $_getSZ(0);
-
-  @$pb.TagNumber(1)
-  set userId($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasUserId() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearUserId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get groupId => $_getSZ(1);
-
-  @$pb.TagNumber(2)
-  set groupId($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasGroupId() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearGroupId() => clearField(2);
-}
-
 class MsgData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -1024,33 +921,30 @@ class MsgData extends $pb.GeneratedMessage {
         11,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'sender')
-    ..aOS(
+            : 'senderId',
+        protoName: 'senderId')
+    ..a<$core.List<$core.int>>(
         12,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'senderInfo',
+        $pb.PbFieldType.OY,
         protoName: 'senderInfo')
-    ..aOS(
+    ..a<$core.List<$core.int>>(
         13,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'senderConvInfo',
+        $pb.PbFieldType.OY,
         protoName: 'senderConvInfo')
-    ..aOM<MsgData_Receiver>(
-        21,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'receiver',
-        subBuilder: MsgData_Receiver.create)
     ..aOS(
-        22,
+        21,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'convId',
         protoName: 'convId')
     ..pPS(
-        23,
+        22,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'atUsers',
@@ -1104,10 +998,9 @@ class MsgData extends $pb.GeneratedMessage {
     $core.String? serverMsgId,
     $core.String? clientTime,
     $core.String? serverTime,
-    $core.String? sender,
-    $core.String? senderInfo,
-    $core.String? senderConvInfo,
-    MsgData_Receiver? receiver,
+    $core.String? senderId,
+    $core.List<$core.int>? senderInfo,
+    $core.List<$core.int>? senderConvInfo,
     $core.String? convId,
     $core.Iterable<$core.String>? atUsers,
     ContentType? contentType,
@@ -1130,17 +1023,14 @@ class MsgData extends $pb.GeneratedMessage {
     if (serverTime != null) {
       _result.serverTime = serverTime;
     }
-    if (sender != null) {
-      _result.sender = sender;
+    if (senderId != null) {
+      _result.senderId = senderId;
     }
     if (senderInfo != null) {
       _result.senderInfo = senderInfo;
     }
     if (senderConvInfo != null) {
       _result.senderConvInfo = senderConvInfo;
-    }
-    if (receiver != null) {
-      _result.receiver = receiver;
     }
     if (convId != null) {
       _result.convId = convId;
@@ -1259,25 +1149,25 @@ class MsgData extends $pb.GeneratedMessage {
   void clearServerTime() => clearField(4);
 
   @$pb.TagNumber(11)
-  $core.String get sender => $_getSZ(4);
+  $core.String get senderId => $_getSZ(4);
 
   @$pb.TagNumber(11)
-  set sender($core.String v) {
+  set senderId($core.String v) {
     $_setString(4, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasSender() => $_has(4);
+  $core.bool hasSenderId() => $_has(4);
 
   @$pb.TagNumber(11)
-  void clearSender() => clearField(11);
+  void clearSenderId() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get senderInfo => $_getSZ(5);
+  $core.List<$core.int> get senderInfo => $_getN(5);
 
   @$pb.TagNumber(12)
-  set senderInfo($core.String v) {
-    $_setString(5, v);
+  set senderInfo($core.List<$core.int> v) {
+    $_setBytes(5, v);
   }
 
   @$pb.TagNumber(12)
@@ -1287,11 +1177,11 @@ class MsgData extends $pb.GeneratedMessage {
   void clearSenderInfo() => clearField(12);
 
   @$pb.TagNumber(13)
-  $core.String get senderConvInfo => $_getSZ(6);
+  $core.List<$core.int> get senderConvInfo => $_getN(6);
 
   @$pb.TagNumber(13)
-  set senderConvInfo($core.String v) {
-    $_setString(6, v);
+  set senderConvInfo($core.List<$core.int> v) {
+    $_setBytes(6, v);
   }
 
   @$pb.TagNumber(13)
@@ -1301,41 +1191,24 @@ class MsgData extends $pb.GeneratedMessage {
   void clearSenderConvInfo() => clearField(13);
 
   @$pb.TagNumber(21)
-  MsgData_Receiver get receiver => $_getN(7);
+  $core.String get convId => $_getSZ(7);
 
   @$pb.TagNumber(21)
-  set receiver(MsgData_Receiver v) {
-    setField(21, v);
-  }
-
-  @$pb.TagNumber(21)
-  $core.bool hasReceiver() => $_has(7);
-
-  @$pb.TagNumber(21)
-  void clearReceiver() => clearField(21);
-
-  @$pb.TagNumber(21)
-  MsgData_Receiver ensureReceiver() => $_ensure(7);
-
-  @$pb.TagNumber(22)
-  $core.String get convId => $_getSZ(8);
-
-  @$pb.TagNumber(22)
   set convId($core.String v) {
-    $_setString(8, v);
+    $_setString(7, v);
   }
 
-  @$pb.TagNumber(22)
-  $core.bool hasConvId() => $_has(8);
+  @$pb.TagNumber(21)
+  $core.bool hasConvId() => $_has(7);
+
+  @$pb.TagNumber(21)
+  void clearConvId() => clearField(21);
 
   @$pb.TagNumber(22)
-  void clearConvId() => clearField(22);
-
-  @$pb.TagNumber(23)
-  $core.List<$core.String> get atUsers => $_getList(9);
+  $core.List<$core.String> get atUsers => $_getList(8);
 
   @$pb.TagNumber(31)
-  ContentType get contentType => $_getN(10);
+  ContentType get contentType => $_getN(9);
 
   @$pb.TagNumber(31)
   set contentType(ContentType v) {
@@ -1343,41 +1216,41 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(31)
-  $core.bool hasContentType() => $_has(10);
+  $core.bool hasContentType() => $_has(9);
 
   @$pb.TagNumber(31)
   void clearContentType() => clearField(31);
 
   @$pb.TagNumber(32)
-  $core.List<$core.int> get content => $_getN(11);
+  $core.List<$core.int> get content => $_getN(10);
 
   @$pb.TagNumber(32)
   set content($core.List<$core.int> v) {
-    $_setBytes(11, v);
+    $_setBytes(10, v);
   }
 
   @$pb.TagNumber(32)
-  $core.bool hasContent() => $_has(11);
+  $core.bool hasContent() => $_has(10);
 
   @$pb.TagNumber(32)
   void clearContent() => clearField(32);
 
   @$pb.TagNumber(33)
-  $core.String get seq => $_getSZ(12);
+  $core.String get seq => $_getSZ(11);
 
   @$pb.TagNumber(33)
   set seq($core.String v) {
-    $_setString(12, v);
+    $_setString(11, v);
   }
 
   @$pb.TagNumber(33)
-  $core.bool hasSeq() => $_has(12);
+  $core.bool hasSeq() => $_has(11);
 
   @$pb.TagNumber(33)
   void clearSeq() => clearField(33);
 
   @$pb.TagNumber(41)
-  MsgData_Options get options => $_getN(13);
+  MsgData_Options get options => $_getN(12);
 
   @$pb.TagNumber(41)
   set options(MsgData_Options v) {
@@ -1385,16 +1258,16 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(41)
-  $core.bool hasOptions() => $_has(13);
+  $core.bool hasOptions() => $_has(12);
 
   @$pb.TagNumber(41)
   void clearOptions() => clearField(41);
 
   @$pb.TagNumber(41)
-  MsgData_Options ensureOptions() => $_ensure(13);
+  MsgData_Options ensureOptions() => $_ensure(12);
 
   @$pb.TagNumber(42)
-  MsgData_OfflinePush get offlinePush => $_getN(14);
+  MsgData_OfflinePush get offlinePush => $_getN(13);
 
   @$pb.TagNumber(42)
   set offlinePush(MsgData_OfflinePush v) {
@@ -1402,24 +1275,24 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(42)
-  $core.bool hasOfflinePush() => $_has(14);
+  $core.bool hasOfflinePush() => $_has(13);
 
   @$pb.TagNumber(42)
   void clearOfflinePush() => clearField(42);
 
   @$pb.TagNumber(42)
-  MsgData_OfflinePush ensureOfflinePush() => $_ensure(14);
+  MsgData_OfflinePush ensureOfflinePush() => $_ensure(13);
 
   @$pb.TagNumber(100)
-  $core.List<$core.int> get ext => $_getN(15);
+  $core.List<$core.int> get ext => $_getN(14);
 
   @$pb.TagNumber(100)
   set ext($core.List<$core.int> v) {
-    $_setBytes(15, v);
+    $_setBytes(14, v);
   }
 
   @$pb.TagNumber(100)
-  $core.bool hasExt() => $_has(15);
+  $core.bool hasExt() => $_has(14);
 
   @$pb.TagNumber(100)
   void clearExt() => clearField(100);
