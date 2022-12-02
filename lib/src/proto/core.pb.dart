@@ -1573,11 +1573,108 @@ class SendMsgListResp extends $pb.GeneratedMessage {
   CommonResp ensureCommonResp() => $_ensure(0);
 }
 
-class GetMsgListByConvIdReq extends $pb.GeneratedMessage {
+class BatchGetMsgListByConvIdReq_Item extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'GetMsgListByConvIdReq',
+          : 'BatchGetMsgListByConvIdReq.Item',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'convId',
+        protoName: 'convId')
+    ..pPS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'seqList',
+        protoName: 'seqList')
+    ..hasRequiredFields = false;
+
+  BatchGetMsgListByConvIdReq_Item._() : super();
+
+  factory BatchGetMsgListByConvIdReq_Item({
+    $core.String? convId,
+    $core.Iterable<$core.String>? seqList,
+  }) {
+    final _result = create();
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (seqList != null) {
+      _result.seqList.addAll(seqList);
+    }
+    return _result;
+  }
+
+  factory BatchGetMsgListByConvIdReq_Item.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory BatchGetMsgListByConvIdReq_Item.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  BatchGetMsgListByConvIdReq_Item clone() =>
+      BatchGetMsgListByConvIdReq_Item()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  BatchGetMsgListByConvIdReq_Item copyWith(
+          void Function(BatchGetMsgListByConvIdReq_Item) updates) =>
+      super.copyWith(
+              (message) => updates(message as BatchGetMsgListByConvIdReq_Item))
+          as BatchGetMsgListByConvIdReq_Item; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BatchGetMsgListByConvIdReq_Item create() =>
+      BatchGetMsgListByConvIdReq_Item._();
+
+  BatchGetMsgListByConvIdReq_Item createEmptyInstance() => create();
+
+  static $pb.PbList<BatchGetMsgListByConvIdReq_Item> createRepeated() =>
+      $pb.PbList<BatchGetMsgListByConvIdReq_Item>();
+
+  @$core.pragma('dart2js:noInline')
+  static BatchGetMsgListByConvIdReq_Item getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<BatchGetMsgListByConvIdReq_Item>(
+          create);
+  static BatchGetMsgListByConvIdReq_Item? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get convId => $_getSZ(0);
+
+  @$pb.TagNumber(1)
+  set convId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasConvId() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearConvId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get seqList => $_getList(1);
+}
+
+class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'BatchGetMsgListByConvIdReq',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -1590,42 +1687,33 @@ class GetMsgListByConvIdReq extends $pb.GeneratedMessage {
             : 'commonReq',
         protoName: 'commonReq',
         subBuilder: CommonReq.create)
-    ..aOS(
+    ..pc<BatchGetMsgListByConvIdReq_Item>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'convId',
-        protoName: 'convId')
-    ..pPS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'seqList',
-        protoName: 'seqList')
+            : 'items',
+        $pb.PbFieldType.PM,
+        subBuilder: BatchGetMsgListByConvIdReq_Item.create)
     ..aOB(
-        4,
+        3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'push')
     ..hasRequiredFields = false;
 
-  GetMsgListByConvIdReq._() : super();
+  BatchGetMsgListByConvIdReq._() : super();
 
-  factory GetMsgListByConvIdReq({
+  factory BatchGetMsgListByConvIdReq({
     CommonReq? commonReq,
-    $core.String? convId,
-    $core.Iterable<$core.String>? seqList,
+    $core.Iterable<BatchGetMsgListByConvIdReq_Item>? items,
     $core.bool? push,
   }) {
     final _result = create();
     if (commonReq != null) {
       _result.commonReq = commonReq;
     }
-    if (convId != null) {
-      _result.convId = convId;
-    }
-    if (seqList != null) {
-      _result.seqList.addAll(seqList);
+    if (items != null) {
+      _result.items.addAll(items);
     }
     if (push != null) {
       _result.push = push;
@@ -1633,41 +1721,42 @@ class GetMsgListByConvIdReq extends $pb.GeneratedMessage {
     return _result;
   }
 
-  factory GetMsgListByConvIdReq.fromBuffer($core.List<$core.int> i,
+  factory BatchGetMsgListByConvIdReq.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
 
-  factory GetMsgListByConvIdReq.fromJson($core.String i,
+  factory BatchGetMsgListByConvIdReq.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  GetMsgListByConvIdReq clone() =>
-      GetMsgListByConvIdReq()..mergeFromMessage(this);
+  BatchGetMsgListByConvIdReq clone() =>
+      BatchGetMsgListByConvIdReq()..mergeFromMessage(this);
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  GetMsgListByConvIdReq copyWith(
-          void Function(GetMsgListByConvIdReq) updates) =>
-      super.copyWith((message) => updates(message as GetMsgListByConvIdReq))
-          as GetMsgListByConvIdReq; // ignore: deprecated_member_use
+  BatchGetMsgListByConvIdReq copyWith(
+          void Function(BatchGetMsgListByConvIdReq) updates) =>
+      super.copyWith(
+              (message) => updates(message as BatchGetMsgListByConvIdReq))
+          as BatchGetMsgListByConvIdReq; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static GetMsgListByConvIdReq create() => GetMsgListByConvIdReq._();
+  static BatchGetMsgListByConvIdReq create() => BatchGetMsgListByConvIdReq._();
 
-  GetMsgListByConvIdReq createEmptyInstance() => create();
+  BatchGetMsgListByConvIdReq createEmptyInstance() => create();
 
-  static $pb.PbList<GetMsgListByConvIdReq> createRepeated() =>
-      $pb.PbList<GetMsgListByConvIdReq>();
+  static $pb.PbList<BatchGetMsgListByConvIdReq> createRepeated() =>
+      $pb.PbList<BatchGetMsgListByConvIdReq>();
 
   @$core.pragma('dart2js:noInline')
-  static GetMsgListByConvIdReq getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<GetMsgListByConvIdReq>(create);
-  static GetMsgListByConvIdReq? _defaultInstance;
+  static BatchGetMsgListByConvIdReq getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<BatchGetMsgListByConvIdReq>(create);
+  static BatchGetMsgListByConvIdReq? _defaultInstance;
 
   @$pb.TagNumber(1)
   CommonReq get commonReq => $_getN(0);
@@ -1687,35 +1776,21 @@ class GetMsgListByConvIdReq extends $pb.GeneratedMessage {
   CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get convId => $_getSZ(1);
-
-  @$pb.TagNumber(2)
-  set convId($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasConvId() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearConvId() => clearField(2);
+  $core.List<BatchGetMsgListByConvIdReq_Item> get items => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get seqList => $_getList(2);
+  $core.bool get push => $_getBF(2);
 
-  @$pb.TagNumber(4)
-  $core.bool get push => $_getBF(3);
-
-  @$pb.TagNumber(4)
+  @$pb.TagNumber(3)
   set push($core.bool v) {
-    $_setBool(3, v);
+    $_setBool(2, v);
   }
 
-  @$pb.TagNumber(4)
-  $core.bool hasPush() => $_has(3);
+  @$pb.TagNumber(3)
+  $core.bool hasPush() => $_has(2);
 
-  @$pb.TagNumber(4)
-  void clearPush() => clearField(4);
+  @$pb.TagNumber(3)
+  void clearPush() => clearField(3);
 }
 
 class GetMsgListResp extends $pb.GeneratedMessage {

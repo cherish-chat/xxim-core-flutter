@@ -75,13 +75,13 @@ class XXIMCore {
     );
   }
 
-  /// 获取消息列表-会话ID
-  Future<GetMsgListResp?> getMsgListByConvId({
-    required GetMsgListByConvIdReq req,
+  /// 批量获取消息列表-会话ID
+  Future<GetMsgListResp?> batchGetMsgListByConvId({
+    required BatchGetMsgListByConvIdReq req,
     SuccessCallback<GetMsgListResp>? onSuccess,
     ErrorCallback? onError,
   }) async {
-    return await _coreHttp?.getMsgListByConvId(
+    return await _coreHttp?.batchGetMsgListByConvId(
       req: req,
       onSuccess: onSuccess,
       onError: onError,

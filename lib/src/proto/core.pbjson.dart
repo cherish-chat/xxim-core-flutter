@@ -42,13 +42,18 @@ const ContentType$json = const {
     const {'1': 'MERGE', '2': 18},
     const {'1': 'EMOJI', '2': 19},
     const {'1': 'COMMAND', '2': 20},
+    const {'1': 'CONV_LIST_CHANGE', '2': 51},
+    const {'1': 'PROFILE_CHANGE', '2': 52},
+    const {'1': 'CONV_INFO_CHANGE', '2': 53},
+    const {'1': 'CONV_PROFILE_CHANGE', '2': 54},
+    const {'1': 'CONV_MEMBER_CHANGE', '2': 55},
     const {'1': 'CUSTOM', '2': 100},
   ],
 };
 
 /// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode(
-    'CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESCAoEUkVBRBACEgoKBlJFVk9LRRADEggKBFRFWFQQCxIJCgVJTUFHRRAMEgkKBUFVRElPEA0SCQoFVklERU8QDhIICgRGSUxFEA8SDAoITE9DQVRJT04QEBIICgRDQVJEEBESCQoFTUVSR0UQEhIJCgVFTU9KSRATEgsKB0NPTU1BTkQQFBIKCgZDVVNUT00QZA==');
+    'CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESCAoEUkVBRBACEgoKBlJFVk9LRRADEggKBFRFWFQQCxIJCgVJTUFHRRAMEgkKBUFVRElPEA0SCQoFVklERU8QDhIICgRGSUxFEA8SDAoITE9DQVRJT04QEBIICgRDQVJEEBESCQoFTUVSR0UQEhIJCgVFTU9KSRATEgsKB0NPTU1BTkQQFBIUChBDT05WX0xJU1RfQ0hBTkdFEDMSEgoOUFJPRklMRV9DSEFOR0UQNBIUChBDT05WX0lORk9fQ0hBTkdFEDUSFwoTQ09OVl9QUk9GSUxFX0NIQU5HRRA2EhYKEkNPTlZfTUVNQkVSX0NIQU5HRRA3EgoKBkNVU1RPTRBk');
 @$core.Deprecated('Use commonReqDescriptor instead')
 const CommonReq$json = const {
   '1': 'CommonReq',
@@ -290,9 +295,9 @@ const SendMsgListResp$json = const {
 /// Descriptor for `SendMsgListResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendMsgListRespDescriptor = $convert.base64Decode(
     'Cg9TZW5kTXNnTGlzdFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
-@$core.Deprecated('Use getMsgListByConvIdReqDescriptor instead')
-const GetMsgListByConvIdReq$json = const {
-  '1': 'GetMsgListByConvIdReq',
+@$core.Deprecated('Use batchGetMsgListByConvIdReqDescriptor instead')
+const BatchGetMsgListByConvIdReq$json = const {
+  '1': 'BatchGetMsgListByConvIdReq',
   '2': const [
     const {
       '1': 'commonReq',
@@ -302,15 +307,32 @@ const GetMsgListByConvIdReq$json = const {
       '6': '.pb.CommonReq',
       '10': 'commonReq'
     },
-    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'seqList', '3': 3, '4': 3, '5': 9, '10': 'seqList'},
-    const {'1': 'push', '3': 4, '4': 1, '5': 8, '10': 'push'},
+    const {
+      '1': 'items',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.pb.BatchGetMsgListByConvIdReq.Item',
+      '10': 'items'
+    },
+    const {'1': 'push', '3': 3, '4': 1, '5': 8, '10': 'push'},
+  ],
+  '3': const [BatchGetMsgListByConvIdReq_Item$json],
+};
+
+@$core.Deprecated('Use batchGetMsgListByConvIdReqDescriptor instead')
+const BatchGetMsgListByConvIdReq_Item$json = const {
+  '1': 'Item',
+  '2': const [
+    const {'1': 'convId', '3': 1, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'seqList', '3': 2, '4': 3, '5': 9, '10': 'seqList'},
   ],
 };
 
-/// Descriptor for `GetMsgListByConvIdReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMsgListByConvIdReqDescriptor = $convert.base64Decode(
-    'ChVHZXRNc2dMaXN0QnlDb252SWRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESFgoGY29udklkGAIgASgJUgZjb252SWQSGAoHc2VxTGlzdBgDIAMoCVIHc2VxTGlzdBISCgRwdXNoGAQgASgIUgRwdXNo');
+/// Descriptor for `BatchGetMsgListByConvIdReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List batchGetMsgListByConvIdReqDescriptor =
+    $convert.base64Decode(
+        'ChpCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRI5CgVpdGVtcxgCIAMoCzIjLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxLkl0ZW1SBWl0ZW1zEhIKBHB1c2gYAyABKAhSBHB1c2gaOAoESXRlbRIWCgZjb252SWQYASABKAlSBmNvbnZJZBIYCgdzZXFMaXN0GAIgAygJUgdzZXFMaXN0');
 @$core.Deprecated('Use getMsgListRespDescriptor instead')
 const GetMsgListResp$json = const {
   '1': 'GetMsgListResp',

@@ -123,6 +123,31 @@ class ContentType extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'COMMAND');
+  static const ContentType CONV_LIST_CHANGE = ContentType._(
+      51,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CONV_LIST_CHANGE');
+  static const ContentType PROFILE_CHANGE = ContentType._(
+      52,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'PROFILE_CHANGE');
+  static const ContentType CONV_INFO_CHANGE = ContentType._(
+      53,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CONV_INFO_CHANGE');
+  static const ContentType CONV_PROFILE_CHANGE = ContentType._(
+      54,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CONV_PROFILE_CHANGE');
+  static const ContentType CONV_MEMBER_CHANGE = ContentType._(
+      55,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CONV_MEMBER_CHANGE');
   static const ContentType CUSTOM = ContentType._(
       100,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
@@ -144,6 +169,11 @@ class ContentType extends $pb.ProtobufEnum {
     MERGE,
     EMOJI,
     COMMAND,
+    CONV_LIST_CHANGE,
+    PROFILE_CHANGE,
+    CONV_INFO_CHANGE,
+    CONV_PROFILE_CHANGE,
+    CONV_MEMBER_CHANGE,
     CUSTOM,
   ];
 

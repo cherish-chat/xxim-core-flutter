@@ -67,15 +67,19 @@
        onError: (code, {msg}) {},
      );
 
-## 获取消息列表-会话ID
+## 批量获取消息列表-会话ID
 
-     GetMsgListByConvIdReq getMsgListByConvIdReq = GetMsgListByConvIdReq(
-       convId: "",
-       seqList: [],
+     BatchGetMsgListByConvIdReq batchGetMsgListByConvIdReq = BatchGetMsgListByConvIdReq(
+       items: [
+         BatchGetMsgListByConvIdReq_Item(
+           convId: "",
+           seqList: [],
+         ),
+       ],
        push: true ?? false,
      );
-     GetMsgListResp? getMsgListResp = await core.getMsgListByConvId(
-       req: getMsgListByConvIdReq,
+     GetMsgListResp? getMsgListResp = await core.batchGetMsgListByConvId(
+       req: batchGetMsgListByConvIdReq,
        onSuccess: (data) {},
        onError: (code, {msg}) {},
      );
