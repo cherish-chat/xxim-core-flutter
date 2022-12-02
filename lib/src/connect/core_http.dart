@@ -77,8 +77,8 @@ class CoreHttp {
     return null;
   }
 
-  Future<GetMsgListResp?> getMsgListByConvId({
-    required GetMsgListByConvIdReq req,
+  Future<GetMsgListResp?> batchGetMsgListByConvId({
+    required BatchGetMsgListByConvIdReq req,
     SuccessCallback<GetMsgListResp>? onSuccess,
     ErrorCallback? onError,
   }) async {
