@@ -15,33 +15,15 @@ class PushEvent extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'PushMsgDataList');
-  static const PushEvent FriendNotify = PushEvent._(
+  static const PushEvent PushNoticeDataList = PushEvent._(
       1,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'FriendNotify');
-  static const PushEvent GroupNotify = PushEvent._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'GroupNotify');
-  static const PushEvent SubscribeNotify = PushEvent._(
-      3,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SubscribeNotify');
-  static const PushEvent SocialNotify = PushEvent._(
-      4,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SocialNotify');
+          : 'PushNoticeDataList');
 
   static const $core.List<PushEvent> values = <PushEvent>[
     PushMsgDataList,
-    FriendNotify,
-    GroupNotify,
-    SubscribeNotify,
-    SocialNotify,
+    PushNoticeDataList,
   ];
 
   static final $core.Map<$core.int, PushEvent> _byValue =
@@ -123,31 +105,16 @@ class ContentType extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'COMMAND');
-  static const ContentType CONV_LIST_CHANGE = ContentType._(
-      51,
+  static const ContentType RICH_TXT = ContentType._(
+      21,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'CONV_LIST_CHANGE');
-  static const ContentType PROFILE_CHANGE = ContentType._(
-      52,
+          : 'RICH_TXT');
+  static const ContentType MARKDOWN = ContentType._(
+      22,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'PROFILE_CHANGE');
-  static const ContentType CONV_INFO_CHANGE = ContentType._(
-      53,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'CONV_INFO_CHANGE');
-  static const ContentType CONV_PROFILE_CHANGE = ContentType._(
-      54,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'CONV_PROFILE_CHANGE');
-  static const ContentType CONV_MEMBER_CHANGE = ContentType._(
-      55,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'CONV_MEMBER_CHANGE');
+          : 'MARKDOWN');
   static const ContentType CUSTOM = ContentType._(
       100,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
@@ -169,11 +136,8 @@ class ContentType extends $pb.ProtobufEnum {
     MERGE,
     EMOJI,
     COMMAND,
-    CONV_LIST_CHANGE,
-    PROFILE_CHANGE,
-    CONV_INFO_CHANGE,
-    CONV_PROFILE_CHANGE,
-    CONV_MEMBER_CHANGE,
+    RICH_TXT,
+    MARKDOWN,
     CUSTOM,
   ];
 

@@ -113,4 +113,17 @@ class XXIMCore {
       onError: onError,
     );
   }
+
+  /// 确认消费通知
+  Future<bool?> ackNoticeDataReq({
+    required AckNoticeDataReq req,
+    SuccessCallback<bool>? onSuccess,
+    ErrorCallback? onError,
+  }) async {
+    return await _coreHttp?.ackNoticeDataReq(
+      req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
 }

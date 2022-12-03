@@ -14,16 +14,13 @@ const PushEvent$json = const {
   '1': 'PushEvent',
   '2': const [
     const {'1': 'PushMsgDataList', '2': 0},
-    const {'1': 'FriendNotify', '2': 1},
-    const {'1': 'GroupNotify', '2': 2},
-    const {'1': 'SubscribeNotify', '2': 3},
-    const {'1': 'SocialNotify', '2': 4},
+    const {'1': 'PushNoticeDataList', '2': 1},
   ],
 };
 
 /// Descriptor for `PushEvent`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List pushEventDescriptor = $convert.base64Decode(
-    'CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASEAoMRnJpZW5kTm90aWZ5EAESDwoLR3JvdXBOb3RpZnkQAhITCg9TdWJzY3JpYmVOb3RpZnkQAxIQCgxTb2NpYWxOb3RpZnkQBA==');
+    'CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASFgoSUHVzaE5vdGljZURhdGFMaXN0EAE=');
 @$core.Deprecated('Use contentTypeDescriptor instead')
 const ContentType$json = const {
   '1': 'ContentType',
@@ -42,18 +39,15 @@ const ContentType$json = const {
     const {'1': 'MERGE', '2': 18},
     const {'1': 'EMOJI', '2': 19},
     const {'1': 'COMMAND', '2': 20},
-    const {'1': 'CONV_LIST_CHANGE', '2': 51},
-    const {'1': 'PROFILE_CHANGE', '2': 52},
-    const {'1': 'CONV_INFO_CHANGE', '2': 53},
-    const {'1': 'CONV_PROFILE_CHANGE', '2': 54},
-    const {'1': 'CONV_MEMBER_CHANGE', '2': 55},
+    const {'1': 'RICH_TXT', '2': 21},
+    const {'1': 'MARKDOWN', '2': 22},
     const {'1': 'CUSTOM', '2': 100},
   ],
 };
 
 /// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode(
-    'CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESCAoEUkVBRBACEgoKBlJFVk9LRRADEggKBFRFWFQQCxIJCgVJTUFHRRAMEgkKBUFVRElPEA0SCQoFVklERU8QDhIICgRGSUxFEA8SDAoITE9DQVRJT04QEBIICgRDQVJEEBESCQoFTUVSR0UQEhIJCgVFTU9KSRATEgsKB0NPTU1BTkQQFBIUChBDT05WX0xJU1RfQ0hBTkdFEDMSEgoOUFJPRklMRV9DSEFOR0UQNBIUChBDT05WX0lORk9fQ0hBTkdFEDUSFwoTQ09OVl9QUk9GSUxFX0NIQU5HRRA2EhYKEkNPTlZfTUVNQkVSX0NIQU5HRRA3EgoKBkNVU1RPTRBk');
+    'CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESCAoEUkVBRBACEgoKBlJFVk9LRRADEggKBFRFWFQQCxIJCgVJTUFHRRAMEgkKBUFVRElPEA0SCQoFVklERU8QDhIICgRGSUxFEA8SDAoITE9DQVRJT04QEBIICgRDQVJEEBESCQoFTUVSR0UQEhIJCgVFTU9KSRATEgsKB0NPTU1BTkQQFBIMCghSSUNIX1RYVBAVEgwKCE1BUktET1dOEBYSCgoGQ1VTVE9NEGQ=');
 @$core.Deprecated('Use commonReqDescriptor instead')
 const CommonReq$json = const {
   '1': 'CommonReq',
@@ -143,13 +137,6 @@ const MsgData$json = const {
     const {'1': 'serverTime', '3': 4, '4': 1, '5': 9, '10': 'serverTime'},
     const {'1': 'senderId', '3': 11, '4': 1, '5': 9, '10': 'senderId'},
     const {'1': 'senderInfo', '3': 12, '4': 1, '5': 12, '10': 'senderInfo'},
-    const {
-      '1': 'senderConvInfo',
-      '3': 13,
-      '4': 1,
-      '5': 12,
-      '10': 'senderConvInfo'
-    },
     const {'1': 'convId', '3': 21, '4': 1, '5': 9, '10': 'convId'},
     const {'1': 'atUsers', '3': 22, '4': 3, '5': 9, '10': 'atUsers'},
     const {
@@ -197,30 +184,36 @@ const MsgData_OfflinePush$json = const {
 const MsgData_Options$json = const {
   '1': 'Options',
   '2': const [
-    const {'1': 'offlinePush', '3': 1, '4': 1, '5': 8, '10': 'offlinePush'},
     const {
       '1': 'storageForServer',
-      '3': 2,
+      '3': 1,
       '4': 1,
       '5': 8,
       '10': 'storageForServer'
     },
     const {
       '1': 'storageForClient',
-      '3': 3,
+      '3': 2,
       '4': 1,
       '5': 8,
       '10': 'storageForClient'
     },
-    const {'1': 'unreadCount', '3': 4, '4': 1, '5': 8, '10': 'unreadCount'},
-    const {'1': 'needDecrypt', '3': 5, '4': 1, '5': 8, '10': 'needDecrypt'},
-    const {'1': 'updateConv', '3': 6, '4': 1, '5': 8, '10': 'updateConv'},
+    const {'1': 'needDecrypt', '3': 3, '4': 1, '5': 8, '10': 'needDecrypt'},
+    const {'1': 'offlinePush', '3': 4, '4': 1, '5': 8, '10': 'offlinePush'},
+    const {'1': 'updateConvMsg', '3': 5, '4': 1, '5': 8, '10': 'updateConvMsg'},
+    const {
+      '1': 'updateUnreadCount',
+      '3': 6,
+      '4': 1,
+      '5': 8,
+      '10': 'updateUnreadCount'
+    },
   ],
 };
 
 /// Descriptor for `MsgData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgDataDescriptor = $convert.base64Decode(
-    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhoKCHNlbmRlcklkGAsgASgJUghzZW5kZXJJZBIeCgpzZW5kZXJJbmZvGAwgASgMUgpzZW5kZXJJbmZvEiYKDnNlbmRlckNvbnZJbmZvGA0gASgMUg5zZW5kZXJDb252SW5mbxIWCgZjb252SWQYFSABKAlSBmNvbnZJZBIYCgdhdFVzZXJzGBYgAygJUgdhdFVzZXJzEjEKC2NvbnRlbnRUeXBlGB8gASgOMg8ucGIuQ29udGVudFR5cGVSC2NvbnRlbnRUeXBlEhgKB2NvbnRlbnQYICABKAxSB2NvbnRlbnQSEAoDc2VxGCEgASgJUgNzZXESLQoHb3B0aW9ucxgpIAEoCzITLnBiLk1zZ0RhdGEuT3B0aW9uc1IHb3B0aW9ucxI5CgtvZmZsaW5lUHVzaBgqIAEoCzIXLnBiLk1zZ0RhdGEuT2ZmbGluZVB1c2hSC29mZmxpbmVQdXNoEhAKA2V4dBhkIAEoDFIDZXh0GlcKC09mZmxpbmVQdXNoEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIYCgdjb250ZW50GAIgASgJUgdjb250ZW50EhgKB3BheWxvYWQYAyABKAlSB3BheWxvYWQa5wEKB09wdGlvbnMSIAoLb2ZmbGluZVB1c2gYASABKAhSC29mZmxpbmVQdXNoEioKEHN0b3JhZ2VGb3JTZXJ2ZXIYAiABKAhSEHN0b3JhZ2VGb3JTZXJ2ZXISKgoQc3RvcmFnZUZvckNsaWVudBgDIAEoCFIQc3RvcmFnZUZvckNsaWVudBIgCgt1bnJlYWRDb3VudBgEIAEoCFILdW5yZWFkQ291bnQSIAoLbmVlZERlY3J5cHQYBSABKAhSC25lZWREZWNyeXB0Eh4KCnVwZGF0ZUNvbnYYBiABKAhSCnVwZGF0ZUNvbnY=');
+    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhoKCHNlbmRlcklkGAsgASgJUghzZW5kZXJJZBIeCgpzZW5kZXJJbmZvGAwgASgMUgpzZW5kZXJJbmZvEhYKBmNvbnZJZBgVIAEoCVIGY29udklkEhgKB2F0VXNlcnMYFiADKAlSB2F0VXNlcnMSMQoLY29udGVudFR5cGUYHyABKA4yDy5wYi5Db250ZW50VHlwZVILY29udGVudFR5cGUSGAoHY29udGVudBggIAEoDFIHY29udGVudBIQCgNzZXEYISABKAlSA3NlcRItCgdvcHRpb25zGCkgASgLMhMucGIuTXNnRGF0YS5PcHRpb25zUgdvcHRpb25zEjkKC29mZmxpbmVQdXNoGCogASgLMhcucGIuTXNnRGF0YS5PZmZsaW5lUHVzaFILb2ZmbGluZVB1c2gSEAoDZXh0GGQgASgMUgNleHQaVwoLT2ZmbGluZVB1c2gSFAoFdGl0bGUYASABKAlSBXRpdGxlEhgKB2NvbnRlbnQYAiABKAlSB2NvbnRlbnQSGAoHcGF5bG9hZBgDIAEoCVIHcGF5bG9hZBr5AQoHT3B0aW9ucxIqChBzdG9yYWdlRm9yU2VydmVyGAEgASgIUhBzdG9yYWdlRm9yU2VydmVyEioKEHN0b3JhZ2VGb3JDbGllbnQYAiABKAhSEHN0b3JhZ2VGb3JDbGllbnQSIAoLbmVlZERlY3J5cHQYAyABKAhSC25lZWREZWNyeXB0EiAKC29mZmxpbmVQdXNoGAQgASgIUgtvZmZsaW5lUHVzaBIkCg11cGRhdGVDb252TXNnGAUgASgIUg11cGRhdGVDb252TXNnEiwKEXVwZGF0ZVVucmVhZENvdW50GAYgASgIUhF1cGRhdGVVbnJlYWRDb3VudA==');
 @$core.Deprecated('Use msgDataListDescriptor instead')
 const MsgDataList$json = const {
   '1': 'MsgDataList',
@@ -239,6 +232,80 @@ const MsgDataList$json = const {
 /// Descriptor for `MsgDataList`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgDataListDescriptor = $convert.base64Decode(
     'CgtNc2dEYXRhTGlzdBItCgttc2dEYXRhTGlzdBgBIAMoCzILLnBiLk1zZ0RhdGFSC21zZ0RhdGFMaXN0');
+@$core.Deprecated('Use noticeDataDescriptor instead')
+const NoticeData$json = const {
+  '1': 'NoticeData',
+  '2': const [
+    const {'1': 'convId', '3': 1, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'unreadCount', '3': 2, '4': 1, '5': 5, '10': 'unreadCount'},
+    const {
+      '1': 'unreadAbsolute',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'unreadAbsolute'
+    },
+    const {'1': 'noticeId', '3': 11, '4': 1, '5': 9, '10': 'noticeId'},
+    const {'1': 'createTime', '3': 12, '4': 1, '5': 9, '10': 'createTime'},
+    const {'1': 'title', '3': 13, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'contentType', '3': 14, '4': 1, '5': 5, '10': 'contentType'},
+    const {'1': 'content', '3': 15, '4': 1, '5': 12, '10': 'content'},
+    const {
+      '1': 'options',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.pb.NoticeData.Options',
+      '10': 'options'
+    },
+    const {'1': 'ext', '3': 31, '4': 1, '5': 12, '10': 'ext'},
+  ],
+  '3': const [NoticeData_Options$json],
+};
+
+@$core.Deprecated('Use noticeDataDescriptor instead')
+const NoticeData_Options$json = const {
+  '1': 'Options',
+  '2': const [
+    const {
+      '1': 'storageForClient',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'storageForClient'
+    },
+    const {'1': 'updateConvMsg', '3': 2, '4': 1, '5': 8, '10': 'updateConvMsg'},
+    const {
+      '1': 'onlinePushOnce',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'onlinePushOnce'
+    },
+  ],
+};
+
+/// Descriptor for `NoticeData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List noticeDataDescriptor = $convert.base64Decode(
+    'CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEiAKC3VucmVhZENvdW50GAIgASgFUgt1bnJlYWRDb3VudBImCg51bnJlYWRBYnNvbHV0ZRgDIAEoCFIOdW5yZWFkQWJzb2x1dGUSGgoIbm90aWNlSWQYCyABKAlSCG5vdGljZUlkEh4KCmNyZWF0ZVRpbWUYDCABKAlSCmNyZWF0ZVRpbWUSFAoFdGl0bGUYDSABKAlSBXRpdGxlEiAKC2NvbnRlbnRUeXBlGA4gASgFUgtjb250ZW50VHlwZRIYCgdjb250ZW50GA8gASgMUgdjb250ZW50EjAKB29wdGlvbnMYFSABKAsyFi5wYi5Ob3RpY2VEYXRhLk9wdGlvbnNSB29wdGlvbnMSEAoDZXh0GB8gASgMUgNleHQagwEKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIkCg11cGRhdGVDb252TXNnGAIgASgIUg11cGRhdGVDb252TXNnEiYKDm9ubGluZVB1c2hPbmNlGAMgASgIUg5vbmxpbmVQdXNoT25jZQ==');
+@$core.Deprecated('Use noticeDataListDescriptor instead')
+const NoticeDataList$json = const {
+  '1': 'NoticeDataList',
+  '2': const [
+    const {
+      '1': 'noticeDataList',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.pb.NoticeData',
+      '10': 'noticeDataList'
+    },
+  ],
+};
+
+/// Descriptor for `NoticeDataList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List noticeDataListDescriptor = $convert.base64Decode(
+    'Cg5Ob3RpY2VEYXRhTGlzdBI2Cg5ub3RpY2VEYXRhTGlzdBgBIAMoCzIOLnBiLk5vdGljZURhdGFSDm5vdGljZURhdGFMaXN0');
 @$core.Deprecated('Use sendMsgListReqDescriptor instead')
 const SendMsgListReq$json = const {
   '1': 'SendMsgListReq',
@@ -503,3 +570,41 @@ const BatchGetConvSeqResp_ConvSeqMapEntry$json = const {
 /// Descriptor for `BatchGetConvSeqResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List batchGetConvSeqRespDescriptor = $convert.base64Decode(
     'ChNCYXRjaEdldENvbnZTZXFSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkcKCmNvbnZTZXFNYXAYAiADKAsyJy5wYi5CYXRjaEdldENvbnZTZXFSZXNwLkNvbnZTZXFNYXBFbnRyeVIKY29udlNlcU1hcBpxCgdDb252U2VxEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhYKBm1pblNlcRgCIAEoCVIGbWluU2VxEhYKBm1heFNlcRgDIAEoCVIGbWF4U2VxEh4KCnVwZGF0ZVRpbWUYBCABKAlSCnVwZGF0ZVRpbWUaXgoPQ29udlNlcU1hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjUKBXZhbHVlGAIgASgLMh8ucGIuQmF0Y2hHZXRDb252U2VxUmVzcC5Db252U2VxUgV2YWx1ZToCOAE=');
+@$core.Deprecated('Use ackNoticeDataReqDescriptor instead')
+const AckNoticeDataReq$json = const {
+  '1': 'AckNoticeDataReq',
+  '2': const [
+    const {
+      '1': 'commonReq',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pb.CommonReq',
+      '10': 'commonReq'
+    },
+    const {'1': 'noticeId', '3': 2, '4': 1, '5': 9, '10': 'noticeId'},
+    const {'1': 'success', '3': 3, '4': 1, '5': 8, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `AckNoticeDataReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ackNoticeDataReqDescriptor = $convert.base64Decode(
+    'ChBBY2tOb3RpY2VEYXRhUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhoKCG5vdGljZUlkGAIgASgJUghub3RpY2VJZBIYCgdzdWNjZXNzGAMgASgIUgdzdWNjZXNz');
+@$core.Deprecated('Use ackNoticeDataRespDescriptor instead')
+const AckNoticeDataResp$json = const {
+  '1': 'AckNoticeDataResp',
+  '2': const [
+    const {
+      '1': 'commonResp',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pb.CommonResp',
+      '10': 'commonResp'
+    },
+  ],
+};
+
+/// Descriptor for `AckNoticeDataResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ackNoticeDataRespDescriptor = $convert.base64Decode(
+    'ChFBY2tOb3RpY2VEYXRhUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');

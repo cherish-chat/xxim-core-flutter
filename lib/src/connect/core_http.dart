@@ -142,6 +142,27 @@ class CoreHttp {
     return false;
   }
 
+  Future<bool> ackNoticeDataReq({
+    required AckNoticeDataReq req,
+    SuccessCallback<bool>? onSuccess,
+    ErrorCallback? onError,
+  }) async {
+    commonReq.data = req.writeToBuffer();
+    List<int> bytes = commonReq.writeToBuffer();
+    List<int>? data = await _post(
+      path: Protocol.ackNoticeData,
+      data: Stream.fromIterable(
+        bytes.map((e) => [e]),
+      ),
+      onError: onError,
+    );
+    if (data != null) {
+      if (onSuccess != null) onSuccess(true);
+      return true;
+    }
+    return false;
+  }
+
   Future<List<int>?> _post({
     required String path,
     required dynamic data,
