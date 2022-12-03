@@ -76,14 +76,10 @@ class CoreSocket {
         receivePushListener?.pushMsgDataList(
           MsgDataList.fromBuffer(body.data),
         );
-      } else if (body.event == PushEvent.FriendNotify) {
-        receivePushListener?.friendNotify();
-      } else if (body.event == PushEvent.GroupNotify) {
-        receivePushListener?.groupNotify();
-      } else if (body.event == PushEvent.SubscribeNotify) {
-        receivePushListener?.subscribeNotify();
-      } else if (body.event == PushEvent.SocialNotify) {
-        receivePushListener?.socialNotify();
+      } else if (body.event == PushEvent.PushNoticeDataList) {
+        receivePushListener?.pushNoticeDataList(
+          NoticeDataList.fromBuffer(body.data),
+        );
       }
     }
   }

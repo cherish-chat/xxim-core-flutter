@@ -134,3 +134,15 @@
        onSuccess: (data) {},
        onError: (code, {msg}) {},
      );
+
+## 确认消费通知
+
+     AckNoticeDataReq req = AckNoticeDataReq(
+       noticeId: "",
+       success: true ?? false,
+     );
+     bool? status = await core.ackNoticeDataReq(
+       req: req,
+       onSuccess: (data) {},
+       onError: (code, {msg}) {},
+     );

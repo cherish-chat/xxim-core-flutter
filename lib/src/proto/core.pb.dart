@@ -698,68 +698,68 @@ class MsgData_Options extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'offlinePush',
-        protoName: 'offlinePush')
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
             : 'storageForServer',
         protoName: 'storageForServer')
     ..aOB(
-        3,
+        2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'storageForClient',
         protoName: 'storageForClient')
     ..aOB(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'unreadCount',
-        protoName: 'unreadCount')
-    ..aOB(
-        5,
+        3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'needDecrypt',
         protoName: 'needDecrypt')
     ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'offlinePush',
+        protoName: 'offlinePush')
+    ..aOB(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'updateConvMsg',
+        protoName: 'updateConvMsg')
+    ..aOB(
         6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'updateConv',
-        protoName: 'updateConv')
+            : 'updateUnreadCount',
+        protoName: 'updateUnreadCount')
     ..hasRequiredFields = false;
 
   MsgData_Options._() : super();
 
   factory MsgData_Options({
-    $core.bool? offlinePush,
     $core.bool? storageForServer,
     $core.bool? storageForClient,
-    $core.bool? unreadCount,
     $core.bool? needDecrypt,
-    $core.bool? updateConv,
+    $core.bool? offlinePush,
+    $core.bool? updateConvMsg,
+    $core.bool? updateUnreadCount,
   }) {
     final _result = create();
-    if (offlinePush != null) {
-      _result.offlinePush = offlinePush;
-    }
     if (storageForServer != null) {
       _result.storageForServer = storageForServer;
     }
     if (storageForClient != null) {
       _result.storageForClient = storageForClient;
     }
-    if (unreadCount != null) {
-      _result.unreadCount = unreadCount;
-    }
     if (needDecrypt != null) {
       _result.needDecrypt = needDecrypt;
     }
-    if (updateConv != null) {
-      _result.updateConv = updateConv;
+    if (offlinePush != null) {
+      _result.offlinePush = offlinePush;
+    }
+    if (updateConvMsg != null) {
+      _result.updateConvMsg = updateConvMsg;
+    }
+    if (updateUnreadCount != null) {
+      _result.updateUnreadCount = updateUnreadCount;
     }
     return _result;
   }
@@ -799,88 +799,88 @@ class MsgData_Options extends $pb.GeneratedMessage {
   static MsgData_Options? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get offlinePush => $_getBF(0);
+  $core.bool get storageForServer => $_getBF(0);
 
   @$pb.TagNumber(1)
-  set offlinePush($core.bool v) {
+  set storageForServer($core.bool v) {
     $_setBool(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasOfflinePush() => $_has(0);
+  $core.bool hasStorageForServer() => $_has(0);
 
   @$pb.TagNumber(1)
-  void clearOfflinePush() => clearField(1);
+  void clearStorageForServer() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get storageForServer => $_getBF(1);
+  $core.bool get storageForClient => $_getBF(1);
 
   @$pb.TagNumber(2)
-  set storageForServer($core.bool v) {
+  set storageForClient($core.bool v) {
     $_setBool(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasStorageForServer() => $_has(1);
+  $core.bool hasStorageForClient() => $_has(1);
 
   @$pb.TagNumber(2)
-  void clearStorageForServer() => clearField(2);
+  void clearStorageForClient() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.bool get storageForClient => $_getBF(2);
+  $core.bool get needDecrypt => $_getBF(2);
 
   @$pb.TagNumber(3)
-  set storageForClient($core.bool v) {
+  set needDecrypt($core.bool v) {
     $_setBool(2, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasStorageForClient() => $_has(2);
+  $core.bool hasNeedDecrypt() => $_has(2);
 
   @$pb.TagNumber(3)
-  void clearStorageForClient() => clearField(3);
+  void clearNeedDecrypt() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.bool get unreadCount => $_getBF(3);
+  $core.bool get offlinePush => $_getBF(3);
 
   @$pb.TagNumber(4)
-  set unreadCount($core.bool v) {
+  set offlinePush($core.bool v) {
     $_setBool(3, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasUnreadCount() => $_has(3);
+  $core.bool hasOfflinePush() => $_has(3);
 
   @$pb.TagNumber(4)
-  void clearUnreadCount() => clearField(4);
+  void clearOfflinePush() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.bool get needDecrypt => $_getBF(4);
+  $core.bool get updateConvMsg => $_getBF(4);
 
   @$pb.TagNumber(5)
-  set needDecrypt($core.bool v) {
+  set updateConvMsg($core.bool v) {
     $_setBool(4, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasNeedDecrypt() => $_has(4);
+  $core.bool hasUpdateConvMsg() => $_has(4);
 
   @$pb.TagNumber(5)
-  void clearNeedDecrypt() => clearField(5);
+  void clearUpdateConvMsg() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.bool get updateConv => $_getBF(5);
+  $core.bool get updateUnreadCount => $_getBF(5);
 
   @$pb.TagNumber(6)
-  set updateConv($core.bool v) {
+  set updateUnreadCount($core.bool v) {
     $_setBool(5, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasUpdateConv() => $_has(5);
+  $core.bool hasUpdateUnreadCount() => $_has(5);
 
   @$pb.TagNumber(6)
-  void clearUpdateConv() => clearField(6);
+  void clearUpdateUnreadCount() => clearField(6);
 }
 
 class MsgData extends $pb.GeneratedMessage {
@@ -930,13 +930,6 @@ class MsgData extends $pb.GeneratedMessage {
             : 'senderInfo',
         $pb.PbFieldType.OY,
         protoName: 'senderInfo')
-    ..a<$core.List<$core.int>>(
-        13,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'senderConvInfo',
-        $pb.PbFieldType.OY,
-        protoName: 'senderConvInfo')
     ..aOS(
         21,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1000,7 +993,6 @@ class MsgData extends $pb.GeneratedMessage {
     $core.String? serverTime,
     $core.String? senderId,
     $core.List<$core.int>? senderInfo,
-    $core.List<$core.int>? senderConvInfo,
     $core.String? convId,
     $core.Iterable<$core.String>? atUsers,
     ContentType? contentType,
@@ -1028,9 +1020,6 @@ class MsgData extends $pb.GeneratedMessage {
     }
     if (senderInfo != null) {
       _result.senderInfo = senderInfo;
-    }
-    if (senderConvInfo != null) {
-      _result.senderConvInfo = senderConvInfo;
     }
     if (convId != null) {
       _result.convId = convId;
@@ -1176,39 +1165,25 @@ class MsgData extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearSenderInfo() => clearField(12);
 
-  @$pb.TagNumber(13)
-  $core.List<$core.int> get senderConvInfo => $_getN(6);
-
-  @$pb.TagNumber(13)
-  set senderConvInfo($core.List<$core.int> v) {
-    $_setBytes(6, v);
-  }
-
-  @$pb.TagNumber(13)
-  $core.bool hasSenderConvInfo() => $_has(6);
-
-  @$pb.TagNumber(13)
-  void clearSenderConvInfo() => clearField(13);
-
   @$pb.TagNumber(21)
-  $core.String get convId => $_getSZ(7);
+  $core.String get convId => $_getSZ(6);
 
   @$pb.TagNumber(21)
   set convId($core.String v) {
-    $_setString(7, v);
+    $_setString(6, v);
   }
 
   @$pb.TagNumber(21)
-  $core.bool hasConvId() => $_has(7);
+  $core.bool hasConvId() => $_has(6);
 
   @$pb.TagNumber(21)
   void clearConvId() => clearField(21);
 
   @$pb.TagNumber(22)
-  $core.List<$core.String> get atUsers => $_getList(8);
+  $core.List<$core.String> get atUsers => $_getList(7);
 
   @$pb.TagNumber(31)
-  ContentType get contentType => $_getN(9);
+  ContentType get contentType => $_getN(8);
 
   @$pb.TagNumber(31)
   set contentType(ContentType v) {
@@ -1216,41 +1191,41 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(31)
-  $core.bool hasContentType() => $_has(9);
+  $core.bool hasContentType() => $_has(8);
 
   @$pb.TagNumber(31)
   void clearContentType() => clearField(31);
 
   @$pb.TagNumber(32)
-  $core.List<$core.int> get content => $_getN(10);
+  $core.List<$core.int> get content => $_getN(9);
 
   @$pb.TagNumber(32)
   set content($core.List<$core.int> v) {
-    $_setBytes(10, v);
+    $_setBytes(9, v);
   }
 
   @$pb.TagNumber(32)
-  $core.bool hasContent() => $_has(10);
+  $core.bool hasContent() => $_has(9);
 
   @$pb.TagNumber(32)
   void clearContent() => clearField(32);
 
   @$pb.TagNumber(33)
-  $core.String get seq => $_getSZ(11);
+  $core.String get seq => $_getSZ(10);
 
   @$pb.TagNumber(33)
   set seq($core.String v) {
-    $_setString(11, v);
+    $_setString(10, v);
   }
 
   @$pb.TagNumber(33)
-  $core.bool hasSeq() => $_has(11);
+  $core.bool hasSeq() => $_has(10);
 
   @$pb.TagNumber(33)
   void clearSeq() => clearField(33);
 
   @$pb.TagNumber(41)
-  MsgData_Options get options => $_getN(12);
+  MsgData_Options get options => $_getN(11);
 
   @$pb.TagNumber(41)
   set options(MsgData_Options v) {
@@ -1258,16 +1233,16 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(41)
-  $core.bool hasOptions() => $_has(12);
+  $core.bool hasOptions() => $_has(11);
 
   @$pb.TagNumber(41)
   void clearOptions() => clearField(41);
 
   @$pb.TagNumber(41)
-  MsgData_Options ensureOptions() => $_ensure(12);
+  MsgData_Options ensureOptions() => $_ensure(11);
 
   @$pb.TagNumber(42)
-  MsgData_OfflinePush get offlinePush => $_getN(13);
+  MsgData_OfflinePush get offlinePush => $_getN(12);
 
   @$pb.TagNumber(42)
   set offlinePush(MsgData_OfflinePush v) {
@@ -1275,24 +1250,24 @@ class MsgData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(42)
-  $core.bool hasOfflinePush() => $_has(13);
+  $core.bool hasOfflinePush() => $_has(12);
 
   @$pb.TagNumber(42)
   void clearOfflinePush() => clearField(42);
 
   @$pb.TagNumber(42)
-  MsgData_OfflinePush ensureOfflinePush() => $_ensure(13);
+  MsgData_OfflinePush ensureOfflinePush() => $_ensure(12);
 
   @$pb.TagNumber(100)
-  $core.List<$core.int> get ext => $_getN(14);
+  $core.List<$core.int> get ext => $_getN(13);
 
   @$pb.TagNumber(100)
   set ext($core.List<$core.int> v) {
-    $_setBytes(14, v);
+    $_setBytes(13, v);
   }
 
   @$pb.TagNumber(100)
-  $core.bool hasExt() => $_has(14);
+  $core.bool hasExt() => $_has(13);
 
   @$pb.TagNumber(100)
   void clearExt() => clearField(100);
@@ -1365,6 +1340,501 @@ class MsgDataList extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<MsgData> get msgDataList => $_getList(0);
+}
+
+class NoticeData_Options extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'NoticeData.Options',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOB(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'storageForClient',
+        protoName: 'storageForClient')
+    ..aOB(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'updateConvMsg',
+        protoName: 'updateConvMsg')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'onlinePushOnce',
+        protoName: 'onlinePushOnce')
+    ..hasRequiredFields = false;
+
+  NoticeData_Options._() : super();
+
+  factory NoticeData_Options({
+    $core.bool? storageForClient,
+    $core.bool? updateConvMsg,
+    $core.bool? onlinePushOnce,
+  }) {
+    final _result = create();
+    if (storageForClient != null) {
+      _result.storageForClient = storageForClient;
+    }
+    if (updateConvMsg != null) {
+      _result.updateConvMsg = updateConvMsg;
+    }
+    if (onlinePushOnce != null) {
+      _result.onlinePushOnce = onlinePushOnce;
+    }
+    return _result;
+  }
+
+  factory NoticeData_Options.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory NoticeData_Options.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  NoticeData_Options clone() => NoticeData_Options()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  NoticeData_Options copyWith(void Function(NoticeData_Options) updates) =>
+      super.copyWith((message) => updates(message as NoticeData_Options))
+          as NoticeData_Options; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeData_Options create() => NoticeData_Options._();
+
+  NoticeData_Options createEmptyInstance() => create();
+
+  static $pb.PbList<NoticeData_Options> createRepeated() =>
+      $pb.PbList<NoticeData_Options>();
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeData_Options getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<NoticeData_Options>(create);
+  static NoticeData_Options? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get storageForClient => $_getBF(0);
+
+  @$pb.TagNumber(1)
+  set storageForClient($core.bool v) {
+    $_setBool(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasStorageForClient() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearStorageForClient() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get updateConvMsg => $_getBF(1);
+
+  @$pb.TagNumber(2)
+  set updateConvMsg($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasUpdateConvMsg() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearUpdateConvMsg() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get onlinePushOnce => $_getBF(2);
+
+  @$pb.TagNumber(3)
+  set onlinePushOnce($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasOnlinePushOnce() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearOnlinePushOnce() => clearField(3);
+}
+
+class NoticeData extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'NoticeData',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'convId',
+        protoName: 'convId')
+    ..a<$core.int>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'unreadCount',
+        $pb.PbFieldType.O3,
+        protoName: 'unreadCount')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'unreadAbsolute',
+        protoName: 'unreadAbsolute')
+    ..aOS(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noticeId',
+        protoName: 'noticeId')
+    ..aOS(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'createTime',
+        protoName: 'createTime')
+    ..aOS(
+        13,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'title')
+    ..a<$core.int>(
+        14,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'contentType',
+        $pb.PbFieldType.O3,
+        protoName: 'contentType')
+    ..a<$core.List<$core.int>>(
+        15,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'content',
+        $pb.PbFieldType.OY)
+    ..aOM<NoticeData_Options>(
+        21,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'options',
+        subBuilder: NoticeData_Options.create)
+    ..a<$core.List<$core.int>>(
+        31,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ext',
+        $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  NoticeData._() : super();
+
+  factory NoticeData({
+    $core.String? convId,
+    $core.int? unreadCount,
+    $core.bool? unreadAbsolute,
+    $core.String? noticeId,
+    $core.String? createTime,
+    $core.String? title,
+    $core.int? contentType,
+    $core.List<$core.int>? content,
+    NoticeData_Options? options,
+    $core.List<$core.int>? ext,
+  }) {
+    final _result = create();
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (unreadCount != null) {
+      _result.unreadCount = unreadCount;
+    }
+    if (unreadAbsolute != null) {
+      _result.unreadAbsolute = unreadAbsolute;
+    }
+    if (noticeId != null) {
+      _result.noticeId = noticeId;
+    }
+    if (createTime != null) {
+      _result.createTime = createTime;
+    }
+    if (title != null) {
+      _result.title = title;
+    }
+    if (contentType != null) {
+      _result.contentType = contentType;
+    }
+    if (content != null) {
+      _result.content = content;
+    }
+    if (options != null) {
+      _result.options = options;
+    }
+    if (ext != null) {
+      _result.ext = ext;
+    }
+    return _result;
+  }
+
+  factory NoticeData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory NoticeData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  NoticeData clone() => NoticeData()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  NoticeData copyWith(void Function(NoticeData) updates) =>
+      super.copyWith((message) => updates(message as NoticeData))
+          as NoticeData; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeData create() => NoticeData._();
+
+  NoticeData createEmptyInstance() => create();
+
+  static $pb.PbList<NoticeData> createRepeated() => $pb.PbList<NoticeData>();
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<NoticeData>(create);
+  static NoticeData? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get convId => $_getSZ(0);
+
+  @$pb.TagNumber(1)
+  set convId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasConvId() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearConvId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get unreadCount => $_getIZ(1);
+
+  @$pb.TagNumber(2)
+  set unreadCount($core.int v) {
+    $_setSignedInt32(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasUnreadCount() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearUnreadCount() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get unreadAbsolute => $_getBF(2);
+
+  @$pb.TagNumber(3)
+  set unreadAbsolute($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasUnreadAbsolute() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearUnreadAbsolute() => clearField(3);
+
+  @$pb.TagNumber(11)
+  $core.String get noticeId => $_getSZ(3);
+
+  @$pb.TagNumber(11)
+  set noticeId($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasNoticeId() => $_has(3);
+
+  @$pb.TagNumber(11)
+  void clearNoticeId() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.String get createTime => $_getSZ(4);
+
+  @$pb.TagNumber(12)
+  set createTime($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasCreateTime() => $_has(4);
+
+  @$pb.TagNumber(12)
+  void clearCreateTime() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.String get title => $_getSZ(5);
+
+  @$pb.TagNumber(13)
+  set title($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasTitle() => $_has(5);
+
+  @$pb.TagNumber(13)
+  void clearTitle() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.int get contentType => $_getIZ(6);
+
+  @$pb.TagNumber(14)
+  set contentType($core.int v) {
+    $_setSignedInt32(6, v);
+  }
+
+  @$pb.TagNumber(14)
+  $core.bool hasContentType() => $_has(6);
+
+  @$pb.TagNumber(14)
+  void clearContentType() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.List<$core.int> get content => $_getN(7);
+
+  @$pb.TagNumber(15)
+  set content($core.List<$core.int> v) {
+    $_setBytes(7, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasContent() => $_has(7);
+
+  @$pb.TagNumber(15)
+  void clearContent() => clearField(15);
+
+  @$pb.TagNumber(21)
+  NoticeData_Options get options => $_getN(8);
+
+  @$pb.TagNumber(21)
+  set options(NoticeData_Options v) {
+    setField(21, v);
+  }
+
+  @$pb.TagNumber(21)
+  $core.bool hasOptions() => $_has(8);
+
+  @$pb.TagNumber(21)
+  void clearOptions() => clearField(21);
+
+  @$pb.TagNumber(21)
+  NoticeData_Options ensureOptions() => $_ensure(8);
+
+  @$pb.TagNumber(31)
+  $core.List<$core.int> get ext => $_getN(9);
+
+  @$pb.TagNumber(31)
+  set ext($core.List<$core.int> v) {
+    $_setBytes(9, v);
+  }
+
+  @$pb.TagNumber(31)
+  $core.bool hasExt() => $_has(9);
+
+  @$pb.TagNumber(31)
+  void clearExt() => clearField(31);
+}
+
+class NoticeDataList extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'NoticeDataList',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..pc<NoticeData>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noticeDataList',
+        $pb.PbFieldType.PM,
+        protoName: 'noticeDataList',
+        subBuilder: NoticeData.create)
+    ..hasRequiredFields = false;
+
+  NoticeDataList._() : super();
+
+  factory NoticeDataList({
+    $core.Iterable<NoticeData>? noticeDataList,
+  }) {
+    final _result = create();
+    if (noticeDataList != null) {
+      _result.noticeDataList.addAll(noticeDataList);
+    }
+    return _result;
+  }
+
+  factory NoticeDataList.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory NoticeDataList.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  NoticeDataList clone() => NoticeDataList()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  NoticeDataList copyWith(void Function(NoticeDataList) updates) =>
+      super.copyWith((message) => updates(message as NoticeDataList))
+          as NoticeDataList; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeDataList create() => NoticeDataList._();
+
+  NoticeDataList createEmptyInstance() => create();
+
+  static $pb.PbList<NoticeDataList> createRepeated() =>
+      $pb.PbList<NoticeDataList>();
+
+  @$core.pragma('dart2js:noInline')
+  static NoticeDataList getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<NoticeDataList>(create);
+  static NoticeDataList? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<NoticeData> get noticeDataList => $_getList(0);
 }
 
 class SendMsgListReq extends $pb.GeneratedMessage {
@@ -2507,4 +2977,217 @@ class BatchGetConvSeqResp extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.Map<$core.String, BatchGetConvSeqResp_ConvSeq> get convSeqMap =>
       $_getMap(1);
+}
+
+class AckNoticeDataReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AckNoticeDataReq',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOM<CommonReq>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'commonReq',
+        protoName: 'commonReq',
+        subBuilder: CommonReq.create)
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noticeId',
+        protoName: 'noticeId')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'success')
+    ..hasRequiredFields = false;
+
+  AckNoticeDataReq._() : super();
+
+  factory AckNoticeDataReq({
+    CommonReq? commonReq,
+    $core.String? noticeId,
+    $core.bool? success,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (noticeId != null) {
+      _result.noticeId = noticeId;
+    }
+    if (success != null) {
+      _result.success = success;
+    }
+    return _result;
+  }
+
+  factory AckNoticeDataReq.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory AckNoticeDataReq.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AckNoticeDataReq clone() => AckNoticeDataReq()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AckNoticeDataReq copyWith(void Function(AckNoticeDataReq) updates) =>
+      super.copyWith((message) => updates(message as AckNoticeDataReq))
+          as AckNoticeDataReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static AckNoticeDataReq create() => AckNoticeDataReq._();
+
+  AckNoticeDataReq createEmptyInstance() => create();
+
+  static $pb.PbList<AckNoticeDataReq> createRepeated() =>
+      $pb.PbList<AckNoticeDataReq>();
+
+  @$core.pragma('dart2js:noInline')
+  static AckNoticeDataReq getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AckNoticeDataReq>(create);
+  static AckNoticeDataReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  CommonReq get commonReq => $_getN(0);
+
+  @$pb.TagNumber(1)
+  set commonReq(CommonReq v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+
+  @$pb.TagNumber(1)
+  CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get noticeId => $_getSZ(1);
+
+  @$pb.TagNumber(2)
+  set noticeId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasNoticeId() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearNoticeId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get success => $_getBF(2);
+
+  @$pb.TagNumber(3)
+  set success($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSuccess() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearSuccess() => clearField(3);
+}
+
+class AckNoticeDataResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AckNoticeDataResp',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOM<CommonResp>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'commonResp',
+        protoName: 'commonResp',
+        subBuilder: CommonResp.create)
+    ..hasRequiredFields = false;
+
+  AckNoticeDataResp._() : super();
+
+  factory AckNoticeDataResp({
+    CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+
+  factory AckNoticeDataResp.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory AckNoticeDataResp.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AckNoticeDataResp clone() => AckNoticeDataResp()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AckNoticeDataResp copyWith(void Function(AckNoticeDataResp) updates) =>
+      super.copyWith((message) => updates(message as AckNoticeDataResp))
+          as AckNoticeDataResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static AckNoticeDataResp create() => AckNoticeDataResp._();
+
+  AckNoticeDataResp createEmptyInstance() => create();
+
+  static $pb.PbList<AckNoticeDataResp> createRepeated() =>
+      $pb.PbList<AckNoticeDataResp>();
+
+  @$core.pragma('dart2js:noInline')
+  static AckNoticeDataResp getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AckNoticeDataResp>(create);
+  static AckNoticeDataResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  CommonResp get commonResp => $_getN(0);
+
+  @$pb.TagNumber(1)
+  set commonResp(CommonResp v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+
+  @$pb.TagNumber(1)
+  CommonResp ensureCommonResp() => $_ensure(0);
 }
