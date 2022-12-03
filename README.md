@@ -27,10 +27,7 @@
        ),
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},
-         onFriendNotify: () {},
-         onGroupNotify: () {},
-         onSubscribeNotify: () {},
-         onSocialNotify: () {},
+         onPushNoticeDataList: (noticeDataList) {},
        ),
      );
 
