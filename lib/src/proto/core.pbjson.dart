@@ -548,14 +548,13 @@ const AckNoticeDataReq$json = const {
       '6': '.pb.CommonReq',
       '10': 'commonReq'
     },
-    const {'1': 'noticeId', '3': 2, '4': 1, '5': 9, '10': 'noticeId'},
-    const {'1': 'success', '3': 3, '4': 1, '5': 8, '10': 'success'},
+    const {'1': 'noticeIds', '3': 2, '4': 3, '5': 9, '10': 'noticeIds'},
   ],
 };
 
 /// Descriptor for `AckNoticeDataReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ackNoticeDataReqDescriptor = $convert.base64Decode(
-    'ChBBY2tOb3RpY2VEYXRhUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhoKCG5vdGljZUlkGAIgASgJUghub3RpY2VJZBIYCgdzdWNjZXNzGAMgASgIUgdzdWNjZXNz');
+    'ChBBY2tOb3RpY2VEYXRhUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhwKCW5vdGljZUlkcxgCIAMoCVIJbm90aWNlSWRz');
 @$core.Deprecated('Use ackNoticeDataRespDescriptor instead')
 const AckNoticeDataResp$json = const {
   '1': 'AckNoticeDataResp',

@@ -106,15 +106,15 @@
            senderConvInfo: utf8.encode(""),
            convId: "",
            atUsers: [],
-           contentType: ContentType.TEXT,
+           contentType: ContentType.text,
            content: utf8.encode(""),
            options: MsgData_Options(
-             offlinePush: true,
              storageForServer: true,
              storageForClient: true,
-             unreadCount: true,
              needDecrypt: true,
-             updateConv: true,
+             offlinePush: true,
+             updateConvMsg: true,
+             updateUnreadCount: true,
            ),
            offlinePush: MsgData_OfflinePush(
              title: "",
@@ -135,8 +135,7 @@
 ## 确认消费通知
 
      AckNoticeDataReq req = AckNoticeDataReq(
-       noticeId: "",
-       success: true ?? false,
+       noticeIds: [],
      );
      bool? status = await core.ackNoticeDataReq(
        req: req,
