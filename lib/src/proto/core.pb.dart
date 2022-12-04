@@ -2993,35 +2993,26 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
             : 'commonReq',
         protoName: 'commonReq',
         subBuilder: CommonReq.create)
-    ..aOS(
+    ..pPS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'noticeId',
-        protoName: 'noticeId')
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'success')
+            : 'noticeIds',
+        protoName: 'noticeIds')
     ..hasRequiredFields = false;
 
   AckNoticeDataReq._() : super();
 
   factory AckNoticeDataReq({
     CommonReq? commonReq,
-    $core.String? noticeId,
-    $core.bool? success,
+    $core.Iterable<$core.String>? noticeIds,
   }) {
     final _result = create();
     if (commonReq != null) {
       _result.commonReq = commonReq;
     }
-    if (noticeId != null) {
-      _result.noticeId = noticeId;
-    }
-    if (success != null) {
-      _result.success = success;
+    if (noticeIds != null) {
+      _result.noticeIds.addAll(noticeIds);
     }
     return _result;
   }
@@ -3078,32 +3069,7 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get noticeId => $_getSZ(1);
-
-  @$pb.TagNumber(2)
-  set noticeId($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasNoticeId() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearNoticeId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.bool get success => $_getBF(2);
-
-  @$pb.TagNumber(3)
-  set success($core.bool v) {
-    $_setBool(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasSuccess() => $_has(2);
-
-  @$pb.TagNumber(3)
-  void clearSuccess() => clearField(3);
+  $core.List<$core.String> get noticeIds => $_getList(1);
 }
 
 class AckNoticeDataResp extends $pb.GeneratedMessage {
