@@ -942,16 +942,13 @@ class MsgData extends $pb.GeneratedMessage {
             ? ''
             : 'atUsers',
         protoName: 'atUsers')
-    ..e<ContentType>(
+    ..a<$core.int>(
         31,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'contentType',
-        $pb.PbFieldType.OE,
-        protoName: 'contentType',
-        defaultOrMaker: ContentType.UNKNOWN,
-        valueOf: ContentType.valueOf,
-        enumValues: ContentType.values)
+        $pb.PbFieldType.O3,
+        protoName: 'contentType')
     ..a<$core.List<$core.int>>(
         32,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -995,7 +992,7 @@ class MsgData extends $pb.GeneratedMessage {
     $core.List<$core.int>? senderInfo,
     $core.String? convId,
     $core.Iterable<$core.String>? atUsers,
-    ContentType? contentType,
+    $core.int? contentType,
     $core.List<$core.int>? content,
     $core.String? seq,
     MsgData_Options? options,
@@ -1183,11 +1180,11 @@ class MsgData extends $pb.GeneratedMessage {
   $core.List<$core.String> get atUsers => $_getList(7);
 
   @$pb.TagNumber(31)
-  ContentType get contentType => $_getN(8);
+  $core.int get contentType => $_getIZ(8);
 
   @$pb.TagNumber(31)
-  set contentType(ContentType v) {
-    setField(31, v);
+  set contentType($core.int v) {
+    $_setSignedInt32(8, v);
   }
 
   @$pb.TagNumber(31)
