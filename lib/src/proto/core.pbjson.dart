@@ -21,33 +21,6 @@ const PushEvent$json = const {
 /// Descriptor for `PushEvent`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List pushEventDescriptor = $convert.base64Decode(
     'CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASFgoSUHVzaE5vdGljZURhdGFMaXN0EAE=');
-@$core.Deprecated('Use contentTypeDescriptor instead')
-const ContentType$json = const {
-  '1': 'ContentType',
-  '2': const [
-    const {'1': 'UNKNOWN', '2': 0},
-    const {'1': 'TYPING', '2': 1},
-    const {'1': 'READ', '2': 2},
-    const {'1': 'REVOKE', '2': 3},
-    const {'1': 'TEXT', '2': 11},
-    const {'1': 'IMAGE', '2': 12},
-    const {'1': 'AUDIO', '2': 13},
-    const {'1': 'VIDEO', '2': 14},
-    const {'1': 'FILE', '2': 15},
-    const {'1': 'LOCATION', '2': 16},
-    const {'1': 'CARD', '2': 17},
-    const {'1': 'MERGE', '2': 18},
-    const {'1': 'EMOJI', '2': 19},
-    const {'1': 'COMMAND', '2': 20},
-    const {'1': 'RICH_TXT', '2': 21},
-    const {'1': 'MARKDOWN', '2': 22},
-    const {'1': 'CUSTOM', '2': 100},
-  ],
-};
-
-/// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode(
-    'CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESCAoEUkVBRBACEgoKBlJFVk9LRRADEggKBFRFWFQQCxIJCgVJTUFHRRAMEgkKBUFVRElPEA0SCQoFVklERU8QDhIICgRGSUxFEA8SDAoITE9DQVRJT04QEBIICgRDQVJEEBESCQoFTUVSR0UQEhIJCgVFTU9KSRATEgsKB0NPTU1BTkQQFBIMCghSSUNIX1RYVBAVEgwKCE1BUktET1dOEBYSCgoGQ1VTVE9NEGQ=');
 @$core.Deprecated('Use commonReqDescriptor instead')
 const CommonReq$json = const {
   '1': 'CommonReq',
@@ -139,14 +112,7 @@ const MsgData$json = const {
     const {'1': 'senderInfo', '3': 12, '4': 1, '5': 12, '10': 'senderInfo'},
     const {'1': 'convId', '3': 21, '4': 1, '5': 9, '10': 'convId'},
     const {'1': 'atUsers', '3': 22, '4': 3, '5': 9, '10': 'atUsers'},
-    const {
-      '1': 'contentType',
-      '3': 31,
-      '4': 1,
-      '5': 14,
-      '6': '.pb.ContentType',
-      '10': 'contentType'
-    },
+    const {'1': 'contentType', '3': 31, '4': 1, '5': 5, '10': 'contentType'},
     const {'1': 'content', '3': 32, '4': 1, '5': 12, '10': 'content'},
     const {'1': 'seq', '3': 33, '4': 1, '5': 9, '10': 'seq'},
     const {
@@ -213,7 +179,7 @@ const MsgData_Options$json = const {
 
 /// Descriptor for `MsgData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgDataDescriptor = $convert.base64Decode(
-    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhoKCHNlbmRlcklkGAsgASgJUghzZW5kZXJJZBIeCgpzZW5kZXJJbmZvGAwgASgMUgpzZW5kZXJJbmZvEhYKBmNvbnZJZBgVIAEoCVIGY29udklkEhgKB2F0VXNlcnMYFiADKAlSB2F0VXNlcnMSMQoLY29udGVudFR5cGUYHyABKA4yDy5wYi5Db250ZW50VHlwZVILY29udGVudFR5cGUSGAoHY29udGVudBggIAEoDFIHY29udGVudBIQCgNzZXEYISABKAlSA3NlcRItCgdvcHRpb25zGCkgASgLMhMucGIuTXNnRGF0YS5PcHRpb25zUgdvcHRpb25zEjkKC29mZmxpbmVQdXNoGCogASgLMhcucGIuTXNnRGF0YS5PZmZsaW5lUHVzaFILb2ZmbGluZVB1c2gSEAoDZXh0GGQgASgMUgNleHQaVwoLT2ZmbGluZVB1c2gSFAoFdGl0bGUYASABKAlSBXRpdGxlEhgKB2NvbnRlbnQYAiABKAlSB2NvbnRlbnQSGAoHcGF5bG9hZBgDIAEoCVIHcGF5bG9hZBr5AQoHT3B0aW9ucxIqChBzdG9yYWdlRm9yU2VydmVyGAEgASgIUhBzdG9yYWdlRm9yU2VydmVyEioKEHN0b3JhZ2VGb3JDbGllbnQYAiABKAhSEHN0b3JhZ2VGb3JDbGllbnQSIAoLbmVlZERlY3J5cHQYAyABKAhSC25lZWREZWNyeXB0EiAKC29mZmxpbmVQdXNoGAQgASgIUgtvZmZsaW5lUHVzaBIkCg11cGRhdGVDb252TXNnGAUgASgIUg11cGRhdGVDb252TXNnEiwKEXVwZGF0ZVVucmVhZENvdW50GAYgASgIUhF1cGRhdGVVbnJlYWRDb3VudA==');
+    'CgdNc2dEYXRhEiAKC2NsaWVudE1zZ0lkGAEgASgJUgtjbGllbnRNc2dJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSHgoKY2xpZW50VGltZRgDIAEoCVIKY2xpZW50VGltZRIeCgpzZXJ2ZXJUaW1lGAQgASgJUgpzZXJ2ZXJUaW1lEhoKCHNlbmRlcklkGAsgASgJUghzZW5kZXJJZBIeCgpzZW5kZXJJbmZvGAwgASgMUgpzZW5kZXJJbmZvEhYKBmNvbnZJZBgVIAEoCVIGY29udklkEhgKB2F0VXNlcnMYFiADKAlSB2F0VXNlcnMSIAoLY29udGVudFR5cGUYHyABKAVSC2NvbnRlbnRUeXBlEhgKB2NvbnRlbnQYICABKAxSB2NvbnRlbnQSEAoDc2VxGCEgASgJUgNzZXESLQoHb3B0aW9ucxgpIAEoCzITLnBiLk1zZ0RhdGEuT3B0aW9uc1IHb3B0aW9ucxI5CgtvZmZsaW5lUHVzaBgqIAEoCzIXLnBiLk1zZ0RhdGEuT2ZmbGluZVB1c2hSC29mZmxpbmVQdXNoEhAKA2V4dBhkIAEoDFIDZXh0GlcKC09mZmxpbmVQdXNoEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIYCgdjb250ZW50GAIgASgJUgdjb250ZW50EhgKB3BheWxvYWQYAyABKAlSB3BheWxvYWQa+QEKB09wdGlvbnMSKgoQc3RvcmFnZUZvclNlcnZlchgBIAEoCFIQc3RvcmFnZUZvclNlcnZlchIqChBzdG9yYWdlRm9yQ2xpZW50GAIgASgIUhBzdG9yYWdlRm9yQ2xpZW50EiAKC25lZWREZWNyeXB0GAMgASgIUgtuZWVkRGVjcnlwdBIgCgtvZmZsaW5lUHVzaBgEIAEoCFILb2ZmbGluZVB1c2gSJAoNdXBkYXRlQ29udk1zZxgFIAEoCFINdXBkYXRlQ29udk1zZxIsChF1cGRhdGVVbnJlYWRDb3VudBgGIAEoCFIRdXBkYXRlVW5yZWFkQ291bnQ=');
 @$core.Deprecated('Use msgDataListDescriptor instead')
 const MsgDataList$json = const {
   '1': 'MsgDataList',
