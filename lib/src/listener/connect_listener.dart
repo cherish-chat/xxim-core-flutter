@@ -1,24 +1,24 @@
 /// 连接状态监听
 class ConnectListener {
-  final Function()? onConnecting; // 连接中
-  final Function()? onSuccess; // 连接成功
-  final Function({String? error})? onClose; // 连接关闭
+  final Function() onConnecting; // 连接中
+  final Function() onSuccess; // 连接成功
+  final Function({String? error}) onClose; // 连接关闭
 
   ConnectListener({
-    this.onConnecting,
-    this.onSuccess,
-    this.onClose,
+    required this.onConnecting,
+    required this.onSuccess,
+    required this.onClose,
   });
 
   void connecting() {
-    if (onConnecting != null) onConnecting!();
+    onConnecting();
   }
 
   void success() {
-    if (onSuccess != null) onSuccess!();
+    onSuccess();
   }
 
   void close({String? error}) {
-    if (onClose != null) onClose!(error: error);
+    onClose(error: error);
   }
 }

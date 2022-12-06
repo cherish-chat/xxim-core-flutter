@@ -21,7 +21,7 @@ class BaseWebSocket {
       onConnecting();
       _wsChannel = IOWebSocketChannel.connect(
         url,
-        pingInterval: const Duration(seconds: 3),
+        pingInterval: const Duration(seconds: 2),
       )..stream.listen(
           onData,
           onError: onError,
