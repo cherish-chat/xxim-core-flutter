@@ -33,7 +33,7 @@ class CoreHttp {
       BaseOptions(
         baseUrl: apiUrl,
         connectTimeout: 2000,
-        receiveTimeout: 600000,
+        receiveTimeout: 120000,
         sendTimeout: 10000,
         responseType: ResponseType.bytes,
       ),
