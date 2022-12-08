@@ -6,7 +6,7 @@ class Params {
   final String appVersion;
   final String language;
 
-  Params({
+  const Params({
     required this.deviceModel,
     required this.deviceId,
     required this.osVersion,
