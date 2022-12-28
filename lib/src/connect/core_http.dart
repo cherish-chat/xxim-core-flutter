@@ -85,7 +85,7 @@ class CoreHttp {
     commonReq.data = req.writeToBuffer();
     List<int> bytes = commonReq.writeToBuffer();
     List<int>? data = await _post(
-      path: Protocol.getMsgListByConvId,
+      path: Protocol.batchGetMsgListByConvId,
       data: Stream.fromIterable(
         bytes.map((e) => [e]),
       ),
