@@ -2,7 +2,7 @@
 class ConnectListener {
   final Function() onConnecting; // 连接中
   final Function() onSuccess; // 连接成功
-  final Function({String? error}) onClose; // 连接关闭
+  final Function(String? error) onClose; // 连接关闭
 
   ConnectListener({
     required this.onConnecting,
@@ -18,7 +18,7 @@ class ConnectListener {
     onSuccess();
   }
 
-  void close({String? error}) {
-    onClose(error: error);
+  void close(String? error) {
+    onClose(error);
   }
 }

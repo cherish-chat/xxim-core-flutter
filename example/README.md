@@ -13,28 +13,32 @@
      XXIMCore core = XXIMCore();
      core.init(
        params: Params(
-         deviceModel: "",
-         deviceId: "",
-         osVersion: "",
          platform: "",
+         deviceId: "",
+         deviceModel: "",
+         osVersion: "",
          appVersion: "",
          language: "",
        ),
        connectListener: ConnectListener(
          onConnecting: () {},
          onSuccess: () {},
-         onClose: ({error}) {},
+         onClose: (error) {},
        ),
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},
          onPushNoticeDataList: (noticeDataList) {},
+         onBatchGetConvSeq: (String reqId, BatchGetConvSeqResp resp) {},
+         onGetMsgList: (String reqId, GetMsgListResp resp) {},
+         onGetMsgById: (String reqId, GetMsgByIdResp resp) {},
+         onSendMsgList: (String reqId, SendMsgListResp resp) {},
+         onAckNoticeData: (String reqId, AckNoticeDataResp resp) {},
        ),
      );
 
 ## 登录
 
      core.login(
-       apiUrl: "",
        wsUrl: "",
        token: "",
        userId: "",
@@ -49,96 +53,81 @@
 
      core.isLogin();
 
-## 修改语言
-
-     core.setLanguage("");
-
 ## 批量获取会话序列
 
-     BatchGetConvSeqReq batchGetConvSeqReq = BatchGetConvSeqReq(
-       convIdList: [],
-     );
-     BatchGetConvSeqResp? batchGetConvSeqResp = await core.batchGetConvSeq(
-       req: batchGetConvSeqReq,
-       onSuccess: (data) {},
-       onError: (code, {msg}) {},
+     core.batchGetConvSeq(
+       reqId: "",
+       req: BatchGetConvSeqReq(
+         convIdList: [],
+       ),
      );
 
 ## 批量获取消息列表-会话ID
 
-     BatchGetMsgListByConvIdReq batchGetMsgListByConvIdReq = BatchGetMsgListByConvIdReq(
-       items: [
-         BatchGetMsgListByConvIdReq_Item(
-           convId: "",
-           seqList: [],
-         ),
-       ],
-       push: true ?? false,
-     );
-     GetMsgListResp? getMsgListResp = await core.batchGetMsgListByConvId(
-       req: batchGetMsgListByConvIdReq,
-       onSuccess: (data) {},
-       onError: (code, {msg}) {},
+     core.batchGetMsgListByConvId(
+       reqId: "",
+       req: BatchGetMsgListByConvIdReq(
+         items: [
+           BatchGetMsgListByConvIdReq_Item(
+             convId: "",
+             seqList: [],
+           ),
+         ],
+         push: true ?? false,
+       ),
      );
 
 ## 获取消息-消息ID
 
-     GetMsgByIdReq getMsgByIdReq = GetMsgByIdReq(
-       clientMsgId: "",
-       serverMsgId: "",
-       push: true ?? false,
-     );
-     GetMsgByIdResp? getMsgByIdResp = await core.getMsgById(
-       req: getMsgByIdReq,
-       onSuccess: (data) {},
-       onError: (code, {msg}) {},
+     core.getMsgById(
+       reqId: "",
+       req: GetMsgByIdReq(
+         clientMsgId: "",
+         serverMsgId: "",
+         push: true ?? false,
+       ),
      );
 
 ## 发送消息列表
 
-     SendMsgListReq req = SendMsgListReq(
-       msgDataList: [
-         MsgData(
-           clientMsgId: "",
-           clientTime: "",
-           senderId: "",
-           senderInfo: utf8.encode(""),
-           senderConvInfo: utf8.encode(""),
-           convId: "",
-           atUsers: [],
-           contentType: ContentType.text,
-           content: utf8.encode(""),
-           options: MsgData_Options(
-             storageForServer: true,
-             storageForClient: true,
-             needDecrypt: true,
-             offlinePush: true,
-             updateConvMsg: true,
-             updateUnreadCount: true,
+     core.sendMsgList(
+       reqId: "",
+       req: SendMsgListReq(
+         msgDataList: [
+           MsgData(
+             clientMsgId: "",
+             clientTime: "",
+             senderId: "",
+             senderInfo: utf8.encode(""),
+             convId: "",
+             atUsers: [],
+             contentType: ContentType.text,
+             content: utf8.encode(""),
+             options: MsgData_Options(
+               storageForServer: true,
+               storageForClient: true,
+               needDecrypt: true,
+               offlinePush: true,
+               updateConvMsg: true,
+               updateUnreadCount: true,
+             ),
+             offlinePush: MsgData_OfflinePush(
+               title: "",
+               content: "",
+               payload: "",
+             ),
+             ext: utf8.encode(""),
            ),
-           offlinePush: MsgData_OfflinePush(
-             title: "",
-             content: "",
-             payload: "",
-           ),
-           ext: utf8.encode(""),
-         ),
-       ],
-       deliverAfter: 0,
-     );
-     bool? status = await core.sendMsgList(
-       req: req,
-       onSuccess: (data) {},
-       onError: (code, {msg}) {},
+         ],
+         deliverAfter: 0,
+       ),
      );
 
 ## 确认消费通知
 
-     AckNoticeDataReq req = AckNoticeDataReq(
-       noticeIds: [],
-     );
-     bool? status = await core.ackNoticeDataReq(
-       req: req,
-       onSuccess: (data) {},
-       onError: (code, {msg}) {},
+     core.ackNoticeData(
+       reqId: "",
+       req: AckNoticeDataReq(
+         noticeIds: [],
+       ),
      );

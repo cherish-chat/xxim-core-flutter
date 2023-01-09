@@ -39,4 +39,8 @@ class BaseWebSocket {
   bool isConnect() {
     return _wsChannel != null;
   }
+
+  void sendData(dynamic data) {
+    _wsChannel?.sink.add(data);
+  }
 }

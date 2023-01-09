@@ -1,4 +1,4 @@
-import 'package:xxim_core_flutter/src/connect/core_http.dart';
+import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/connect/protocol.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
 import 'package:xxim_core_flutter/src/listener/receive_push_listener.dart';
@@ -8,14 +8,14 @@ import 'src/socket_none.dart'
     if (dart.library.io) 'src/socket_io.dart';
 
 class CoreSocket {
-  final CoreHttp coreHttp;
-  final ConnectListener? connectListener;
-  final ReceivePushListener? receivePushListener;
+  final Params params;
+  final ConnectListener connectListener;
+  final ReceivePushListener receivePushListener;
 
   CoreSocket({
-    required this.coreHttp,
-    this.connectListener,
-    this.receivePushListener,
+    required this.params,
+    required this.connectListener,
+    required this.receivePushListener,
   });
 
   BaseWebSocket? _webSocket;
@@ -25,21 +25,19 @@ class CoreSocket {
     required String token,
     required String userId,
     required String networkUsed,
-  }) async {
+  }) {
     _webSocket = BaseWebSocket(
       onData: _onData,
       onConnecting: () {
-        connectListener?.connecting();
+        connectListener.connecting();
       },
       onError: (error) {
-        coreHttp.disconnect();
         disconnect();
-        connectListener?.close(error: error.toString());
+        connectListener.close(error.toString());
       },
       onClose: () {
-        coreHttp.disconnect();
         disconnect();
-        connectListener?.close();
+        connectListener.close(null);
       },
     );
     _webSocket!.connect(Uri.decodeFull(
@@ -48,9 +46,13 @@ class CoreSocket {
         queryParameters: {
           "token": token,
           "userId": userId,
-          "deviceId": coreHttp.params.deviceId,
-          "platform": coreHttp.params.platform,
           "networkUsed": networkUsed,
+          "deviceId": params.deviceId,
+          "platform": params.platform,
+          "deviceModel": params.deviceModel,
+          "osVersion": params.osVersion,
+          "appVersion": params.appVersion,
+          "language": params.language,
         },
       ).toString(),
     ));
@@ -65,21 +67,119 @@ class CoreSocket {
     return _webSocket?.isConnect() ?? false;
   }
 
+  void batchGetConvSeq({
+    required String reqId,
+    required BatchGetConvSeqReq req,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SyncConvSeq,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+  }
+
+  void batchGetMsgListByConvId({
+    required String reqId,
+    required BatchGetMsgListByConvIdReq req,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SyncMsgList,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+  }
+
+  void getMsgById({
+    required String reqId,
+    required GetMsgByIdReq req,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.GetMsgById,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+  }
+
+  void sendMsgList({
+    required String reqId,
+    required SendMsgListReq req,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SendMsgList,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+  }
+
+  void ackNoticeData({
+    required String reqId,
+    required AckNoticeDataReq req,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.AckNotice,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+  }
+
   void _onData(dynamic data) {
     if (data is String) {
       if (data == "connected") {
-        connectListener?.success();
+        connectListener.success();
       }
     } else if (data is List<int>) {
       PushBody body = PushBody.fromBuffer(data);
       if (body.event == PushEvent.PushMsgDataList) {
-        receivePushListener?.pushMsgDataList(
+        receivePushListener.pushMsgDataList(
           MsgDataList.fromBuffer(body.data),
         );
       } else if (body.event == PushEvent.PushNoticeDataList) {
-        receivePushListener?.pushNoticeDataList(
+        receivePushListener.pushNoticeDataList(
           NoticeDataList.fromBuffer(body.data),
         );
+      } else if (body.event == PushEvent.PushResponseBody) {
+        ResponseBody response = ResponseBody.fromBuffer(body.data);
+        if (response.event == ActiveEvent.SyncConvSeq) {
+          receivePushListener.batchGetConvSeq(
+            response.reqId,
+            BatchGetConvSeqResp.fromBuffer(response.data),
+          );
+        } else if (response.event == ActiveEvent.SyncMsgList) {
+          receivePushListener.getMsgList(
+            response.reqId,
+            GetMsgListResp.fromBuffer(response.data),
+          );
+        } else if (response.event == ActiveEvent.GetMsgById) {
+          receivePushListener.getMsgById(
+            response.reqId,
+            GetMsgByIdResp.fromBuffer(response.data),
+          );
+        } else if (response.event == ActiveEvent.SendMsgList) {
+          receivePushListener.sendMsgList(
+            response.reqId,
+            SendMsgListResp.fromBuffer(response.data),
+          );
+        } else if (response.event == ActiveEvent.AckNotice) {
+          receivePushListener.ackNoticeData(
+            response.reqId,
+            AckNoticeDataResp.fromBuffer(response.data),
+          );
+        }
       }
     }
   }
