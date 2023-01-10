@@ -20,11 +20,11 @@
          appVersion: "",
          language: "",
        ),
-       timeout: const Duration(seconds: 10),
+       requestTimeout: const Duration(seconds: 10),
        connectListener: ConnectListener(
          onConnecting: () {},
          onSuccess: () {},
-         onClose: (error) {},
+         onClose: (code, error) {},
        ),
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},

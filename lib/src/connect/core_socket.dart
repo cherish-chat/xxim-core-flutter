@@ -12,13 +12,13 @@ typedef ErrorCallback = Function(ResponseBody_Code code);
 
 class CoreSocket {
   final Params params;
-  final Duration timeout;
+  final Duration requestTimeout;
   final ConnectListener connectListener;
   final ReceivePushListener receivePushListener;
 
   CoreSocket({
     required this.params,
-    required this.timeout,
+    required this.requestTimeout,
     required this.connectListener,
     required this.receivePushListener,
   });
@@ -37,13 +37,13 @@ class CoreSocket {
       onConnecting: () {
         connectListener.connecting();
       },
-      onError: (error) {
+      onError: (code, error) {
         disconnect();
-        connectListener.close(error.toString());
+        connectListener.close(code, error);
       },
-      onClose: () {
+      onClose: (code, error) {
         disconnect();
-        connectListener.close(null);
+        connectListener.close(code, error);
       },
     );
     _webSocket!.connect(Uri.decodeFull(
@@ -277,7 +277,7 @@ class CoreSocket {
       }
       return toContinue;
     }).timeout(
-      timeout,
+      requestTimeout,
       onTimeout: () {
         toContinue = false;
       },

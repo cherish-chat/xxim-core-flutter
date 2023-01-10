@@ -1,8 +1,8 @@
 class BaseWebSocket {
   final Function(dynamic data) onData;
   final Function() onConnecting;
-  final Function(dynamic error) onError;
-  final Function() onClose;
+  final Function(int code, String? error) onError;
+  final Function(int code, String? reason) onClose;
 
   BaseWebSocket({
     required this.onData,

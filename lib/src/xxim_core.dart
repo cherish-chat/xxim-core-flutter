@@ -10,13 +10,13 @@ class XXIMCore {
   /// 初始化
   void init({
     required Params params,
-    required Duration timeout,
+    required Duration requestTimeout,
     required ConnectListener connectListener,
     required ReceivePushListener receivePushListener,
   }) {
     _coreSocket = CoreSocket(
       params: params,
-      timeout: timeout,
+      requestTimeout: requestTimeout,
       connectListener: connectListener,
       receivePushListener: receivePushListener,
     );
