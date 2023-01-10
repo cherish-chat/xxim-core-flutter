@@ -1,5 +1,6 @@
 library xxim_core_flutter;
 
+export 'src/connect/core_callback.dart';
 export 'src/connect/params.dart';
 
 export 'src/listener/connect_listener.dart';

@@ -1,3 +1,4 @@
+import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/core_socket.dart';
 import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';

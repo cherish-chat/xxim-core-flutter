@@ -1,3 +1,4 @@
+import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/connect/protocol.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
@@ -6,9 +7,6 @@ import 'package:xxim_core_flutter/src/proto/core.pb.dart';
 import 'src/socket_none.dart'
     if (dart.library.html) 'src/socket_html.dart'
     if (dart.library.io) 'src/socket_io.dart';
-
-typedef SuccessCallback<T> = Function(T data);
-typedef ErrorCallback = Function(ResponseBody_Code code);
 
 class CoreSocket {
   final Params params;
