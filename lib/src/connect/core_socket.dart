@@ -7,18 +7,24 @@ import 'src/socket_none.dart'
     if (dart.library.html) 'src/socket_html.dart'
     if (dart.library.io) 'src/socket_io.dart';
 
+typedef SuccessCallback<T> = Function(T data);
+typedef ErrorCallback = Function(ResponseBody_Code code);
+
 class CoreSocket {
   final Params params;
+  final Duration timeout;
   final ConnectListener connectListener;
   final ReceivePushListener receivePushListener;
 
   CoreSocket({
     required this.params,
+    required this.timeout,
     required this.connectListener,
     required this.receivePushListener,
   });
 
   BaseWebSocket? _webSocket;
+  Map<String, Map<String, dynamic>>? _responseMap;
 
   void connect({
     required String wsUrl,
@@ -56,85 +62,18 @@ class CoreSocket {
         },
       ).toString(),
     ));
+    _responseMap = {};
   }
 
   void disconnect() {
     _webSocket?.disconnect();
     _webSocket = null;
+    _responseMap?.clear();
+    _responseMap = null;
   }
 
   bool isConnect() {
     return _webSocket?.isConnect() ?? false;
-  }
-
-  void batchGetConvSeq({
-    required String reqId,
-    required BatchGetConvSeqReq req,
-  }) {
-    RequestBody request = RequestBody(
-      event: ActiveEvent.SyncConvSeq,
-      reqId: reqId,
-      data: req.writeToBuffer(),
-    );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
-  }
-
-  void batchGetMsgListByConvId({
-    required String reqId,
-    required BatchGetMsgListByConvIdReq req,
-  }) {
-    RequestBody request = RequestBody(
-      event: ActiveEvent.SyncMsgList,
-      reqId: reqId,
-      data: req.writeToBuffer(),
-    );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
-  }
-
-  void getMsgById({
-    required String reqId,
-    required GetMsgByIdReq req,
-  }) {
-    RequestBody request = RequestBody(
-      event: ActiveEvent.GetMsgById,
-      reqId: reqId,
-      data: req.writeToBuffer(),
-    );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
-  }
-
-  void sendMsgList({
-    required String reqId,
-    required SendMsgListReq req,
-  }) {
-    RequestBody request = RequestBody(
-      event: ActiveEvent.SendMsgList,
-      reqId: reqId,
-      data: req.writeToBuffer(),
-    );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
-  }
-
-  void ackNoticeData({
-    required String reqId,
-    required AckNoticeDataReq req,
-  }) {
-    RequestBody request = RequestBody(
-      event: ActiveEvent.AckNotice,
-      reqId: reqId,
-      data: req.writeToBuffer(),
-    );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
   }
 
   void _onData(dynamic data) {
@@ -155,37 +94,194 @@ class CoreSocket {
       } else if (body.event == PushEvent.PushResponseBody) {
         ResponseBody response = ResponseBody.fromBuffer(body.data);
         if (response.event == ActiveEvent.SyncConvSeq) {
-          receivePushListener.batchGetConvSeq(
-            response.reqId,
-            response.code,
-            BatchGetConvSeqResp.fromBuffer(response.data),
-          );
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": BatchGetConvSeqResp.fromBuffer(response.data),
+          };
         } else if (response.event == ActiveEvent.SyncMsgList) {
-          receivePushListener.getMsgList(
-            response.reqId,
-            response.code,
-            GetMsgListResp.fromBuffer(response.data),
-          );
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": GetMsgListResp.fromBuffer(response.data),
+          };
         } else if (response.event == ActiveEvent.GetMsgById) {
-          receivePushListener.getMsgById(
-            response.reqId,
-            response.code,
-            GetMsgByIdResp.fromBuffer(response.data),
-          );
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": GetMsgByIdResp.fromBuffer(response.data),
+          };
         } else if (response.event == ActiveEvent.SendMsgList) {
-          receivePushListener.sendMsgList(
-            response.reqId,
-            response.code,
-            SendMsgListResp.fromBuffer(response.data),
-          );
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": SendMsgListResp.fromBuffer(response.data),
+          };
         } else if (response.event == ActiveEvent.AckNotice) {
-          receivePushListener.ackNoticeData(
-            response.reqId,
-            response.code,
-            AckNoticeDataResp.fromBuffer(response.data),
-          );
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": AckNoticeDataResp.fromBuffer(response.data),
+          };
+        } else if (response.event == ActiveEvent.CustomRequest) {
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": response.data,
+          };
         }
       }
     }
+  }
+
+  Future<BatchGetConvSeqResp?> batchGetConvSeq({
+    required String reqId,
+    required BatchGetConvSeqReq req,
+    SuccessCallback<BatchGetConvSeqResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SyncConvSeq,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<BatchGetConvSeqResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<GetMsgListResp?> batchGetMsgListByConvId({
+    required String reqId,
+    required BatchGetMsgListByConvIdReq req,
+    SuccessCallback<GetMsgListResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SyncMsgList,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<GetMsgListResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<GetMsgByIdResp?> getMsgById({
+    required String reqId,
+    required GetMsgByIdReq req,
+    SuccessCallback<GetMsgByIdResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.GetMsgById,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<GetMsgByIdResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<SendMsgListResp?> sendMsgList({
+    required String reqId,
+    required SendMsgListReq req,
+    SuccessCallback<SendMsgListResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.SendMsgList,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<SendMsgListResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<AckNoticeDataResp?> ackNoticeData({
+    required String reqId,
+    required AckNoticeDataReq req,
+    SuccessCallback<AckNoticeDataResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.AckNotice,
+      reqId: reqId,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<AckNoticeDataResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<List<int>?> customRequest({
+    required String reqId,
+    required List<int> bytes,
+    SuccessCallback<List<int>>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      event: ActiveEvent.CustomRequest,
+      reqId: reqId,
+      data: bytes,
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<List<int>>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<T?> _handleResponse<T>({
+    required String reqId,
+    SuccessCallback<T>? onSuccess,
+    ErrorCallback? onError,
+  }) async {
+    T? resp;
+    bool toContinue = true;
+    await Future.doWhile(() async {
+      await Future.delayed(const Duration(milliseconds: 5));
+      Map<String, dynamic>? body = _responseMap?[reqId];
+      if (body != null) {
+        ResponseBody_Code code = body["code"];
+        if (code == ResponseBody_Code.Success) {
+          resp = body["resp"];
+          if (onSuccess != null) onSuccess(resp as T);
+        } else {
+          if (onError != null) onError(code);
+        }
+        _responseMap?.remove(reqId);
+        return false;
+      }
+      return toContinue;
+    }).timeout(
+      timeout,
+      onTimeout: () {
+        toContinue = false;
+      },
+    );
+    return resp;
   }
 }

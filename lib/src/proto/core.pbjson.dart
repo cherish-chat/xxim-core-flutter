@@ -31,12 +31,13 @@ const ActiveEvent$json = const {
     const {'1': 'SyncMsgList', '2': 2},
     const {'1': 'AckNotice', '2': 3},
     const {'1': 'GetMsgById', '2': 4},
+    const {'1': 'CustomRequest', '2': 100},
   ],
 };
 
 /// Descriptor for `ActiveEvent`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List activeEventDescriptor = $convert.base64Decode(
-    'CgtBY3RpdmVFdmVudBIPCgtTZW5kTXNnTGlzdBAAEg8KC1N5bmNDb252U2VxEAESDwoLU3luY01zZ0xpc3QQAhINCglBY2tOb3RpY2UQAxIOCgpHZXRNc2dCeUlkEAQ=');
+    'CgtBY3RpdmVFdmVudBIPCgtTZW5kTXNnTGlzdBAAEg8KC1N5bmNDb252U2VxEAESDwoLU3luY01zZ0xpc3QQAhINCglBY2tOb3RpY2UQAxIOCgpHZXRNc2dCeUlkEAQSEQoNQ3VzdG9tUmVxdWVzdBBk');
 @$core.Deprecated('Use pushBodyDescriptor instead')
 const PushBody$json = const {
   '1': 'PushBody',
@@ -342,7 +343,6 @@ const BatchGetMsgListByConvIdReq$json = const {
       '6': '.pb.BatchGetMsgListByConvIdReq.Item',
       '10': 'items'
     },
-    const {'1': 'push', '3': 3, '4': 1, '5': 8, '10': 'push'},
   ],
   '3': const [BatchGetMsgListByConvIdReq_Item$json],
 };
@@ -359,7 +359,7 @@ const BatchGetMsgListByConvIdReq_Item$json = const {
 /// Descriptor for `BatchGetMsgListByConvIdReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List batchGetMsgListByConvIdReqDescriptor =
     $convert.base64Decode(
-        'ChpCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZFJlcRI5CgVpdGVtcxgCIAMoCzIjLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxLkl0ZW1SBWl0ZW1zEhIKBHB1c2gYAyABKAhSBHB1c2gaOAoESXRlbRIWCgZjb252SWQYASABKAlSBmNvbnZJZBIYCgdzZXFMaXN0GAIgAygJUgdzZXFMaXN0');
+        'ChpCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZFJlcRI5CgVpdGVtcxgCIAMoCzIjLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxLkl0ZW1SBWl0ZW1zGjgKBEl0ZW0SFgoGY29udklkGAEgASgJUgZjb252SWQSGAoHc2VxTGlzdBgCIAMoCVIHc2VxTGlzdA==');
 @$core.Deprecated('Use getMsgListRespDescriptor instead')
 const GetMsgListResp$json = const {
   '1': 'GetMsgListResp',
@@ -400,7 +400,6 @@ const GetMsgByIdReq$json = const {
       '10': 'clientMsgId',
       '17': true
     },
-    const {'1': 'push', '3': 4, '4': 1, '5': 8, '10': 'push'},
   ],
   '8': const [
     const {'1': '_serverMsgId'},
@@ -410,7 +409,7 @@ const GetMsgByIdReq$json = const {
 
 /// Descriptor for `GetMsgByIdReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getMsgByIdReqDescriptor = $convert.base64Decode(
-    'Cg1HZXRNc2dCeUlkUmVxEiUKC3NlcnZlck1zZ0lkGAIgASgJSABSC3NlcnZlck1zZ0lkiAEBEiUKC2NsaWVudE1zZ0lkGAMgASgJSAFSC2NsaWVudE1zZ0lkiAEBEhIKBHB1c2gYBCABKAhSBHB1c2hCDgoMX3NlcnZlck1zZ0lkQg4KDF9jbGllbnRNc2dJZA==');
+    'Cg1HZXRNc2dCeUlkUmVxEiUKC3NlcnZlck1zZ0lkGAIgASgJSABSC3NlcnZlck1zZ0lkiAEBEiUKC2NsaWVudE1zZ0lkGAMgASgJSAFSC2NsaWVudE1zZ0lkiAEBQg4KDF9zZXJ2ZXJNc2dJZEIOCgxfY2xpZW50TXNnSWQ=');
 @$core.Deprecated('Use getMsgByIdRespDescriptor instead')
 const GetMsgByIdResp$json = const {
   '1': 'GetMsgByIdResp',

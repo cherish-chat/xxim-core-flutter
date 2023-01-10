@@ -10,11 +10,13 @@ class XXIMCore {
   /// 初始化
   void init({
     required Params params,
+    required Duration timeout,
     required ConnectListener connectListener,
     required ReceivePushListener receivePushListener,
   }) {
     _coreSocket = CoreSocket(
       params: params,
+      timeout: timeout,
       connectListener: connectListener,
       receivePushListener: receivePushListener,
     );
@@ -46,57 +48,92 @@ class XXIMCore {
   }
 
   /// 批量获取会话序列
-  void batchGetConvSeq({
+  Future<BatchGetConvSeqResp?>? batchGetConvSeq({
     required String reqId,
     required BatchGetConvSeqReq req,
+    SuccessCallback<BatchGetConvSeqResp>? onSuccess,
+    ErrorCallback? onError,
   }) {
-    _coreSocket?.batchGetConvSeq(
+    return _coreSocket?.batchGetConvSeq(
       reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
     );
   }
 
   /// 批量获取消息列表-会话ID
-  void batchGetMsgListByConvId({
+  Future<GetMsgListResp?>? batchGetMsgListByConvId({
     required String reqId,
     required BatchGetMsgListByConvIdReq req,
+    SuccessCallback<GetMsgListResp>? onSuccess,
+    ErrorCallback? onError,
   }) {
-    _coreSocket?.batchGetMsgListByConvId(
+    return _coreSocket?.batchGetMsgListByConvId(
       reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
     );
   }
 
   /// 获取消息-消息ID
-  void getMsgById({
+  Future<GetMsgByIdResp?>? getMsgById({
     required String reqId,
     required GetMsgByIdReq req,
+    SuccessCallback<GetMsgByIdResp>? onSuccess,
+    ErrorCallback? onError,
   }) {
-    _coreSocket?.getMsgById(
+    return _coreSocket?.getMsgById(
       reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
     );
   }
 
   /// 发送消息列表
-  void sendMsgList({
+  Future<SendMsgListResp?>? sendMsgList({
     required String reqId,
     required SendMsgListReq req,
+    SuccessCallback<SendMsgListResp>? onSuccess,
+    ErrorCallback? onError,
   }) {
-    _coreSocket?.sendMsgList(
+    return _coreSocket?.sendMsgList(
       reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
     );
   }
 
   /// 确认消费通知
-  void ackNoticeData({
+  Future<AckNoticeDataResp?>? ackNoticeData({
     required String reqId,
     required AckNoticeDataReq req,
+    SuccessCallback<AckNoticeDataResp>? onSuccess,
+    ErrorCallback? onError,
   }) {
-    _coreSocket?.ackNoticeData(
+    return _coreSocket?.ackNoticeData(
       reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  /// 自定义请求
+  Future<List<int>?>? customRequest({
+    required String reqId,
+    required List<int> bytes,
+    SuccessCallback<List<int>>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.customRequest(
+      reqId: reqId,
+      bytes: bytes,
+      onSuccess: onSuccess,
+      onError: onError,
     );
   }
 }

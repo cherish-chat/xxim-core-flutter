@@ -1938,25 +1938,16 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
             : 'items',
         $pb.PbFieldType.PM,
         subBuilder: BatchGetMsgListByConvIdReq_Item.create)
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'push')
     ..hasRequiredFields = false;
 
   BatchGetMsgListByConvIdReq._() : super();
 
   factory BatchGetMsgListByConvIdReq({
     $core.Iterable<BatchGetMsgListByConvIdReq_Item>? items,
-    $core.bool? push,
   }) {
     final _result = create();
     if (items != null) {
       _result.items.addAll(items);
-    }
-    if (push != null) {
-      _result.push = push;
     }
     return _result;
   }
@@ -2000,20 +1991,6 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.List<BatchGetMsgListByConvIdReq_Item> get items => $_getList(0);
-
-  @$pb.TagNumber(3)
-  $core.bool get push => $_getBF(1);
-
-  @$pb.TagNumber(3)
-  set push($core.bool v) {
-    $_setBool(1, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasPush() => $_has(1);
-
-  @$pb.TagNumber(3)
-  void clearPush() => clearField(3);
 }
 
 class GetMsgListResp extends $pb.GeneratedMessage {
@@ -2108,11 +2085,6 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
             ? ''
             : 'clientMsgId',
         protoName: 'clientMsgId')
-    ..aOB(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'push')
     ..hasRequiredFields = false;
 
   GetMsgByIdReq._() : super();
@@ -2120,7 +2092,6 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
   factory GetMsgByIdReq({
     $core.String? serverMsgId,
     $core.String? clientMsgId,
-    $core.bool? push,
   }) {
     final _result = create();
     if (serverMsgId != null) {
@@ -2128,9 +2099,6 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
     }
     if (clientMsgId != null) {
       _result.clientMsgId = clientMsgId;
-    }
-    if (push != null) {
-      _result.push = push;
     }
     return _result;
   }
@@ -2196,20 +2164,6 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   void clearClientMsgId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.bool get push => $_getBF(2);
-
-  @$pb.TagNumber(4)
-  set push($core.bool v) {
-    $_setBool(2, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasPush() => $_has(2);
-
-  @$pb.TagNumber(4)
-  void clearPush() => clearField(4);
 }
 
 class GetMsgByIdResp extends $pb.GeneratedMessage {

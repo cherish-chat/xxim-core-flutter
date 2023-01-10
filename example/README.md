@@ -12,7 +12,7 @@
 
      XXIMCore core = XXIMCore();
      core.init(
-       params: Params(
+       params: const Params(
          platform: "",
          deviceId: "",
          deviceModel: "",
@@ -20,6 +20,7 @@
          appVersion: "",
          language: "",
        ),
+       timeout: const Duration(seconds: 10),
        connectListener: ConnectListener(
          onConnecting: () {},
          onSuccess: () {},
@@ -28,31 +29,6 @@
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},
          onPushNoticeDataList: (noticeDataList) {},
-         onBatchGetConvSeq: (
-           String reqId,
-           ResponseBody_Code code,
-           BatchGetConvSeqResp resp,
-         ) {},
-         onGetMsgList: (
-           String reqId,
-           ResponseBody_Code code,
-           GetMsgListResp resp,
-         ) {},
-         onGetMsgById: (
-           String reqId,
-           ResponseBody_Code code,
-           GetMsgByIdResp resp,
-         ) {},
-         onSendMsgList: (
-           String reqId,
-           ResponseBody_Code code,
-           SendMsgListResp resp,
-         ) {},
-         onAckNoticeData: (
-           String reqId,
-           ResponseBody_Code code,
-           AckNoticeDataResp resp,
-         ) {},
        ),
      );
 
@@ -75,7 +51,7 @@
 
 ## 批量获取会话序列
 
-     core.batchGetConvSeq(
+     BatchGetConvSeqResp? resp = await core.batchGetConvSeq(
        reqId: "",
        req: BatchGetConvSeqReq(
          convIdList: [],
@@ -84,7 +60,7 @@
 
 ## 批量获取消息列表-会话ID
 
-     core.batchGetMsgListByConvId(
+     GetMsgListResp? resp = await core.batchGetMsgListByConvId(
        reqId: "",
        req: BatchGetMsgListByConvIdReq(
          items: [
@@ -93,24 +69,22 @@
              seqList: [],
            ),
          ],
-         push: true ?? false,
        ),
      );
 
 ## 获取消息-消息ID
 
-     core.getMsgById(
+     GetMsgByIdResp? resp = await core.getMsgById(
        reqId: "",
        req: GetMsgByIdReq(
          clientMsgId: "",
          serverMsgId: "",
-         push: true ?? false,
        ),
      );
 
 ## 发送消息列表
 
-     core.sendMsgList(
+     SendMsgListResp? resp = await core.sendMsgList(
        reqId: "",
        req: SendMsgListReq(
          msgDataList: [
@@ -145,9 +119,16 @@
 
 ## 确认消费通知
 
-     core.ackNoticeData(
+     AckNoticeDataResp? resp = await core.ackNoticeData(
        reqId: "",
        req: AckNoticeDataReq(
          noticeIds: [],
        ),
+     );
+
+## 自定义请求
+
+     List<int>? resp = await core.customRequest(
+       reqId: "",
+       bytes: [],
      );

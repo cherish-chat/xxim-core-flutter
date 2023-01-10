@@ -6,6 +6,7 @@
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 // ignore_for_file: UNDEFINED_SHOWN_NAME
+
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
@@ -66,6 +67,11 @@ class ActiveEvent extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'GetMsgById');
+  static const ActiveEvent CustomRequest = ActiveEvent._(
+      100,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CustomRequest');
 
   static const $core.List<ActiveEvent> values = <ActiveEvent>[
     SendMsgList,
@@ -73,6 +79,7 @@ class ActiveEvent extends $pb.ProtobufEnum {
     SyncMsgList,
     AckNotice,
     GetMsgById,
+    CustomRequest,
   ];
 
   static final $core.Map<$core.int, ActiveEvent> _byValue =
