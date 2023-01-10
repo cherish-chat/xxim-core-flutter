@@ -157,26 +157,31 @@ class CoreSocket {
         if (response.event == ActiveEvent.SyncConvSeq) {
           receivePushListener.batchGetConvSeq(
             response.reqId,
+            response.code,
             BatchGetConvSeqResp.fromBuffer(response.data),
           );
         } else if (response.event == ActiveEvent.SyncMsgList) {
           receivePushListener.getMsgList(
             response.reqId,
+            response.code,
             GetMsgListResp.fromBuffer(response.data),
           );
         } else if (response.event == ActiveEvent.GetMsgById) {
           receivePushListener.getMsgById(
             response.reqId,
+            response.code,
             GetMsgByIdResp.fromBuffer(response.data),
           );
         } else if (response.event == ActiveEvent.SendMsgList) {
           receivePushListener.sendMsgList(
             response.reqId,
+            response.code,
             SendMsgListResp.fromBuffer(response.data),
           );
         } else if (response.event == ActiveEvent.AckNotice) {
           receivePushListener.ackNoticeData(
             response.reqId,
+            response.code,
             AckNoticeDataResp.fromBuffer(response.data),
           );
         }

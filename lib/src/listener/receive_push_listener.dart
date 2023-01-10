@@ -2,31 +2,32 @@ import 'package:xxim_core_flutter/src/proto/core.pb.dart';
 
 /// 接收推送监听
 class ReceivePushListener {
-  final Function(
-    MsgDataList msgDataList,
-  ) onPushMsgDataList; // 消息列表推送
-  final Function(
-    NoticeDataList noticeDataList,
-  ) onPushNoticeDataList; // 通知列表推送
+  final Function(MsgDataList msgDataList) onPushMsgDataList; // 消息列表推送
+  final Function(NoticeDataList noticeDataList) onPushNoticeDataList; // 通知列表推送
 
   final Function(
     String reqId,
+    ResponseBody_Code code,
     BatchGetConvSeqResp resp,
   ) onBatchGetConvSeq; // 批量获取会话序列
   final Function(
     String reqId,
+    ResponseBody_Code code,
     GetMsgListResp resp,
   ) onGetMsgList; // 批量获取消息列表-会话ID
   final Function(
     String reqId,
+    ResponseBody_Code code,
     GetMsgByIdResp resp,
   ) onGetMsgById; // 获取消息-消息ID
   final Function(
     String reqId,
+    ResponseBody_Code code,
     SendMsgListResp resp,
   ) onSendMsgList; // 发送消息列表
   final Function(
     String reqId,
+    ResponseBody_Code code,
     AckNoticeDataResp resp,
   ) onAckNoticeData; // 确认消费通知
 
@@ -48,23 +49,43 @@ class ReceivePushListener {
     onPushNoticeDataList(noticeDataList);
   }
 
-  void batchGetConvSeq(String reqId, BatchGetConvSeqResp resp) {
-    onBatchGetConvSeq(reqId, resp);
+  void batchGetConvSeq(
+    String reqId,
+    ResponseBody_Code code,
+    BatchGetConvSeqResp resp,
+  ) {
+    onBatchGetConvSeq(reqId, code, resp);
   }
 
-  void getMsgList(String reqId, GetMsgListResp resp) {
-    onGetMsgList(reqId, resp);
+  void getMsgList(
+    String reqId,
+    ResponseBody_Code code,
+    GetMsgListResp resp,
+  ) {
+    onGetMsgList(reqId, code, resp);
   }
 
-  void getMsgById(String reqId, GetMsgByIdResp resp) {
-    onGetMsgById(reqId, resp);
+  void getMsgById(
+    String reqId,
+    ResponseBody_Code code,
+    GetMsgByIdResp resp,
+  ) {
+    onGetMsgById(reqId, code, resp);
   }
 
-  void sendMsgList(String reqId, SendMsgListResp resp) {
-    onSendMsgList(reqId, resp);
+  void sendMsgList(
+    String reqId,
+    ResponseBody_Code code,
+    SendMsgListResp resp,
+  ) {
+    onSendMsgList(reqId, code, resp);
   }
 
-  void ackNoticeData(String reqId, AckNoticeDataResp resp) {
-    onAckNoticeData(reqId, resp);
+  void ackNoticeData(
+    String reqId,
+    ResponseBody_Code code,
+    AckNoticeDataResp resp,
+  ) {
+    onAckNoticeData(reqId, code, resp);
   }
 }

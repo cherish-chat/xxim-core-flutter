@@ -28,11 +28,31 @@
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},
          onPushNoticeDataList: (noticeDataList) {},
-         onBatchGetConvSeq: (String reqId, BatchGetConvSeqResp resp) {},
-         onGetMsgList: (String reqId, GetMsgListResp resp) {},
-         onGetMsgById: (String reqId, GetMsgByIdResp resp) {},
-         onSendMsgList: (String reqId, SendMsgListResp resp) {},
-         onAckNoticeData: (String reqId, AckNoticeDataResp resp) {},
+         onBatchGetConvSeq: (
+           String reqId,
+           ResponseBody_Code code,
+           BatchGetConvSeqResp resp,
+         ) {},
+         onGetMsgList: (
+           String reqId,
+           ResponseBody_Code code,
+           GetMsgListResp resp,
+         ) {},
+         onGetMsgById: (
+           String reqId,
+           ResponseBody_Code code,
+           GetMsgByIdResp resp,
+         ) {},
+         onSendMsgList: (
+           String reqId,
+           ResponseBody_Code code,
+           SendMsgListResp resp,
+         ) {},
+         onAckNoticeData: (
+           String reqId,
+           ResponseBody_Code code,
+           AckNoticeDataResp resp,
+         ) {},
        ),
      );
 
