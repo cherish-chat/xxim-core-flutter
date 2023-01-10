@@ -268,7 +268,7 @@ class CoreSocket {
           resp = body["resp"];
           if (onSuccess != null) onSuccess(resp as T);
         } else {
-          if (onError != null) onError(code);
+          if (onError != null) onError(code.value, code.name);
         }
         _responseMap?.remove(reqId);
         return false;
