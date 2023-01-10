@@ -1,4 +1,4 @@
-import 'package:xxim_core_flutter/src/connect/core_http.dart';
+import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/core_socket.dart';
 import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
@@ -6,18 +6,18 @@ import 'package:xxim_core_flutter/src/listener/receive_push_listener.dart';
 import 'package:xxim_core_flutter/src/proto/core.pb.dart';
 
 class XXIMCore {
-  CoreHttp? _coreHttp;
   CoreSocket? _coreSocket;
 
   /// 初始化
   void init({
     required Params params,
-    ConnectListener? connectListener,
-    ReceivePushListener? receivePushListener,
+    required Duration requestTimeout,
+    required ConnectListener connectListener,
+    required ReceivePushListener receivePushListener,
   }) {
-    _coreHttp = CoreHttp(params);
     _coreSocket = CoreSocket(
-      coreHttp: _coreHttp!,
+      params: params,
+      requestTimeout: requestTimeout,
       connectListener: connectListener,
       receivePushListener: receivePushListener,
     );
@@ -25,17 +25,11 @@ class XXIMCore {
 
   /// 登录
   void login({
-    required String apiUrl,
     required String wsUrl,
     required String token,
     required String userId,
     required String networkUsed,
   }) {
-    _coreHttp?.connect(
-      apiUrl: apiUrl,
-      token: token,
-      userId: userId,
-    );
     _coreSocket?.connect(
       wsUrl: wsUrl,
       token: token,
@@ -46,29 +40,23 @@ class XXIMCore {
 
   /// 登出
   void logout() {
-    _coreHttp?.disconnect();
     _coreSocket?.disconnect();
   }
 
   /// 是否登录
   bool isLogin() {
-    bool http = _coreHttp?.isConnect() ?? false;
-    bool socket = _coreSocket?.isConnect() ?? false;
-    return http && socket;
-  }
-
-  /// 修改语言
-  void setLanguage(String language) {
-    _coreHttp?.setLanguage(language);
+    return _coreSocket?.isConnect() ?? false;
   }
 
   /// 批量获取会话序列
-  Future<BatchGetConvSeqResp?> batchGetConvSeq({
+  Future<BatchGetConvSeqResp?>? batchGetConvSeq({
+    required String reqId,
     required BatchGetConvSeqReq req,
     SuccessCallback<BatchGetConvSeqResp>? onSuccess,
     ErrorCallback? onError,
-  }) async {
-    return await _coreHttp?.batchGetConvSeq(
+  }) {
+    return _coreSocket?.batchGetConvSeq(
+      reqId: reqId,
       req: req,
       onSuccess: onSuccess,
       onError: onError,
@@ -76,12 +64,14 @@ class XXIMCore {
   }
 
   /// 批量获取消息列表-会话ID
-  Future<GetMsgListResp?> batchGetMsgListByConvId({
+  Future<GetMsgListResp?>? batchGetMsgListByConvId({
+    required String reqId,
     required BatchGetMsgListByConvIdReq req,
     SuccessCallback<GetMsgListResp>? onSuccess,
     ErrorCallback? onError,
-  }) async {
-    return await _coreHttp?.batchGetMsgListByConvId(
+  }) {
+    return _coreSocket?.batchGetMsgListByConvId(
+      reqId: reqId,
       req: req,
       onSuccess: onSuccess,
       onError: onError,
@@ -89,12 +79,14 @@ class XXIMCore {
   }
 
   /// 获取消息-消息ID
-  Future<GetMsgByIdResp?> getMsgById({
+  Future<GetMsgByIdResp?>? getMsgById({
+    required String reqId,
     required GetMsgByIdReq req,
     SuccessCallback<GetMsgByIdResp>? onSuccess,
     ErrorCallback? onError,
-  }) async {
-    return await _coreHttp?.getMsgById(
+  }) {
+    return _coreSocket?.getMsgById(
+      reqId: reqId,
       req: req,
       onSuccess: onSuccess,
       onError: onError,
@@ -102,12 +94,14 @@ class XXIMCore {
   }
 
   /// 发送消息列表
-  Future<bool?> sendMsgList({
+  Future<SendMsgListResp?>? sendMsgList({
+    required String reqId,
     required SendMsgListReq req,
-    SuccessCallback<bool>? onSuccess,
+    SuccessCallback<SendMsgListResp>? onSuccess,
     ErrorCallback? onError,
-  }) async {
-    return await _coreHttp?.sendMsgList(
+  }) {
+    return _coreSocket?.sendMsgList(
+      reqId: reqId,
       req: req,
       onSuccess: onSuccess,
       onError: onError,
@@ -115,13 +109,30 @@ class XXIMCore {
   }
 
   /// 确认消费通知
-  Future<bool?> ackNoticeDataReq({
+  Future<AckNoticeDataResp?>? ackNoticeData({
+    required String reqId,
     required AckNoticeDataReq req,
-    SuccessCallback<bool>? onSuccess,
+    SuccessCallback<AckNoticeDataResp>? onSuccess,
     ErrorCallback? onError,
-  }) async {
-    return await _coreHttp?.ackNoticeDataReq(
+  }) {
+    return _coreSocket?.ackNoticeData(
+      reqId: reqId,
       req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  /// 自定义请求
+  Future<List<int>?>? customRequest({
+    required String reqId,
+    required List<int> bytes,
+    SuccessCallback<List<int>>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.customRequest(
+      reqId: reqId,
+      bytes: bytes,
       onSuccess: onSuccess,
       onError: onError,
     );

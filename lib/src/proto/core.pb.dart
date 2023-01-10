@@ -13,448 +13,6 @@ import 'core.pbenum.dart';
 
 export 'core.pbenum.dart';
 
-class CommonReq extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CommonReq',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pb'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'userId',
-        protoName: 'userId')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token')
-    ..aOS(
-        11,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'deviceModel',
-        protoName: 'deviceModel')
-    ..aOS(
-        12,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'deviceId',
-        protoName: 'deviceId')
-    ..aOS(
-        13,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'osVersion',
-        protoName: 'osVersion')
-    ..aOS(
-        14,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'platform')
-    ..aOS(
-        21,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'appVersion',
-        protoName: 'appVersion')
-    ..aOS(
-        22,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'language')
-    ..a<$core.List<$core.int>>(
-        31,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..aOS(
-        41,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ip')
-    ..aOS(
-        42,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'userAgent',
-        protoName: 'userAgent')
-    ..hasRequiredFields = false;
-
-  CommonReq._() : super();
-
-  factory CommonReq({
-    $core.String? userId,
-    $core.String? token,
-    $core.String? deviceModel,
-    $core.String? deviceId,
-    $core.String? osVersion,
-    $core.String? platform,
-    $core.String? appVersion,
-    $core.String? language,
-    $core.List<$core.int>? data,
-    $core.String? ip,
-    $core.String? userAgent,
-  }) {
-    final _result = create();
-    if (userId != null) {
-      _result.userId = userId;
-    }
-    if (token != null) {
-      _result.token = token;
-    }
-    if (deviceModel != null) {
-      _result.deviceModel = deviceModel;
-    }
-    if (deviceId != null) {
-      _result.deviceId = deviceId;
-    }
-    if (osVersion != null) {
-      _result.osVersion = osVersion;
-    }
-    if (platform != null) {
-      _result.platform = platform;
-    }
-    if (appVersion != null) {
-      _result.appVersion = appVersion;
-    }
-    if (language != null) {
-      _result.language = language;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    if (ip != null) {
-      _result.ip = ip;
-    }
-    if (userAgent != null) {
-      _result.userAgent = userAgent;
-    }
-    return _result;
-  }
-
-  factory CommonReq.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-
-  factory CommonReq.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  CommonReq clone() => CommonReq()..mergeFromMessage(this);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  CommonReq copyWith(void Function(CommonReq) updates) =>
-      super.copyWith((message) => updates(message as CommonReq))
-          as CommonReq; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CommonReq create() => CommonReq._();
-
-  CommonReq createEmptyInstance() => create();
-
-  static $pb.PbList<CommonReq> createRepeated() => $pb.PbList<CommonReq>();
-
-  @$core.pragma('dart2js:noInline')
-  static CommonReq getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CommonReq>(create);
-  static CommonReq? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get userId => $_getSZ(0);
-
-  @$pb.TagNumber(1)
-  set userId($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasUserId() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearUserId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get token => $_getSZ(1);
-
-  @$pb.TagNumber(2)
-  set token($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasToken() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearToken() => clearField(2);
-
-  @$pb.TagNumber(11)
-  $core.String get deviceModel => $_getSZ(2);
-
-  @$pb.TagNumber(11)
-  set deviceModel($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(11)
-  $core.bool hasDeviceModel() => $_has(2);
-
-  @$pb.TagNumber(11)
-  void clearDeviceModel() => clearField(11);
-
-  @$pb.TagNumber(12)
-  $core.String get deviceId => $_getSZ(3);
-
-  @$pb.TagNumber(12)
-  set deviceId($core.String v) {
-    $_setString(3, v);
-  }
-
-  @$pb.TagNumber(12)
-  $core.bool hasDeviceId() => $_has(3);
-
-  @$pb.TagNumber(12)
-  void clearDeviceId() => clearField(12);
-
-  @$pb.TagNumber(13)
-  $core.String get osVersion => $_getSZ(4);
-
-  @$pb.TagNumber(13)
-  set osVersion($core.String v) {
-    $_setString(4, v);
-  }
-
-  @$pb.TagNumber(13)
-  $core.bool hasOsVersion() => $_has(4);
-
-  @$pb.TagNumber(13)
-  void clearOsVersion() => clearField(13);
-
-  @$pb.TagNumber(14)
-  $core.String get platform => $_getSZ(5);
-
-  @$pb.TagNumber(14)
-  set platform($core.String v) {
-    $_setString(5, v);
-  }
-
-  @$pb.TagNumber(14)
-  $core.bool hasPlatform() => $_has(5);
-
-  @$pb.TagNumber(14)
-  void clearPlatform() => clearField(14);
-
-  @$pb.TagNumber(21)
-  $core.String get appVersion => $_getSZ(6);
-
-  @$pb.TagNumber(21)
-  set appVersion($core.String v) {
-    $_setString(6, v);
-  }
-
-  @$pb.TagNumber(21)
-  $core.bool hasAppVersion() => $_has(6);
-
-  @$pb.TagNumber(21)
-  void clearAppVersion() => clearField(21);
-
-  @$pb.TagNumber(22)
-  $core.String get language => $_getSZ(7);
-
-  @$pb.TagNumber(22)
-  set language($core.String v) {
-    $_setString(7, v);
-  }
-
-  @$pb.TagNumber(22)
-  $core.bool hasLanguage() => $_has(7);
-
-  @$pb.TagNumber(22)
-  void clearLanguage() => clearField(22);
-
-  @$pb.TagNumber(31)
-  $core.List<$core.int> get data => $_getN(8);
-
-  @$pb.TagNumber(31)
-  set data($core.List<$core.int> v) {
-    $_setBytes(8, v);
-  }
-
-  @$pb.TagNumber(31)
-  $core.bool hasData() => $_has(8);
-
-  @$pb.TagNumber(31)
-  void clearData() => clearField(31);
-
-  @$pb.TagNumber(41)
-  $core.String get ip => $_getSZ(9);
-
-  @$pb.TagNumber(41)
-  set ip($core.String v) {
-    $_setString(9, v);
-  }
-
-  @$pb.TagNumber(41)
-  $core.bool hasIp() => $_has(9);
-
-  @$pb.TagNumber(41)
-  void clearIp() => clearField(41);
-
-  @$pb.TagNumber(42)
-  $core.String get userAgent => $_getSZ(10);
-
-  @$pb.TagNumber(42)
-  set userAgent($core.String v) {
-    $_setString(10, v);
-  }
-
-  @$pb.TagNumber(42)
-  $core.bool hasUserAgent() => $_has(10);
-
-  @$pb.TagNumber(42)
-  void clearUserAgent() => clearField(42);
-}
-
-class CommonResp extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CommonResp',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pb'),
-      createEmptyInstance: create)
-    ..e<CommonResp_Code>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'code',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: CommonResp_Code.Success,
-        valueOf: CommonResp_Code.valueOf,
-        enumValues: CommonResp_Code.values)
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msg')
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
-  CommonResp._() : super();
-
-  factory CommonResp({
-    CommonResp_Code? code,
-    $core.String? msg,
-    $core.List<$core.int>? data,
-  }) {
-    final _result = create();
-    if (code != null) {
-      _result.code = code;
-    }
-    if (msg != null) {
-      _result.msg = msg;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    return _result;
-  }
-
-  factory CommonResp.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-
-  factory CommonResp.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  CommonResp clone() => CommonResp()..mergeFromMessage(this);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  CommonResp copyWith(void Function(CommonResp) updates) =>
-      super.copyWith((message) => updates(message as CommonResp))
-          as CommonResp; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CommonResp create() => CommonResp._();
-
-  CommonResp createEmptyInstance() => create();
-
-  static $pb.PbList<CommonResp> createRepeated() => $pb.PbList<CommonResp>();
-
-  @$core.pragma('dart2js:noInline')
-  static CommonResp getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CommonResp>(create);
-  static CommonResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  CommonResp_Code get code => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set code(CommonResp_Code v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCode() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCode() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get msg => $_getSZ(1);
-
-  @$pb.TagNumber(2)
-  set msg($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMsg() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearMsg() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get data => $_getN(2);
-
-  @$pb.TagNumber(3)
-  set data($core.List<$core.int> v) {
-    $_setBytes(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasData() => $_has(2);
-
-  @$pb.TagNumber(3)
-  void clearData() => clearField(3);
-}
-
 class PushBody extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -558,6 +116,292 @@ class PushBody extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   void clearData() => clearField(2);
+}
+
+class RequestBody extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RequestBody',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..e<ActiveEvent>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'event',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: ActiveEvent.SendMsgList,
+        valueOf: ActiveEvent.valueOf,
+        enumValues: ActiveEvent.values)
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'reqId',
+        protoName: 'reqId')
+    ..a<$core.List<$core.int>>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'data',
+        $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  RequestBody._() : super();
+
+  factory RequestBody({
+    ActiveEvent? event,
+    $core.String? reqId,
+    $core.List<$core.int>? data,
+  }) {
+    final _result = create();
+    if (event != null) {
+      _result.event = event;
+    }
+    if (reqId != null) {
+      _result.reqId = reqId;
+    }
+    if (data != null) {
+      _result.data = data;
+    }
+    return _result;
+  }
+
+  factory RequestBody.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory RequestBody.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RequestBody clone() => RequestBody()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RequestBody copyWith(void Function(RequestBody) updates) =>
+      super.copyWith((message) => updates(message as RequestBody))
+          as RequestBody; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RequestBody create() => RequestBody._();
+
+  RequestBody createEmptyInstance() => create();
+
+  static $pb.PbList<RequestBody> createRepeated() => $pb.PbList<RequestBody>();
+
+  @$core.pragma('dart2js:noInline')
+  static RequestBody getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RequestBody>(create);
+  static RequestBody? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  ActiveEvent get event => $_getN(0);
+
+  @$pb.TagNumber(1)
+  set event(ActiveEvent v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEvent() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearEvent() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get reqId => $_getSZ(1);
+
+  @$pb.TagNumber(2)
+  set reqId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasReqId() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearReqId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get data => $_getN(2);
+
+  @$pb.TagNumber(3)
+  set data($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasData() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearData() => clearField(3);
+}
+
+class ResponseBody extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ResponseBody',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..e<ActiveEvent>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'event',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: ActiveEvent.SendMsgList,
+        valueOf: ActiveEvent.valueOf,
+        enumValues: ActiveEvent.values)
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'reqId',
+        protoName: 'reqId')
+    ..e<ResponseBody_Code>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'code',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: ResponseBody_Code.Success,
+        valueOf: ResponseBody_Code.valueOf,
+        enumValues: ResponseBody_Code.values)
+    ..a<$core.List<$core.int>>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'data',
+        $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  ResponseBody._() : super();
+
+  factory ResponseBody({
+    ActiveEvent? event,
+    $core.String? reqId,
+    ResponseBody_Code? code,
+    $core.List<$core.int>? data,
+  }) {
+    final _result = create();
+    if (event != null) {
+      _result.event = event;
+    }
+    if (reqId != null) {
+      _result.reqId = reqId;
+    }
+    if (code != null) {
+      _result.code = code;
+    }
+    if (data != null) {
+      _result.data = data;
+    }
+    return _result;
+  }
+
+  factory ResponseBody.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory ResponseBody.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ResponseBody clone() => ResponseBody()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ResponseBody copyWith(void Function(ResponseBody) updates) =>
+      super.copyWith((message) => updates(message as ResponseBody))
+          as ResponseBody; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ResponseBody create() => ResponseBody._();
+
+  ResponseBody createEmptyInstance() => create();
+
+  static $pb.PbList<ResponseBody> createRepeated() =>
+      $pb.PbList<ResponseBody>();
+
+  @$core.pragma('dart2js:noInline')
+  static ResponseBody getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ResponseBody>(create);
+  static ResponseBody? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  ActiveEvent get event => $_getN(0);
+
+  @$pb.TagNumber(1)
+  set event(ActiveEvent v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEvent() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearEvent() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get reqId => $_getSZ(1);
+
+  @$pb.TagNumber(2)
+  set reqId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasReqId() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearReqId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  ResponseBody_Code get code => $_getN(2);
+
+  @$pb.TagNumber(3)
+  set code(ResponseBody_Code v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasCode() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearCode() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get data => $_getN(3);
+
+  @$pb.TagNumber(4)
+  set data($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasData() => $_has(3);
+
+  @$pb.TagNumber(4)
+  void clearData() => clearField(4);
 }
 
 class MsgData_OfflinePush extends $pb.GeneratedMessage {
@@ -1844,13 +1688,6 @@ class SendMsgListReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonReq>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonReq',
-        protoName: 'commonReq',
-        subBuilder: CommonReq.create)
     ..pc<MsgData>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1871,14 +1708,10 @@ class SendMsgListReq extends $pb.GeneratedMessage {
   SendMsgListReq._() : super();
 
   factory SendMsgListReq({
-    CommonReq? commonReq,
     $core.Iterable<MsgData>? msgDataList,
     $core.int? deliverAfter,
   }) {
     final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
     if (msgDataList != null) {
       _result.msgDataList.addAll(msgDataList);
     }
@@ -1922,36 +1755,19 @@ class SendMsgListReq extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SendMsgListReq>(create);
   static SendMsgListReq? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonReq get commonReq => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonReq(CommonReq v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonReq ensureCommonReq() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<MsgData> get msgDataList => $_getList(1);
+  $core.List<MsgData> get msgDataList => $_getList(0);
 
   @$pb.TagNumber(11)
-  $core.int get deliverAfter => $_getIZ(2);
+  $core.int get deliverAfter => $_getIZ(1);
 
   @$pb.TagNumber(11)
   set deliverAfter($core.int v) {
-    $_setSignedInt32(2, v);
+    $_setSignedInt32(1, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasDeliverAfter() => $_has(2);
+  $core.bool hasDeliverAfter() => $_has(1);
 
   @$pb.TagNumber(11)
   void clearDeliverAfter() => clearField(11);
@@ -1967,26 +1783,11 @@ class SendMsgListResp extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonResp>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonResp',
-        protoName: 'commonResp',
-        subBuilder: CommonResp.create)
     ..hasRequiredFields = false;
 
   SendMsgListResp._() : super();
 
-  factory SendMsgListResp({
-    CommonResp? commonResp,
-  }) {
-    final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
-    return _result;
-  }
+  factory SendMsgListResp() => create();
 
   factory SendMsgListResp.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2021,23 +1822,6 @@ class SendMsgListResp extends $pb.GeneratedMessage {
   static SendMsgListResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SendMsgListResp>(create);
   static SendMsgListResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  CommonResp get commonResp => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonResp(CommonResp v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class BatchGetMsgListByConvIdReq_Item extends $pb.GeneratedMessage {
@@ -2147,13 +1931,6 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonReq>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonReq',
-        protoName: 'commonReq',
-        subBuilder: CommonReq.create)
     ..pc<BatchGetMsgListByConvIdReq_Item>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2161,29 +1938,16 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
             : 'items',
         $pb.PbFieldType.PM,
         subBuilder: BatchGetMsgListByConvIdReq_Item.create)
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'push')
     ..hasRequiredFields = false;
 
   BatchGetMsgListByConvIdReq._() : super();
 
   factory BatchGetMsgListByConvIdReq({
-    CommonReq? commonReq,
     $core.Iterable<BatchGetMsgListByConvIdReq_Item>? items,
-    $core.bool? push,
   }) {
     final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
     if (items != null) {
       _result.items.addAll(items);
-    }
-    if (push != null) {
-      _result.push = push;
     }
     return _result;
   }
@@ -2225,39 +1989,8 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<BatchGetMsgListByConvIdReq>(create);
   static BatchGetMsgListByConvIdReq? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonReq get commonReq => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonReq(CommonReq v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonReq ensureCommonReq() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<BatchGetMsgListByConvIdReq_Item> get items => $_getList(1);
-
-  @$pb.TagNumber(3)
-  $core.bool get push => $_getBF(2);
-
-  @$pb.TagNumber(3)
-  set push($core.bool v) {
-    $_setBool(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasPush() => $_has(2);
-
-  @$pb.TagNumber(3)
-  void clearPush() => clearField(3);
+  $core.List<BatchGetMsgListByConvIdReq_Item> get items => $_getList(0);
 }
 
 class GetMsgListResp extends $pb.GeneratedMessage {
@@ -2270,13 +2003,6 @@ class GetMsgListResp extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonResp>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonResp',
-        protoName: 'commonResp',
-        subBuilder: CommonResp.create)
     ..pc<MsgData>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2290,13 +2016,9 @@ class GetMsgListResp extends $pb.GeneratedMessage {
   GetMsgListResp._() : super();
 
   factory GetMsgListResp({
-    CommonResp? commonResp,
     $core.Iterable<MsgData>? msgDataList,
   }) {
     final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
     if (msgDataList != null) {
       _result.msgDataList.addAll(msgDataList);
     }
@@ -2337,25 +2059,8 @@ class GetMsgListResp extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMsgListResp>(create);
   static GetMsgListResp? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonResp get commonResp => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonResp(CommonResp v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonResp ensureCommonResp() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<MsgData> get msgDataList => $_getList(1);
+  $core.List<MsgData> get msgDataList => $_getList(0);
 }
 
 class GetMsgByIdReq extends $pb.GeneratedMessage {
@@ -2368,13 +2073,6 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonReq>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonReq',
-        protoName: 'commonReq',
-        subBuilder: CommonReq.create)
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2387,33 +2085,20 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
             ? ''
             : 'clientMsgId',
         protoName: 'clientMsgId')
-    ..aOB(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'push')
     ..hasRequiredFields = false;
 
   GetMsgByIdReq._() : super();
 
   factory GetMsgByIdReq({
-    CommonReq? commonReq,
     $core.String? serverMsgId,
     $core.String? clientMsgId,
-    $core.bool? push,
   }) {
     final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
     if (serverMsgId != null) {
       _result.serverMsgId = serverMsgId;
     }
     if (clientMsgId != null) {
       _result.clientMsgId = clientMsgId;
-    }
-    if (push != null) {
-      _result.push = push;
     }
     return _result;
   }
@@ -2452,64 +2137,33 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMsgByIdReq>(create);
   static GetMsgByIdReq? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonReq get commonReq => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonReq(CommonReq v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonReq ensureCommonReq() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.String get serverMsgId => $_getSZ(1);
+  $core.String get serverMsgId => $_getSZ(0);
 
   @$pb.TagNumber(2)
   set serverMsgId($core.String v) {
-    $_setString(1, v);
+    $_setString(0, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasServerMsgId() => $_has(1);
+  $core.bool hasServerMsgId() => $_has(0);
 
   @$pb.TagNumber(2)
   void clearServerMsgId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get clientMsgId => $_getSZ(2);
+  $core.String get clientMsgId => $_getSZ(1);
 
   @$pb.TagNumber(3)
   set clientMsgId($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasClientMsgId() => $_has(2);
+  $core.bool hasClientMsgId() => $_has(1);
 
   @$pb.TagNumber(3)
   void clearClientMsgId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.bool get push => $_getBF(3);
-
-  @$pb.TagNumber(4)
-  set push($core.bool v) {
-    $_setBool(3, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasPush() => $_has(3);
-
-  @$pb.TagNumber(4)
-  void clearPush() => clearField(4);
 }
 
 class GetMsgByIdResp extends $pb.GeneratedMessage {
@@ -2522,13 +2176,6 @@ class GetMsgByIdResp extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonResp>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonResp',
-        protoName: 'commonResp',
-        subBuilder: CommonResp.create)
     ..aOM<MsgData>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2541,13 +2188,9 @@ class GetMsgByIdResp extends $pb.GeneratedMessage {
   GetMsgByIdResp._() : super();
 
   factory GetMsgByIdResp({
-    CommonResp? commonResp,
     MsgData? msgData,
   }) {
     final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
     if (msgData != null) {
       _result.msgData = msgData;
     }
@@ -2588,25 +2231,8 @@ class GetMsgByIdResp extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMsgByIdResp>(create);
   static GetMsgByIdResp? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonResp get commonResp => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonResp(CommonResp v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonResp ensureCommonResp() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  MsgData get msgData => $_getN(1);
+  MsgData get msgData => $_getN(0);
 
   @$pb.TagNumber(2)
   set msgData(MsgData v) {
@@ -2614,13 +2240,13 @@ class GetMsgByIdResp extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasMsgData() => $_has(1);
+  $core.bool hasMsgData() => $_has(0);
 
   @$pb.TagNumber(2)
   void clearMsgData() => clearField(2);
 
   @$pb.TagNumber(2)
-  MsgData ensureMsgData() => $_ensure(1);
+  MsgData ensureMsgData() => $_ensure(0);
 }
 
 class BatchGetConvSeqReq extends $pb.GeneratedMessage {
@@ -2633,13 +2259,6 @@ class BatchGetConvSeqReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonReq>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonReq',
-        protoName: 'commonReq',
-        subBuilder: CommonReq.create)
     ..pPS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2651,13 +2270,9 @@ class BatchGetConvSeqReq extends $pb.GeneratedMessage {
   BatchGetConvSeqReq._() : super();
 
   factory BatchGetConvSeqReq({
-    CommonReq? commonReq,
     $core.Iterable<$core.String>? convIdList,
   }) {
     final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
     if (convIdList != null) {
       _result.convIdList.addAll(convIdList);
     }
@@ -2698,25 +2313,8 @@ class BatchGetConvSeqReq extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<BatchGetConvSeqReq>(create);
   static BatchGetConvSeqReq? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonReq get commonReq => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonReq(CommonReq v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonReq ensureCommonReq() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<$core.String> get convIdList => $_getList(1);
+  $core.List<$core.String> get convIdList => $_getList(0);
 }
 
 class BatchGetConvSeqResp_ConvSeq extends $pb.GeneratedMessage {
@@ -2884,13 +2482,6 @@ class BatchGetConvSeqResp extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonResp>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonResp',
-        protoName: 'commonResp',
-        subBuilder: CommonResp.create)
     ..m<$core.String, BatchGetConvSeqResp_ConvSeq>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2907,13 +2498,9 @@ class BatchGetConvSeqResp extends $pb.GeneratedMessage {
   BatchGetConvSeqResp._() : super();
 
   factory BatchGetConvSeqResp({
-    CommonResp? commonResp,
     $core.Map<$core.String, BatchGetConvSeqResp_ConvSeq>? convSeqMap,
   }) {
     final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
     if (convSeqMap != null) {
       _result.convSeqMap.addAll(convSeqMap);
     }
@@ -2954,26 +2541,9 @@ class BatchGetConvSeqResp extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<BatchGetConvSeqResp>(create);
   static BatchGetConvSeqResp? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonResp get commonResp => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonResp(CommonResp v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonResp ensureCommonResp() => $_ensure(0);
-
   @$pb.TagNumber(2)
   $core.Map<$core.String, BatchGetConvSeqResp_ConvSeq> get convSeqMap =>
-      $_getMap(1);
+      $_getMap(0);
 }
 
 class AckNoticeDataReq extends $pb.GeneratedMessage {
@@ -2986,13 +2556,6 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonReq>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonReq',
-        protoName: 'commonReq',
-        subBuilder: CommonReq.create)
     ..pPS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -3004,13 +2567,9 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   AckNoticeDataReq._() : super();
 
   factory AckNoticeDataReq({
-    CommonReq? commonReq,
     $core.Iterable<$core.String>? noticeIds,
   }) {
     final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
     if (noticeIds != null) {
       _result.noticeIds.addAll(noticeIds);
     }
@@ -3051,25 +2610,8 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AckNoticeDataReq>(create);
   static AckNoticeDataReq? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  CommonReq get commonReq => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonReq(CommonReq v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonReq ensureCommonReq() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<$core.String> get noticeIds => $_getList(1);
+  $core.List<$core.String> get noticeIds => $_getList(0);
 }
 
 class AckNoticeDataResp extends $pb.GeneratedMessage {
@@ -3082,26 +2624,11 @@ class AckNoticeDataResp extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..aOM<CommonResp>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commonResp',
-        protoName: 'commonResp',
-        subBuilder: CommonResp.create)
     ..hasRequiredFields = false;
 
   AckNoticeDataResp._() : super();
 
-  factory AckNoticeDataResp({
-    CommonResp? commonResp,
-  }) {
-    final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
-    return _result;
-  }
+  factory AckNoticeDataResp() => create();
 
   factory AckNoticeDataResp.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -3136,21 +2663,4 @@ class AckNoticeDataResp extends $pb.GeneratedMessage {
   static AckNoticeDataResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<AckNoticeDataResp>(create);
   static AckNoticeDataResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  CommonResp get commonResp => $_getN(0);
-
-  @$pb.TagNumber(1)
-  set commonResp(CommonResp v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-
-  @$pb.TagNumber(1)
-  CommonResp ensureCommonResp() => $_ensure(0);
 }

@@ -4,8 +4,8 @@ import 'package:web_socket_channel/status.dart';
 class BaseWebSocket {
   final Function(dynamic data) onData;
   final Function() onConnecting;
-  final Function(dynamic error) onError;
-  final Function() onClose;
+  final Function(int code, String? error) onError;
+  final Function(int code, String? reason) onClose;
 
   BaseWebSocket({
     required this.onData,
@@ -24,12 +24,19 @@ class BaseWebSocket {
         pingInterval: const Duration(seconds: 2),
       )..stream.listen(
           onData,
-          onError: onError,
-          onDone: onClose,
+          onError: (error) {
+            onError(abnormalClosure, error.toString());
+          },
+          onDone: () {
+            onClose(
+              _wsChannel?.closeCode ?? abnormalClosure,
+              _wsChannel?.closeReason,
+            );
+          },
           cancelOnError: true,
         );
     } catch (_) {
-      onClose();
+      onClose(abnormalClosure, null);
     }
   }
 
@@ -40,5 +47,9 @@ class BaseWebSocket {
 
   bool isConnect() {
     return _wsChannel != null;
+  }
+
+  void sendData(dynamic data) {
+    _wsChannel?.sink.add(data);
   }
 }
