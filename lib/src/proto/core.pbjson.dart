@@ -493,13 +493,14 @@ final $typed_data.Uint8List batchGetConvSeqRespDescriptor = $convert.base64Decod
 const AckNoticeDataReq$json = const {
   '1': 'AckNoticeDataReq',
   '2': const [
-    const {'1': 'noticeIds', '3': 2, '4': 3, '5': 9, '10': 'noticeIds'},
+    const {'1': 'noticeId', '3': 2, '4': 1, '5': 9, '10': 'noticeId'},
+    const {'1': 'convId', '3': 3, '4': 1, '5': 9, '10': 'convId'},
   ],
 };
 
 /// Descriptor for `AckNoticeDataReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ackNoticeDataReqDescriptor = $convert.base64Decode(
-    'ChBBY2tOb3RpY2VEYXRhUmVxEhwKCW5vdGljZUlkcxgCIAMoCVIJbm90aWNlSWRz');
+    'ChBBY2tOb3RpY2VEYXRhUmVxEhoKCG5vdGljZUlkGAIgASgJUghub3RpY2VJZBIWCgZjb252SWQYAyABKAlSBmNvbnZJZA==');
 @$core.Deprecated('Use ackNoticeDataRespDescriptor instead')
 const AckNoticeDataResp$json = const {
   '1': 'AckNoticeDataResp',

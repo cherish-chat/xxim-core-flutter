@@ -2556,22 +2556,32 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
               ? ''
               : 'pb'),
       createEmptyInstance: create)
-    ..pPS(
+    ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'noticeIds',
-        protoName: 'noticeIds')
+            : 'noticeId',
+        protoName: 'noticeId')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'convId',
+        protoName: 'convId')
     ..hasRequiredFields = false;
 
   AckNoticeDataReq._() : super();
 
   factory AckNoticeDataReq({
-    $core.Iterable<$core.String>? noticeIds,
+    $core.String? noticeId,
+    $core.String? convId,
   }) {
     final _result = create();
-    if (noticeIds != null) {
-      _result.noticeIds.addAll(noticeIds);
+    if (noticeId != null) {
+      _result.noticeId = noticeId;
+    }
+    if (convId != null) {
+      _result.convId = convId;
     }
     return _result;
   }
@@ -2611,7 +2621,32 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   static AckNoticeDataReq? _defaultInstance;
 
   @$pb.TagNumber(2)
-  $core.List<$core.String> get noticeIds => $_getList(0);
+  $core.String get noticeId => $_getSZ(0);
+
+  @$pb.TagNumber(2)
+  set noticeId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasNoticeId() => $_has(0);
+
+  @$pb.TagNumber(2)
+  void clearNoticeId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get convId => $_getSZ(1);
+
+  @$pb.TagNumber(3)
+  set convId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasConvId() => $_has(1);
+
+  @$pb.TagNumber(3)
+  void clearConvId() => clearField(3);
 }
 
 class AckNoticeDataResp extends $pb.GeneratedMessage {
