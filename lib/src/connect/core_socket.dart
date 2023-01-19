@@ -262,7 +262,7 @@ class CoreSocket {
     await Future.doWhile(() async {
       await Future.delayed(const Duration(milliseconds: 5));
       Map<String, dynamic>? body = _responseMap?[reqId];
-      if (body != null) {
+      if (toContinue && body != null) {
         ResponseBody_Code code = body["code"];
         if (code == ResponseBody_Code.Success) {
           resp = body["resp"];
@@ -272,6 +272,14 @@ class CoreSocket {
         }
         _responseMap?.remove(reqId);
         return false;
+      }
+      if (!toContinue) {
+        if (onError != null) {
+          onError(
+            ResponseBody_Code.UnknownError.value,
+            ResponseBody_Code.UnknownError.name,
+          );
+        }
       }
       return toContinue;
     }).timeout(

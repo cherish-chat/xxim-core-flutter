@@ -32,22 +32,22 @@
        ),
      );
 
-## 登录
+## 连接
 
-     core.login(
+     core.connect(
        wsUrl: "",
        token: "",
        userId: "",
        networkUsed: "",
      );
 
-## 登出
+## 断连
 
-     core.logout();
+     core.disconnect();
 
-## 是否登录
+## 是否连接
 
-     core.isLogin();
+     core.isConnect();
 
 ## 批量获取会话序列
 
