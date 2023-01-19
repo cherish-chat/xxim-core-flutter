@@ -23,8 +23,8 @@ class XXIMCore {
     );
   }
 
-  /// 登录
-  void login({
+  /// 连接
+  void connect({
     required String wsUrl,
     required String token,
     required String userId,
@@ -38,13 +38,13 @@ class XXIMCore {
     );
   }
 
-  /// 登出
-  void logout() {
+  /// 断连
+  void disconnect() {
     _coreSocket?.disconnect();
   }
 
-  /// 是否登录
-  bool isLogin() {
+  /// 是否连接
+  bool isConnect() {
     return _coreSocket?.isConnect() ?? false;
   }
 
