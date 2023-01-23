@@ -72,7 +72,7 @@
        ),
      );
 
-## 批量获取消息列表-会话ID
+## 批量获取消息列表
 
      GetMsgListResp? resp = await core.batchGetMsgListByConvId(
        reqId: "",
@@ -86,7 +86,7 @@
        ),
      );
 
-## 获取消息-消息ID
+## 获取消息
 
      GetMsgByIdResp? resp = await core.getMsgById(
        reqId: "",

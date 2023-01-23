@@ -80,7 +80,7 @@ class XXIMCore {
     );
   }
 
-  /// 批量获取消息列表-会话ID
+  /// 批量获取消息列表
   Future<GetMsgListResp?>? batchGetMsgListByConvId({
     required String reqId,
     required BatchGetMsgListByConvIdReq req,
@@ -95,7 +95,7 @@ class XXIMCore {
     );
   }
 
-  /// 获取消息-消息ID
+  /// 获取消息
   Future<GetMsgByIdResp?>? getMsgById({
     required String reqId,
     required GetMsgByIdReq req,
