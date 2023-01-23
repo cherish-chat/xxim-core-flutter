@@ -1,5 +1,4 @@
 import 'package:xxim_core_flutter/src/connect/core_callback.dart';
-import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/connect/protocol.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
 import 'package:xxim_core_flutter/src/listener/receive_push_listener.dart';
@@ -9,13 +8,11 @@ import 'src/socket_none.dart'
     if (dart.library.io) 'src/socket_io.dart';
 
 class CoreSocket {
-  final Params params;
   final Duration requestTimeout;
   final ConnectListener connectListener;
   final ReceivePushListener receivePushListener;
 
   CoreSocket({
-    required this.params,
     required this.requestTimeout,
     required this.connectListener,
     required this.receivePushListener,
@@ -24,12 +21,7 @@ class CoreSocket {
   BaseWebSocket? _webSocket;
   Map<String, Map<String, dynamic>>? _responseMap;
 
-  void connect({
-    required String wsUrl,
-    required String token,
-    required String userId,
-    required String networkUsed,
-  }) {
+  void connect(String wsUrl) {
     _webSocket = BaseWebSocket(
       onData: _onData,
       onConnecting: () {
@@ -45,20 +37,7 @@ class CoreSocket {
       },
     );
     _webSocket!.connect(Uri.decodeFull(
-      Uri(
-        path: wsUrl + Protocol.webSocket,
-        queryParameters: {
-          "token": token,
-          "userId": userId,
-          "networkUsed": networkUsed,
-          "deviceId": params.deviceId,
-          "platform": params.platform,
-          "deviceModel": params.deviceModel,
-          "osVersion": params.osVersion,
-          "appVersion": params.appVersion,
-          "language": params.language,
-        },
-      ).toString(),
+      wsUrl + Protocol.webSocket,
     ));
     _responseMap = {};
   }
@@ -91,32 +70,42 @@ class CoreSocket {
         );
       } else if (body.event == PushEvent.PushResponseBody) {
         ResponseBody response = ResponseBody.fromBuffer(body.data);
-        if (response.event == ActiveEvent.SyncConvSeq) {
+        if (response.method == Protocol.setCxnParams) {
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": SetCxnParamsResp.fromBuffer(response.data),
+          };
+        } else if (response.method == Protocol.setUserParams) {
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": SetUserParamsResp.fromBuffer(response.data),
+          };
+        } else if (response.method == Protocol.batchGetConvSeq) {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": BatchGetConvSeqResp.fromBuffer(response.data),
           };
-        } else if (response.event == ActiveEvent.SyncMsgList) {
+        } else if (response.method == Protocol.batchGetMsgListByConvId) {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": GetMsgListResp.fromBuffer(response.data),
           };
-        } else if (response.event == ActiveEvent.GetMsgById) {
+        } else if (response.method == Protocol.getMsgById) {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": GetMsgByIdResp.fromBuffer(response.data),
           };
-        } else if (response.event == ActiveEvent.SendMsgList) {
+        } else if (response.method == Protocol.sendMsgList) {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": SendMsgListResp.fromBuffer(response.data),
           };
-        } else if (response.event == ActiveEvent.AckNotice) {
+        } else if (response.method == Protocol.ackNoticeData) {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": AckNoticeDataResp.fromBuffer(response.data),
           };
-        } else if (response.event == ActiveEvent.CustomRequest) {
+        } else {
           _responseMap?[response.reqId] = {
             "code": response.code,
             "resp": response.data,
@@ -126,6 +115,48 @@ class CoreSocket {
     }
   }
 
+  Future<SetCxnParamsResp?> setCxnParams({
+    required String reqId,
+    required SetCxnParamsReq req,
+    SuccessCallback<SetCxnParamsResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      reqId: reqId,
+      method: Protocol.setCxnParams,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<SetCxnParamsResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<SetUserParamsResp?> setUserParams({
+    required String reqId,
+    required SetUserParamsReq req,
+    SuccessCallback<SetUserParamsResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      reqId: reqId,
+      method: Protocol.setCxnParams,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<SetUserParamsResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
   Future<BatchGetConvSeqResp?> batchGetConvSeq({
     required String reqId,
     required BatchGetConvSeqReq req,
@@ -133,8 +164,8 @@ class CoreSocket {
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.SyncConvSeq,
       reqId: reqId,
+      method: Protocol.batchGetConvSeq,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
@@ -154,8 +185,8 @@ class CoreSocket {
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.SyncMsgList,
       reqId: reqId,
+      method: Protocol.batchGetMsgListByConvId,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
@@ -175,8 +206,8 @@ class CoreSocket {
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.GetMsgById,
       reqId: reqId,
+      method: Protocol.getMsgById,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
@@ -196,8 +227,8 @@ class CoreSocket {
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.SendMsgList,
       reqId: reqId,
+      method: Protocol.sendMsgList,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
@@ -217,8 +248,8 @@ class CoreSocket {
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.AckNotice,
       reqId: reqId,
+      method: Protocol.ackNoticeData,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
@@ -233,13 +264,14 @@ class CoreSocket {
 
   Future<List<int>?> customRequest({
     required String reqId,
+    required String method,
     required List<int> bytes,
     SuccessCallback<List<int>>? onSuccess,
     ErrorCallback? onError,
   }) {
     RequestBody request = RequestBody(
-      event: ActiveEvent.CustomRequest,
       reqId: reqId,
+      method: method,
       data: bytes,
     );
     _webSocket?.sendData(
