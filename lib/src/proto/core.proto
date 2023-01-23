@@ -15,26 +15,10 @@ message PushBody {
   bytes data = 2;
 }
 
-// 客户端发送事件
-enum ActiveEvent {
-  // 发送消息
-  SendMsgList = 0;
-  // 批量获取会话的消息seq
-  SyncConvSeq = 1;
-  // 批量同步消息列表
-  SyncMsgList = 2;
-  // 确认消费通知
-  AckNotice = 3;
-  // 获取一条消息
-  GetMsgById = 4;
-  // 自定义请求
-  CustomRequest = 100;
-}
-
 // 客户端发送的消息体
 message RequestBody {
-  ActiveEvent event = 1;
-  string reqId = 2;
+  string reqId = 1;
+  string method = 2;
   bytes data = 3;
 }
 
@@ -51,10 +35,33 @@ message ResponseBody {
     AlertError = 7;
     RetryError = 8;
   }
-  ActiveEvent event = 1;
-  string reqId = 2;
+  string reqId = 1;
+  string method = 2;
   Code code = 3;
   bytes data = 4;
+}
+
+message SetCxnParamsReq {
+  string platform = 1;
+  string deviceId = 2;
+  string deviceModel = 3;
+  string osVersion = 4;
+  string appVersion = 5;
+  string language = 6;
+  string networkUsed = 7;
+  bytes ext = 11;
+}
+
+message SetCxnParamsResp {
+}
+
+message SetUserParamsReq {
+  string userId = 1;
+  string token = 2;
+  bytes ext = 11;
+}
+
+message SetUserParamsResp {
 }
 
 message MsgData {
@@ -95,14 +102,14 @@ message MsgData {
   Options options = 41;
   OfflinePush offlinePush = 42;
 
-  bytes ext = 100;
+  bytes ext = 101;
 }
 
 message MsgDataList {
   repeated MsgData msgDataList = 1;
 }
 
-//通知数据
+// 通知数据
 message NoticeData {
   message Options {
     // 客户端是否需要保存消息
@@ -129,7 +136,7 @@ message NoticeData {
   Options options = 21; // 通知选项
 
   // 扩展信息
-  bytes ext = 31; // 扩展字段
+  bytes ext = 101; // 扩展字段
 }
 
 message NoticeDataList {
@@ -137,8 +144,8 @@ message NoticeDataList {
 }
 
 message SendMsgListReq {
-  repeated MsgData msgDataList = 2;
-  optional int32 deliverAfter = 11;
+  repeated MsgData msgDataList = 1;
+  optional int32 deliverAfter = 2;
 }
 
 message SendMsgListResp {
@@ -149,24 +156,24 @@ message BatchGetMsgListByConvIdReq {
     string convId = 1;
     repeated string seqList = 2;
   }
-  repeated Item items = 2;
+  repeated Item items = 1;
 }
 
 message GetMsgListResp {
-  repeated MsgData msgDataList = 2;
+  repeated MsgData msgDataList = 1;
 }
 
 message GetMsgByIdReq {
-  optional string serverMsgId = 2;
-  optional string clientMsgId = 3;
+  optional string serverMsgId = 1;
+  optional string clientMsgId = 2;
 }
 
 message GetMsgByIdResp {
-  MsgData msgData = 2;
+  MsgData msgData = 1;
 }
 
 message BatchGetConvSeqReq {
-  repeated string convIdList = 2;
+  repeated string convIdList = 1;
 }
 
 message BatchGetConvSeqResp {
@@ -176,13 +183,14 @@ message BatchGetConvSeqResp {
     string maxSeq = 3;
     string updateTime = 4;
   }
-  map<string, ConvSeq> convSeqMap = 2;
+  map<string, ConvSeq> convSeqMap = 1;
 }
 
-//AckNoticeDataReq 确认通知数据
+// AckNoticeDataReq 确认通知数据
 message AckNoticeDataReq {
+  string convId = 1;
   string noticeId = 2;
-  string convId = 3;
 }
 
-message AckNoticeDataResp {}
+message AckNoticeDataResp {
+}

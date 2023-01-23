@@ -1,6 +1,5 @@
 import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/core_socket.dart';
-import 'package:xxim_core_flutter/src/connect/params.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
 import 'package:xxim_core_flutter/src/listener/receive_push_listener.dart';
 import 'package:xxim_core_flutter/src/proto/core.pb.dart';
@@ -10,13 +9,11 @@ class XXIMCore {
 
   /// 初始化
   void init({
-    required Params params,
     required Duration requestTimeout,
     required ConnectListener connectListener,
     required ReceivePushListener receivePushListener,
   }) {
     _coreSocket = CoreSocket(
-      params: params,
       requestTimeout: requestTimeout,
       connectListener: connectListener,
       receivePushListener: receivePushListener,
@@ -24,18 +21,8 @@ class XXIMCore {
   }
 
   /// 连接
-  void connect({
-    required String wsUrl,
-    required String token,
-    required String userId,
-    required String networkUsed,
-  }) {
-    _coreSocket?.connect(
-      wsUrl: wsUrl,
-      token: token,
-      userId: userId,
-      networkUsed: networkUsed,
-    );
+  void connect(String wsUrl) {
+    _coreSocket?.connect(wsUrl);
   }
 
   /// 断连
@@ -46,6 +33,36 @@ class XXIMCore {
   /// 是否连接
   bool isConnect() {
     return _coreSocket?.isConnect() ?? false;
+  }
+
+  /// 设置连接参数
+  Future<SetCxnParamsResp?>? setCxnParams({
+    required String reqId,
+    required SetCxnParamsReq req,
+    SuccessCallback<SetCxnParamsResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.setCxnParams(
+      reqId: reqId,
+      req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  /// 设置用户参数
+  Future<SetUserParamsResp?>? setUserParams({
+    required String reqId,
+    required SetUserParamsReq req,
+    SuccessCallback<SetUserParamsResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.setUserParams(
+      reqId: reqId,
+      req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
   }
 
   /// 批量获取会话序列
@@ -126,12 +143,14 @@ class XXIMCore {
   /// 自定义请求
   Future<List<int>?>? customRequest({
     required String reqId,
+    required String method,
     required List<int> bytes,
     SuccessCallback<List<int>>? onSuccess,
     ErrorCallback? onError,
   }) {
     return _coreSocket?.customRequest(
       reqId: reqId,
+      method: method,
       bytes: bytes,
       onSuccess: onSuccess,
       onError: onError,

@@ -12,14 +12,6 @@
 
      XXIMCore core = XXIMCore();
      core.init(
-       params: const Params(
-         platform: "",
-         deviceId: "",
-         deviceModel: "",
-         osVersion: "",
-         appVersion: "",
-         language: "",
-       ),
        requestTimeout: const Duration(seconds: 10),
        connectListener: ConnectListener(
          onConnecting: () {},
@@ -34,12 +26,7 @@
 
 ## 连接
 
-     core.connect(
-       wsUrl: "",
-       token: "",
-       userId: "",
-       networkUsed: "",
-     );
+     core.connect("");
 
 ## 断连
 
@@ -48,6 +35,33 @@
 ## 是否连接
 
      core.isConnect();
+
+## 设置连接参数
+
+     SetCxnParamsResp? resp = await core.setCxnParams(
+       reqId: "",
+       req: SetCxnParamsReq(
+         platform: "",
+         deviceId: "",
+         deviceModel: "",
+         osVersion: "",
+         appVersion: "",
+         language: "",
+         networkUsed: "",
+         ext: utf8.encode(""),
+       ),
+     );
+
+## 设置用户参数
+
+     SetUserParamsResp? resp = await core.setUserParams(
+       reqId: "",
+       req: SetUserParamsReq(
+         userId: "",
+         token: "",
+         ext: utf8.encode(""),
+       ),
+     );
 
 ## 批量获取会话序列
 
@@ -122,7 +136,8 @@
      AckNoticeDataResp? resp = await core.ackNoticeData(
        reqId: "",
        req: AckNoticeDataReq(
-         noticeIds: [],
+         convId: "",
+         noticeId: "",
        ),
      );
 
@@ -130,5 +145,6 @@
 
      List<int>? resp = await core.customRequest(
        reqId: "",
+       method: "",
        bytes: [],
      );

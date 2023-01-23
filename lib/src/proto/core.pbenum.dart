@@ -40,55 +40,6 @@ class PushEvent extends $pb.ProtobufEnum {
   const PushEvent._($core.int v, $core.String n) : super(v, n);
 }
 
-class ActiveEvent extends $pb.ProtobufEnum {
-  static const ActiveEvent SendMsgList = ActiveEvent._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SendMsgList');
-  static const ActiveEvent SyncConvSeq = ActiveEvent._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SyncConvSeq');
-  static const ActiveEvent SyncMsgList = ActiveEvent._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SyncMsgList');
-  static const ActiveEvent AckNotice = ActiveEvent._(
-      3,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'AckNotice');
-  static const ActiveEvent GetMsgById = ActiveEvent._(
-      4,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'GetMsgById');
-  static const ActiveEvent CustomRequest = ActiveEvent._(
-      100,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'CustomRequest');
-
-  static const $core.List<ActiveEvent> values = <ActiveEvent>[
-    SendMsgList,
-    SyncConvSeq,
-    SyncMsgList,
-    AckNotice,
-    GetMsgById,
-    CustomRequest,
-  ];
-
-  static final $core.Map<$core.int, ActiveEvent> _byValue =
-      $pb.ProtobufEnum.initByValue(values);
-
-  static ActiveEvent? valueOf($core.int value) => _byValue[value];
-
-  const ActiveEvent._($core.int v, $core.String n) : super(v, n);
-}
-
 class ResponseBody_Code extends $pb.ProtobufEnum {
   static const ResponseBody_Code Success = ResponseBody_Code._(
       0,
