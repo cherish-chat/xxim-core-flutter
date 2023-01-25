@@ -1670,12 +1670,6 @@ class NoticeData_Options extends $pb.GeneratedMessage {
             ? ''
             : 'updateConvMsg',
         protoName: 'updateConvMsg')
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'onlinePushOnce',
-        protoName: 'onlinePushOnce')
     ..hasRequiredFields = false;
 
   NoticeData_Options._() : super();
@@ -1683,7 +1677,6 @@ class NoticeData_Options extends $pb.GeneratedMessage {
   factory NoticeData_Options({
     $core.bool? storageForClient,
     $core.bool? updateConvMsg,
-    $core.bool? onlinePushOnce,
   }) {
     final _result = create();
     if (storageForClient != null) {
@@ -1691,9 +1684,6 @@ class NoticeData_Options extends $pb.GeneratedMessage {
     }
     if (updateConvMsg != null) {
       _result.updateConvMsg = updateConvMsg;
-    }
-    if (onlinePushOnce != null) {
-      _result.onlinePushOnce = onlinePushOnce;
     }
     return _result;
   }
@@ -1759,20 +1749,6 @@ class NoticeData_Options extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   void clearUpdateConvMsg() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.bool get onlinePushOnce => $_getBF(2);
-
-  @$pb.TagNumber(3)
-  set onlinePushOnce($core.bool v) {
-    $_setBool(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasOnlinePushOnce() => $_has(2);
-
-  @$pb.TagNumber(3)
-  void clearOnlinePushOnce() => clearField(3);
 }
 
 class NoticeData extends $pb.GeneratedMessage {
@@ -1791,19 +1767,6 @@ class NoticeData extends $pb.GeneratedMessage {
             ? ''
             : 'convId',
         protoName: 'convId')
-    ..a<$core.int>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'unreadCount',
-        $pb.PbFieldType.O3,
-        protoName: 'unreadCount')
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'unreadAbsolute',
-        protoName: 'unreadAbsolute')
     ..aOS(
         11,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1852,8 +1815,6 @@ class NoticeData extends $pb.GeneratedMessage {
 
   factory NoticeData({
     $core.String? convId,
-    $core.int? unreadCount,
-    $core.bool? unreadAbsolute,
     $core.String? noticeId,
     $core.String? createTime,
     $core.String? title,
@@ -1865,12 +1826,6 @@ class NoticeData extends $pb.GeneratedMessage {
     final _result = create();
     if (convId != null) {
       _result.convId = convId;
-    }
-    if (unreadCount != null) {
-      _result.unreadCount = unreadCount;
-    }
-    if (unreadAbsolute != null) {
-      _result.unreadAbsolute = unreadAbsolute;
     }
     if (noticeId != null) {
       _result.noticeId = noticeId;
@@ -1943,106 +1898,78 @@ class NoticeData extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearConvId() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $core.int get unreadCount => $_getIZ(1);
-
-  @$pb.TagNumber(2)
-  set unreadCount($core.int v) {
-    $_setSignedInt32(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasUnreadCount() => $_has(1);
-
-  @$pb.TagNumber(2)
-  void clearUnreadCount() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.bool get unreadAbsolute => $_getBF(2);
-
-  @$pb.TagNumber(3)
-  set unreadAbsolute($core.bool v) {
-    $_setBool(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasUnreadAbsolute() => $_has(2);
-
-  @$pb.TagNumber(3)
-  void clearUnreadAbsolute() => clearField(3);
-
   @$pb.TagNumber(11)
-  $core.String get noticeId => $_getSZ(3);
+  $core.String get noticeId => $_getSZ(1);
 
   @$pb.TagNumber(11)
   set noticeId($core.String v) {
-    $_setString(3, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasNoticeId() => $_has(3);
+  $core.bool hasNoticeId() => $_has(1);
 
   @$pb.TagNumber(11)
   void clearNoticeId() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get createTime => $_getSZ(4);
+  $core.String get createTime => $_getSZ(2);
 
   @$pb.TagNumber(12)
   set createTime($core.String v) {
-    $_setString(4, v);
+    $_setString(2, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasCreateTime() => $_has(4);
+  $core.bool hasCreateTime() => $_has(2);
 
   @$pb.TagNumber(12)
   void clearCreateTime() => clearField(12);
 
   @$pb.TagNumber(13)
-  $core.String get title => $_getSZ(5);
+  $core.String get title => $_getSZ(3);
 
   @$pb.TagNumber(13)
   set title($core.String v) {
-    $_setString(5, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasTitle() => $_has(5);
+  $core.bool hasTitle() => $_has(3);
 
   @$pb.TagNumber(13)
   void clearTitle() => clearField(13);
 
   @$pb.TagNumber(14)
-  $core.int get contentType => $_getIZ(6);
+  $core.int get contentType => $_getIZ(4);
 
   @$pb.TagNumber(14)
   set contentType($core.int v) {
-    $_setSignedInt32(6, v);
+    $_setSignedInt32(4, v);
   }
 
   @$pb.TagNumber(14)
-  $core.bool hasContentType() => $_has(6);
+  $core.bool hasContentType() => $_has(4);
 
   @$pb.TagNumber(14)
   void clearContentType() => clearField(14);
 
   @$pb.TagNumber(15)
-  $core.List<$core.int> get content => $_getN(7);
+  $core.List<$core.int> get content => $_getN(5);
 
   @$pb.TagNumber(15)
   set content($core.List<$core.int> v) {
-    $_setBytes(7, v);
+    $_setBytes(5, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasContent() => $_has(7);
+  $core.bool hasContent() => $_has(5);
 
   @$pb.TagNumber(15)
   void clearContent() => clearField(15);
 
   @$pb.TagNumber(21)
-  NoticeData_Options get options => $_getN(8);
+  NoticeData_Options get options => $_getN(6);
 
   @$pb.TagNumber(21)
   set options(NoticeData_Options v) {
@@ -2050,97 +1977,27 @@ class NoticeData extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(21)
-  $core.bool hasOptions() => $_has(8);
+  $core.bool hasOptions() => $_has(6);
 
   @$pb.TagNumber(21)
   void clearOptions() => clearField(21);
 
   @$pb.TagNumber(21)
-  NoticeData_Options ensureOptions() => $_ensure(8);
+  NoticeData_Options ensureOptions() => $_ensure(6);
 
   @$pb.TagNumber(101)
-  $core.List<$core.int> get ext => $_getN(9);
+  $core.List<$core.int> get ext => $_getN(7);
 
   @$pb.TagNumber(101)
   set ext($core.List<$core.int> v) {
-    $_setBytes(9, v);
+    $_setBytes(7, v);
   }
 
   @$pb.TagNumber(101)
-  $core.bool hasExt() => $_has(9);
+  $core.bool hasExt() => $_has(7);
 
   @$pb.TagNumber(101)
   void clearExt() => clearField(101);
-}
-
-class NoticeDataList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'NoticeDataList',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pb'),
-      createEmptyInstance: create)
-    ..pc<NoticeData>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'noticeDataList',
-        $pb.PbFieldType.PM,
-        protoName: 'noticeDataList',
-        subBuilder: NoticeData.create)
-    ..hasRequiredFields = false;
-
-  NoticeDataList._() : super();
-
-  factory NoticeDataList({
-    $core.Iterable<NoticeData>? noticeDataList,
-  }) {
-    final _result = create();
-    if (noticeDataList != null) {
-      _result.noticeDataList.addAll(noticeDataList);
-    }
-    return _result;
-  }
-
-  factory NoticeDataList.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-
-  factory NoticeDataList.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  NoticeDataList clone() => NoticeDataList()..mergeFromMessage(this);
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  NoticeDataList copyWith(void Function(NoticeDataList) updates) =>
-      super.copyWith((message) => updates(message as NoticeDataList))
-          as NoticeDataList; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static NoticeDataList create() => NoticeDataList._();
-
-  NoticeDataList createEmptyInstance() => create();
-
-  static $pb.PbList<NoticeDataList> createRepeated() =>
-      $pb.PbList<NoticeDataList>();
-
-  @$core.pragma('dart2js:noInline')
-  static NoticeDataList getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<NoticeDataList>(create);
-  static NoticeDataList? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<NoticeData> get noticeDataList => $_getList(0);
 }
 
 class SendMsgListReq extends $pb.GeneratedMessage {
