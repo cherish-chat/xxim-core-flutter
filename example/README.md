@@ -20,7 +20,7 @@
        ),
        receivePushListener: ReceivePushListener(
          onPushMsgDataList: (msgDataList) {},
-         onPushNoticeDataList: (noticeDataList) {},
+         onPushNoticeData: (noticeData) {},
        ),
      );
 

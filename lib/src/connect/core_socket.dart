@@ -64,9 +64,9 @@ class CoreSocket {
         receivePushListener.pushMsgDataList(
           MsgDataList.fromBuffer(body.data),
         );
-      } else if (body.event == PushEvent.PushNoticeDataList) {
-        receivePushListener.pushNoticeDataList(
-          NoticeDataList.fromBuffer(body.data),
+      } else if (body.event == PushEvent.PushNoticeData) {
+        receivePushListener.pushNoticeData(
+          NoticeData.fromBuffer(body.data),
         );
       } else if (body.event == PushEvent.PushResponseBody) {
         ResponseBody response = ResponseBody.fromBuffer(body.data);

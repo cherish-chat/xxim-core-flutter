@@ -14,14 +14,14 @@ const PushEvent$json = const {
   '1': 'PushEvent',
   '2': const [
     const {'1': 'PushMsgDataList', '2': 0},
-    const {'1': 'PushNoticeDataList', '2': 1},
+    const {'1': 'PushNoticeData', '2': 1},
     const {'1': 'PushResponseBody', '2': 2},
   ],
 };
 
 /// Descriptor for `PushEvent`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List pushEventDescriptor = $convert.base64Decode(
-    'CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASFgoSUHVzaE5vdGljZURhdGFMaXN0EAESFAoQUHVzaFJlc3BvbnNlQm9keRAC');
+    'CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASEgoOUHVzaE5vdGljZURhdGEQARIUChBQdXNoUmVzcG9uc2VCb2R5EAI=');
 @$core.Deprecated('Use pushBodyDescriptor instead')
 const PushBody$json = const {
   '1': 'PushBody',
@@ -241,14 +241,6 @@ const NoticeData$json = const {
   '1': 'NoticeData',
   '2': const [
     const {'1': 'convId', '3': 1, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'unreadCount', '3': 2, '4': 1, '5': 5, '10': 'unreadCount'},
-    const {
-      '1': 'unreadAbsolute',
-      '3': 3,
-      '4': 1,
-      '5': 8,
-      '10': 'unreadAbsolute'
-    },
     const {'1': 'noticeId', '3': 11, '4': 1, '5': 9, '10': 'noticeId'},
     const {'1': 'createTime', '3': 12, '4': 1, '5': 9, '10': 'createTime'},
     const {'1': 'title', '3': 13, '4': 1, '5': 9, '10': 'title'},
@@ -279,37 +271,12 @@ const NoticeData_Options$json = const {
       '10': 'storageForClient'
     },
     const {'1': 'updateConvMsg', '3': 2, '4': 1, '5': 8, '10': 'updateConvMsg'},
-    const {
-      '1': 'onlinePushOnce',
-      '3': 3,
-      '4': 1,
-      '5': 8,
-      '10': 'onlinePushOnce'
-    },
   ],
 };
 
 /// Descriptor for `NoticeData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List noticeDataDescriptor = $convert.base64Decode(
-    'CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEiAKC3VucmVhZENvdW50GAIgASgFUgt1bnJlYWRDb3VudBImCg51bnJlYWRBYnNvbHV0ZRgDIAEoCFIOdW5yZWFkQWJzb2x1dGUSGgoIbm90aWNlSWQYCyABKAlSCG5vdGljZUlkEh4KCmNyZWF0ZVRpbWUYDCABKAlSCmNyZWF0ZVRpbWUSFAoFdGl0bGUYDSABKAlSBXRpdGxlEiAKC2NvbnRlbnRUeXBlGA4gASgFUgtjb250ZW50VHlwZRIYCgdjb250ZW50GA8gASgMUgdjb250ZW50EjAKB29wdGlvbnMYFSABKAsyFi5wYi5Ob3RpY2VEYXRhLk9wdGlvbnNSB29wdGlvbnMSEAoDZXh0GGUgASgMUgNleHQagwEKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIkCg11cGRhdGVDb252TXNnGAIgASgIUg11cGRhdGVDb252TXNnEiYKDm9ubGluZVB1c2hPbmNlGAMgASgIUg5vbmxpbmVQdXNoT25jZQ==');
-@$core.Deprecated('Use noticeDataListDescriptor instead')
-const NoticeDataList$json = const {
-  '1': 'NoticeDataList',
-  '2': const [
-    const {
-      '1': 'noticeDataList',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.pb.NoticeData',
-      '10': 'noticeDataList'
-    },
-  ],
-};
-
-/// Descriptor for `NoticeDataList`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List noticeDataListDescriptor = $convert.base64Decode(
-    'Cg5Ob3RpY2VEYXRhTGlzdBI2Cg5ub3RpY2VEYXRhTGlzdBgBIAMoCzIOLnBiLk5vdGljZURhdGFSDm5vdGljZURhdGFMaXN0');
+    'CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhoKCG5vdGljZUlkGAsgASgJUghub3RpY2VJZBIeCgpjcmVhdGVUaW1lGAwgASgJUgpjcmVhdGVUaW1lEhQKBXRpdGxlGA0gASgJUgV0aXRsZRIgCgtjb250ZW50VHlwZRgOIAEoBVILY29udGVudFR5cGUSGAoHY29udGVudBgPIAEoDFIHY29udGVudBIwCgdvcHRpb25zGBUgASgLMhYucGIuTm90aWNlRGF0YS5PcHRpb25zUgdvcHRpb25zEhAKA2V4dBhlIAEoDFIDZXh0GlsKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIkCg11cGRhdGVDb252TXNnGAIgASgIUg11cGRhdGVDb252TXNn');
 @$core.Deprecated('Use sendMsgListReqDescriptor instead')
 const SendMsgListReq$json = const {
   '1': 'SendMsgListReq',

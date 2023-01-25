@@ -15,11 +15,11 @@ class PushEvent extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'PushMsgDataList');
-  static const PushEvent PushNoticeDataList = PushEvent._(
+  static const PushEvent PushNoticeData = PushEvent._(
       1,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'PushNoticeDataList');
+          : 'PushNoticeData');
   static const PushEvent PushResponseBody = PushEvent._(
       2,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
@@ -28,7 +28,7 @@ class PushEvent extends $pb.ProtobufEnum {
 
   static const $core.List<PushEvent> values = <PushEvent>[
     PushMsgDataList,
-    PushNoticeDataList,
+    PushNoticeData,
     PushResponseBody,
   ];
 
