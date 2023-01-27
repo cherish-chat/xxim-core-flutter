@@ -144,7 +144,7 @@ class CoreSocket {
   }) {
     RequestBody request = RequestBody(
       reqId: reqId,
-      method: Protocol.setCxnParams,
+      method: Protocol.setUserParams,
       data: req.writeToBuffer(),
     );
     _webSocket?.sendData(
