@@ -241,6 +241,48 @@ class CoreSocket {
     );
   }
 
+  Future<ReadMsgResp?> sendReadMsg({
+    required String reqId,
+    required ReadMsgReq req,
+    SuccessCallback<ReadMsgResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      reqId: reqId,
+      method: Protocol.sendReadMsg,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<ReadMsgResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  Future<EditMsgResp?> sendEditMsg({
+    required String reqId,
+    required EditMsgReq req,
+    SuccessCallback<EditMsgResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    RequestBody request = RequestBody(
+      reqId: reqId,
+      method: Protocol.sendEditMsg,
+      data: req.writeToBuffer(),
+    );
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
+    return _handleResponse<EditMsgResp>(
+      reqId: reqId,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
   Future<AckNoticeDataResp?> ackNoticeData({
     required String reqId,
     required AckNoticeDataReq req,
