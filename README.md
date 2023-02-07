@@ -109,7 +109,7 @@
              senderInfo: utf8.encode(""),
              convId: "",
              atUsers: [],
-             contentType: ContentType.text,
+             contentType: MsgContentType.text,
              content: utf8.encode(""),
              options: MsgData_Options(
                storageForServer: true,
@@ -128,6 +128,32 @@
            ),
          ],
          deliverAfter: 0,
+       ),
+     );
+
+## 发送已读消息
+
+     ReadMsgResp? resp = await core.sendReadMsg(
+       reqId: "",
+       req: ReadMsgReq(
+         senderId: "",
+         convId: "",
+         seq: "",
+         noticeContent: utf8.encode(""),
+       ),
+     );
+
+## 发送编辑消息
+
+     EditMsgResp? resp = await core.sendEditMsg(
+       reqId: "",
+       req: EditMsgReq(
+         senderId: "",
+         serverMsgId: "",
+         contentType: MsgContentType.text,
+         content: utf8.encode(""),
+         ext: utf8.encode(""),
+         noticeContent: utf8.encode(""),
        ),
      );
 

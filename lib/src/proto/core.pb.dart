@@ -410,38 +410,44 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'platform')
+            : 'packageId',
+        protoName: 'packageId')
     ..aOS(
         2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'platform')
+    ..aOS(
+        3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'deviceId',
         protoName: 'deviceId')
     ..aOS(
-        3,
+        4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'deviceModel',
         protoName: 'deviceModel')
     ..aOS(
-        4,
+        5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'osVersion',
         protoName: 'osVersion')
     ..aOS(
-        5,
+        6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'appVersion',
         protoName: 'appVersion')
     ..aOS(
-        6,
+        7,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'language')
     ..aOS(
-        7,
+        8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'networkUsed',
@@ -457,6 +463,7 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
   SetCxnParamsReq._() : super();
 
   factory SetCxnParamsReq({
+    $core.String? packageId,
     $core.String? platform,
     $core.String? deviceId,
     $core.String? deviceModel,
@@ -467,6 +474,9 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     $core.List<$core.int>? ext,
   }) {
     final _result = create();
+    if (packageId != null) {
+      _result.packageId = packageId;
+    }
     if (platform != null) {
       _result.platform = platform;
     }
@@ -529,113 +539,127 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
   static SetCxnParamsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get platform => $_getSZ(0);
+  $core.String get packageId => $_getSZ(0);
 
   @$pb.TagNumber(1)
-  set platform($core.String v) {
+  set packageId($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasPlatform() => $_has(0);
+  $core.bool hasPackageId() => $_has(0);
 
   @$pb.TagNumber(1)
-  void clearPlatform() => clearField(1);
+  void clearPackageId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get deviceId => $_getSZ(1);
+  $core.String get platform => $_getSZ(1);
 
   @$pb.TagNumber(2)
-  set deviceId($core.String v) {
+  set platform($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasDeviceId() => $_has(1);
+  $core.bool hasPlatform() => $_has(1);
 
   @$pb.TagNumber(2)
-  void clearDeviceId() => clearField(2);
+  void clearPlatform() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get deviceModel => $_getSZ(2);
+  $core.String get deviceId => $_getSZ(2);
 
   @$pb.TagNumber(3)
-  set deviceModel($core.String v) {
+  set deviceId($core.String v) {
     $_setString(2, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasDeviceModel() => $_has(2);
+  $core.bool hasDeviceId() => $_has(2);
 
   @$pb.TagNumber(3)
-  void clearDeviceModel() => clearField(3);
+  void clearDeviceId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get osVersion => $_getSZ(3);
+  $core.String get deviceModel => $_getSZ(3);
 
   @$pb.TagNumber(4)
-  set osVersion($core.String v) {
+  set deviceModel($core.String v) {
     $_setString(3, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasOsVersion() => $_has(3);
+  $core.bool hasDeviceModel() => $_has(3);
 
   @$pb.TagNumber(4)
-  void clearOsVersion() => clearField(4);
+  void clearDeviceModel() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get appVersion => $_getSZ(4);
+  $core.String get osVersion => $_getSZ(4);
 
   @$pb.TagNumber(5)
-  set appVersion($core.String v) {
+  set osVersion($core.String v) {
     $_setString(4, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasAppVersion() => $_has(4);
+  $core.bool hasOsVersion() => $_has(4);
 
   @$pb.TagNumber(5)
-  void clearAppVersion() => clearField(5);
+  void clearOsVersion() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get language => $_getSZ(5);
+  $core.String get appVersion => $_getSZ(5);
 
   @$pb.TagNumber(6)
-  set language($core.String v) {
+  set appVersion($core.String v) {
     $_setString(5, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasLanguage() => $_has(5);
+  $core.bool hasAppVersion() => $_has(5);
 
   @$pb.TagNumber(6)
-  void clearLanguage() => clearField(6);
+  void clearAppVersion() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get networkUsed => $_getSZ(6);
+  $core.String get language => $_getSZ(6);
 
   @$pb.TagNumber(7)
-  set networkUsed($core.String v) {
+  set language($core.String v) {
     $_setString(6, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasNetworkUsed() => $_has(6);
+  $core.bool hasLanguage() => $_has(6);
 
   @$pb.TagNumber(7)
-  void clearNetworkUsed() => clearField(7);
+  void clearLanguage() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get networkUsed => $_getSZ(7);
+
+  @$pb.TagNumber(8)
+  set networkUsed($core.String v) {
+    $_setString(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasNetworkUsed() => $_has(7);
+
+  @$pb.TagNumber(8)
+  void clearNetworkUsed() => clearField(8);
 
   @$pb.TagNumber(11)
-  $core.List<$core.int> get ext => $_getN(7);
+  $core.List<$core.int> get ext => $_getN(8);
 
   @$pb.TagNumber(11)
   set ext($core.List<$core.int> v) {
-    $_setBytes(7, v);
+    $_setBytes(8, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasExt() => $_has(7);
+  $core.bool hasExt() => $_has(8);
 
   @$pb.TagNumber(11)
   void clearExt() => clearField(11);
@@ -1668,22 +1692,22 @@ class NoticeData_Options extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'updateConvMsg',
-        protoName: 'updateConvMsg')
+            : 'updateConvNotice',
+        protoName: 'updateConvNotice')
     ..hasRequiredFields = false;
 
   NoticeData_Options._() : super();
 
   factory NoticeData_Options({
     $core.bool? storageForClient,
-    $core.bool? updateConvMsg,
+    $core.bool? updateConvNotice,
   }) {
     final _result = create();
     if (storageForClient != null) {
       _result.storageForClient = storageForClient;
     }
-    if (updateConvMsg != null) {
-      _result.updateConvMsg = updateConvMsg;
+    if (updateConvNotice != null) {
+      _result.updateConvNotice = updateConvNotice;
     }
     return _result;
   }
@@ -1737,18 +1761,18 @@ class NoticeData_Options extends $pb.GeneratedMessage {
   void clearStorageForClient() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get updateConvMsg => $_getBF(1);
+  $core.bool get updateConvNotice => $_getBF(1);
 
   @$pb.TagNumber(2)
-  set updateConvMsg($core.bool v) {
+  set updateConvNotice($core.bool v) {
     $_setBool(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasUpdateConvMsg() => $_has(1);
+  $core.bool hasUpdateConvNotice() => $_has(1);
 
   @$pb.TagNumber(2)
-  void clearUpdateConvMsg() => clearField(2);
+  void clearUpdateConvNotice() => clearField(2);
 }
 
 class NoticeData extends $pb.GeneratedMessage {
@@ -2866,6 +2890,456 @@ class BatchGetConvSeqResp extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.Map<$core.String, BatchGetConvSeqResp_ConvSeq> get convSeqMap =>
       $_getMap(0);
+}
+
+class ReadMsgReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ReadMsgReq',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'senderId',
+        protoName: 'senderId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'convId',
+        protoName: 'convId')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'seq')
+    ..a<$core.List<$core.int>>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noticeContent',
+        $pb.PbFieldType.OY,
+        protoName: 'noticeContent')
+    ..hasRequiredFields = false;
+
+  ReadMsgReq._() : super();
+
+  factory ReadMsgReq({
+    $core.String? senderId,
+    $core.String? convId,
+    $core.String? seq,
+    $core.List<$core.int>? noticeContent,
+  }) {
+    final _result = create();
+    if (senderId != null) {
+      _result.senderId = senderId;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (seq != null) {
+      _result.seq = seq;
+    }
+    if (noticeContent != null) {
+      _result.noticeContent = noticeContent;
+    }
+    return _result;
+  }
+
+  factory ReadMsgReq.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory ReadMsgReq.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ReadMsgReq clone() => ReadMsgReq()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ReadMsgReq copyWith(void Function(ReadMsgReq) updates) =>
+      super.copyWith((message) => updates(message as ReadMsgReq))
+          as ReadMsgReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgReq create() => ReadMsgReq._();
+
+  ReadMsgReq createEmptyInstance() => create();
+
+  static $pb.PbList<ReadMsgReq> createRepeated() => $pb.PbList<ReadMsgReq>();
+
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgReq getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ReadMsgReq>(create);
+  static ReadMsgReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get senderId => $_getSZ(0);
+
+  @$pb.TagNumber(1)
+  set senderId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasSenderId() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearSenderId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+
+  @$pb.TagNumber(2)
+  set convId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get seq => $_getSZ(2);
+
+  @$pb.TagNumber(3)
+  set seq($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSeq() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearSeq() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get noticeContent => $_getN(3);
+
+  @$pb.TagNumber(4)
+  set noticeContent($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasNoticeContent() => $_has(3);
+
+  @$pb.TagNumber(4)
+  void clearNoticeContent() => clearField(4);
+}
+
+class ReadMsgResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ReadMsgResp',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  ReadMsgResp._() : super();
+
+  factory ReadMsgResp() => create();
+
+  factory ReadMsgResp.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory ReadMsgResp.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ReadMsgResp clone() => ReadMsgResp()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ReadMsgResp copyWith(void Function(ReadMsgResp) updates) =>
+      super.copyWith((message) => updates(message as ReadMsgResp))
+          as ReadMsgResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgResp create() => ReadMsgResp._();
+
+  ReadMsgResp createEmptyInstance() => create();
+
+  static $pb.PbList<ReadMsgResp> createRepeated() => $pb.PbList<ReadMsgResp>();
+
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgResp getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ReadMsgResp>(create);
+  static ReadMsgResp? _defaultInstance;
+}
+
+class EditMsgReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EditMsgReq',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'senderId',
+        protoName: 'senderId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'serverMsgId',
+        protoName: 'serverMsgId')
+    ..a<$core.int>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'contentType',
+        $pb.PbFieldType.O3,
+        protoName: 'contentType')
+    ..a<$core.List<$core.int>>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'content',
+        $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ext',
+        $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noticeContent',
+        $pb.PbFieldType.OY,
+        protoName: 'noticeContent')
+    ..hasRequiredFields = false;
+
+  EditMsgReq._() : super();
+
+  factory EditMsgReq({
+    $core.String? senderId,
+    $core.String? serverMsgId,
+    $core.int? contentType,
+    $core.List<$core.int>? content,
+    $core.List<$core.int>? ext,
+    $core.List<$core.int>? noticeContent,
+  }) {
+    final _result = create();
+    if (senderId != null) {
+      _result.senderId = senderId;
+    }
+    if (serverMsgId != null) {
+      _result.serverMsgId = serverMsgId;
+    }
+    if (contentType != null) {
+      _result.contentType = contentType;
+    }
+    if (content != null) {
+      _result.content = content;
+    }
+    if (ext != null) {
+      _result.ext = ext;
+    }
+    if (noticeContent != null) {
+      _result.noticeContent = noticeContent;
+    }
+    return _result;
+  }
+
+  factory EditMsgReq.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory EditMsgReq.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EditMsgReq clone() => EditMsgReq()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EditMsgReq copyWith(void Function(EditMsgReq) updates) =>
+      super.copyWith((message) => updates(message as EditMsgReq))
+          as EditMsgReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EditMsgReq create() => EditMsgReq._();
+
+  EditMsgReq createEmptyInstance() => create();
+
+  static $pb.PbList<EditMsgReq> createRepeated() => $pb.PbList<EditMsgReq>();
+
+  @$core.pragma('dart2js:noInline')
+  static EditMsgReq getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EditMsgReq>(create);
+  static EditMsgReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get senderId => $_getSZ(0);
+
+  @$pb.TagNumber(1)
+  set senderId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasSenderId() => $_has(0);
+
+  @$pb.TagNumber(1)
+  void clearSenderId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get serverMsgId => $_getSZ(1);
+
+  @$pb.TagNumber(2)
+  set serverMsgId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasServerMsgId() => $_has(1);
+
+  @$pb.TagNumber(2)
+  void clearServerMsgId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get contentType => $_getIZ(2);
+
+  @$pb.TagNumber(3)
+  set contentType($core.int v) {
+    $_setSignedInt32(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasContentType() => $_has(2);
+
+  @$pb.TagNumber(3)
+  void clearContentType() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get content => $_getN(3);
+
+  @$pb.TagNumber(4)
+  set content($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasContent() => $_has(3);
+
+  @$pb.TagNumber(4)
+  void clearContent() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get ext => $_getN(4);
+
+  @$pb.TagNumber(5)
+  set ext($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasExt() => $_has(4);
+
+  @$pb.TagNumber(5)
+  void clearExt() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get noticeContent => $_getN(5);
+
+  @$pb.TagNumber(6)
+  set noticeContent($core.List<$core.int> v) {
+    $_setBytes(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasNoticeContent() => $_has(5);
+
+  @$pb.TagNumber(6)
+  void clearNoticeContent() => clearField(6);
+}
+
+class EditMsgResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EditMsgResp',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'pb'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  EditMsgResp._() : super();
+
+  factory EditMsgResp() => create();
+
+  factory EditMsgResp.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+
+  factory EditMsgResp.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EditMsgResp clone() => EditMsgResp()..mergeFromMessage(this);
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EditMsgResp copyWith(void Function(EditMsgResp) updates) =>
+      super.copyWith((message) => updates(message as EditMsgResp))
+          as EditMsgResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EditMsgResp create() => EditMsgResp._();
+
+  EditMsgResp createEmptyInstance() => create();
+
+  static $pb.PbList<EditMsgResp> createRepeated() => $pb.PbList<EditMsgResp>();
+
+  @$core.pragma('dart2js:noInline')
+  static EditMsgResp getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EditMsgResp>(create);
+  static EditMsgResp? _defaultInstance;
 }
 
 class AckNoticeDataReq extends $pb.GeneratedMessage {

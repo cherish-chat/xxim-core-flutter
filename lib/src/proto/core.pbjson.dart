@@ -95,20 +95,21 @@ final $typed_data.Uint8List responseBodyDescriptor = $convert.base64Decode(
 const SetCxnParamsReq$json = const {
   '1': 'SetCxnParamsReq',
   '2': const [
-    const {'1': 'platform', '3': 1, '4': 1, '5': 9, '10': 'platform'},
-    const {'1': 'deviceId', '3': 2, '4': 1, '5': 9, '10': 'deviceId'},
-    const {'1': 'deviceModel', '3': 3, '4': 1, '5': 9, '10': 'deviceModel'},
-    const {'1': 'osVersion', '3': 4, '4': 1, '5': 9, '10': 'osVersion'},
-    const {'1': 'appVersion', '3': 5, '4': 1, '5': 9, '10': 'appVersion'},
-    const {'1': 'language', '3': 6, '4': 1, '5': 9, '10': 'language'},
-    const {'1': 'networkUsed', '3': 7, '4': 1, '5': 9, '10': 'networkUsed'},
+    const {'1': 'packageId', '3': 1, '4': 1, '5': 9, '10': 'packageId'},
+    const {'1': 'platform', '3': 2, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'deviceId', '3': 3, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'deviceModel', '3': 4, '4': 1, '5': 9, '10': 'deviceModel'},
+    const {'1': 'osVersion', '3': 5, '4': 1, '5': 9, '10': 'osVersion'},
+    const {'1': 'appVersion', '3': 6, '4': 1, '5': 9, '10': 'appVersion'},
+    const {'1': 'language', '3': 7, '4': 1, '5': 9, '10': 'language'},
+    const {'1': 'networkUsed', '3': 8, '4': 1, '5': 9, '10': 'networkUsed'},
     const {'1': 'ext', '3': 11, '4': 1, '5': 12, '10': 'ext'},
   ],
 };
 
 /// Descriptor for `SetCxnParamsReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List setCxnParamsReqDescriptor = $convert.base64Decode(
-    'Cg9TZXRDeG5QYXJhbXNSZXESGgoIcGxhdGZvcm0YASABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAIgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgDIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAQgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgFIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgGIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYByABKAlSC25ldHdvcmtVc2VkEhAKA2V4dBgLIAEoDFIDZXh0');
+    'Cg9TZXRDeG5QYXJhbXNSZXESHAoJcGFja2FnZUlkGAEgASgJUglwYWNrYWdlSWQSGgoIcGxhdGZvcm0YAiABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgEIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAUgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgGIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgHIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYCCABKAlSC25ldHdvcmtVc2VkEhAKA2V4dBgLIAEoDFIDZXh0');
 @$core.Deprecated('Use setCxnParamsRespDescriptor instead')
 const SetCxnParamsResp$json = const {
   '1': 'SetCxnParamsResp',
@@ -270,13 +271,19 @@ const NoticeData_Options$json = const {
       '5': 8,
       '10': 'storageForClient'
     },
-    const {'1': 'updateConvMsg', '3': 2, '4': 1, '5': 8, '10': 'updateConvMsg'},
+    const {
+      '1': 'updateConvNotice',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'updateConvNotice'
+    },
   ],
 };
 
 /// Descriptor for `NoticeData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List noticeDataDescriptor = $convert.base64Decode(
-    'CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhoKCG5vdGljZUlkGAsgASgJUghub3RpY2VJZBIeCgpjcmVhdGVUaW1lGAwgASgJUgpjcmVhdGVUaW1lEhQKBXRpdGxlGA0gASgJUgV0aXRsZRIgCgtjb250ZW50VHlwZRgOIAEoBVILY29udGVudFR5cGUSGAoHY29udGVudBgPIAEoDFIHY29udGVudBIwCgdvcHRpb25zGBUgASgLMhYucGIuTm90aWNlRGF0YS5PcHRpb25zUgdvcHRpb25zEhAKA2V4dBhlIAEoDFIDZXh0GlsKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIkCg11cGRhdGVDb252TXNnGAIgASgIUg11cGRhdGVDb252TXNn');
+    'CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhoKCG5vdGljZUlkGAsgASgJUghub3RpY2VJZBIeCgpjcmVhdGVUaW1lGAwgASgJUgpjcmVhdGVUaW1lEhQKBXRpdGxlGA0gASgJUgV0aXRsZRIgCgtjb250ZW50VHlwZRgOIAEoBVILY29udGVudFR5cGUSGAoHY29udGVudBgPIAEoDFIHY29udGVudBIwCgdvcHRpb25zGBUgASgLMhYucGIuTm90aWNlRGF0YS5PcHRpb25zUgdvcHRpb25zEhAKA2V4dBhlIAEoDFIDZXh0GmEKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIqChB1cGRhdGVDb252Tm90aWNlGAIgASgIUhB1cGRhdGVDb252Tm90aWNl');
 @$core.Deprecated('Use sendMsgListReqDescriptor instead')
 const SendMsgListReq$json = const {
   '1': 'SendMsgListReq',
@@ -473,6 +480,64 @@ const BatchGetConvSeqResp_ConvSeqMapEntry$json = const {
 /// Descriptor for `BatchGetConvSeqResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List batchGetConvSeqRespDescriptor = $convert.base64Decode(
     'ChNCYXRjaEdldENvbnZTZXFSZXNwEkcKCmNvbnZTZXFNYXAYASADKAsyJy5wYi5CYXRjaEdldENvbnZTZXFSZXNwLkNvbnZTZXFNYXBFbnRyeVIKY29udlNlcU1hcBpxCgdDb252U2VxEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhYKBm1pblNlcRgCIAEoCVIGbWluU2VxEhYKBm1heFNlcRgDIAEoCVIGbWF4U2VxEh4KCnVwZGF0ZVRpbWUYBCABKAlSCnVwZGF0ZVRpbWUaXgoPQ29udlNlcU1hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjUKBXZhbHVlGAIgASgLMh8ucGIuQmF0Y2hHZXRDb252U2VxUmVzcC5Db252U2VxUgV2YWx1ZToCOAE=');
+@$core.Deprecated('Use readMsgReqDescriptor instead')
+const ReadMsgReq$json = const {
+  '1': 'ReadMsgReq',
+  '2': const [
+    const {'1': 'senderId', '3': 1, '4': 1, '5': 9, '10': 'senderId'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'seq', '3': 3, '4': 1, '5': 9, '10': 'seq'},
+    const {
+      '1': 'noticeContent',
+      '3': 4,
+      '4': 1,
+      '5': 12,
+      '10': 'noticeContent'
+    },
+  ],
+};
+
+/// Descriptor for `ReadMsgReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List readMsgReqDescriptor = $convert.base64Decode(
+    'CgpSZWFkTXNnUmVxEhoKCHNlbmRlcklkGAEgASgJUghzZW5kZXJJZBIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIQCgNzZXEYAyABKAlSA3NlcRIkCg1ub3RpY2VDb250ZW50GAQgASgMUg1ub3RpY2VDb250ZW50');
+@$core.Deprecated('Use readMsgRespDescriptor instead')
+const ReadMsgResp$json = const {
+  '1': 'ReadMsgResp',
+};
+
+/// Descriptor for `ReadMsgResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List readMsgRespDescriptor =
+    $convert.base64Decode('CgtSZWFkTXNnUmVzcA==');
+@$core.Deprecated('Use editMsgReqDescriptor instead')
+const EditMsgReq$json = const {
+  '1': 'EditMsgReq',
+  '2': const [
+    const {'1': 'senderId', '3': 1, '4': 1, '5': 9, '10': 'senderId'},
+    const {'1': 'serverMsgId', '3': 2, '4': 1, '5': 9, '10': 'serverMsgId'},
+    const {'1': 'contentType', '3': 3, '4': 1, '5': 5, '10': 'contentType'},
+    const {'1': 'content', '3': 4, '4': 1, '5': 12, '10': 'content'},
+    const {'1': 'ext', '3': 5, '4': 1, '5': 12, '10': 'ext'},
+    const {
+      '1': 'noticeContent',
+      '3': 6,
+      '4': 1,
+      '5': 12,
+      '10': 'noticeContent'
+    },
+  ],
+};
+
+/// Descriptor for `EditMsgReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List editMsgReqDescriptor = $convert.base64Decode(
+    'CgpFZGl0TXNnUmVxEhoKCHNlbmRlcklkGAEgASgJUghzZW5kZXJJZBIgCgtzZXJ2ZXJNc2dJZBgCIAEoCVILc2VydmVyTXNnSWQSIAoLY29udGVudFR5cGUYAyABKAVSC2NvbnRlbnRUeXBlEhgKB2NvbnRlbnQYBCABKAxSB2NvbnRlbnQSEAoDZXh0GAUgASgMUgNleHQSJAoNbm90aWNlQ29udGVudBgGIAEoDFINbm90aWNlQ29udGVudA==');
+@$core.Deprecated('Use editMsgRespDescriptor instead')
+const EditMsgResp$json = const {
+  '1': 'EditMsgResp',
+};
+
+/// Descriptor for `EditMsgResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List editMsgRespDescriptor =
+    $convert.base64Decode('CgtFZGl0TXNnUmVzcA==');
 @$core.Deprecated('Use ackNoticeDataReqDescriptor instead')
 const AckNoticeDataReq$json = const {
   '1': 'AckNoticeDataReq',

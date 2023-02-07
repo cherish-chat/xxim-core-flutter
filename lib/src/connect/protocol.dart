@@ -7,5 +7,7 @@ class Protocol {
       "/v1/msg/batchGetMsgListByConvId"; // 批量获取消息列表
   static const String getMsgById = "/v1/msg/getMsgById"; // 获取消息
   static const String sendMsgList = "/v1/msg/sendMsgList"; // 发送消息列表
+  static const String sendReadMsg = "/v1/msg/sendReadMsg"; // 发送已读消息
+  static const String sendEditMsg = "/v1/msg/sendEditMsg"; // 发送编辑消息
   static const String ackNoticeData = "/v1/notice/ackNoticeData"; // 确认消费通知
 }

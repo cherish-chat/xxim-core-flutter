@@ -125,6 +125,36 @@ class XXIMCore {
     );
   }
 
+  /// 发送已读消息
+  Future<ReadMsgResp?>? sendReadMsg({
+    required String reqId,
+    required ReadMsgReq req,
+    SuccessCallback<ReadMsgResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.sendReadMsg(
+      reqId: reqId,
+      req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
+  /// 发送编辑消息
+  Future<EditMsgResp?>? sendEditMsg({
+    required String reqId,
+    required EditMsgReq req,
+    SuccessCallback<EditMsgResp>? onSuccess,
+    ErrorCallback? onError,
+  }) {
+    return _coreSocket?.sendEditMsg(
+      reqId: reqId,
+      req: req,
+      onSuccess: onSuccess,
+      onError: onError,
+    );
+  }
+
   /// 确认消费通知
   Future<AckNoticeDataResp?>? ackNoticeData({
     required String reqId,
