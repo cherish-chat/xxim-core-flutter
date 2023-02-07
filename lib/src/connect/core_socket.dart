@@ -100,6 +100,16 @@ class CoreSocket {
             "code": response.code,
             "resp": SendMsgListResp.fromBuffer(response.data),
           };
+        } else if (response.method == Protocol.sendReadMsg) {
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": ReadMsgResp.fromBuffer(response.data),
+          };
+        } else if (response.method == Protocol.sendEditMsg) {
+          _responseMap?[response.reqId] = {
+            "code": response.code,
+            "resp": EditMsgResp.fromBuffer(response.data),
+          };
         } else if (response.method == Protocol.ackNoticeData) {
           _responseMap?[response.reqId] = {
             "code": response.code,
