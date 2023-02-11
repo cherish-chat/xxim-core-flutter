@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/protocol.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
@@ -72,53 +73,53 @@ class CoreSocket {
         ResponseBody response = ResponseBody.fromBuffer(body.data);
         if (response.method == Protocol.setCxnParams) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": SetCxnParamsResp.fromBuffer(response.data),
+            "response": response,
+            "data": SetCxnParamsResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.setUserParams) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": SetUserParamsResp.fromBuffer(response.data),
+            "response": response,
+            "data": SetUserParamsResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.batchGetConvSeq) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": BatchGetConvSeqResp.fromBuffer(response.data),
+            "response": response,
+            "data": BatchGetConvSeqResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.batchGetMsgListByConvId) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": GetMsgListResp.fromBuffer(response.data),
+            "response": response,
+            "data": GetMsgListResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.getMsgById) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": GetMsgByIdResp.fromBuffer(response.data),
+            "response": response,
+            "data": GetMsgByIdResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.sendMsgList) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": SendMsgListResp.fromBuffer(response.data),
+            "response": response,
+            "data": SendMsgListResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.sendReadMsg) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": ReadMsgResp.fromBuffer(response.data),
+            "response": response,
+            "data": ReadMsgResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.sendEditMsg) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": EditMsgResp.fromBuffer(response.data),
+            "response": response,
+            "data": EditMsgResp.fromBuffer(response.data),
           };
         } else if (response.method == Protocol.ackNoticeData) {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": AckNoticeDataResp.fromBuffer(response.data),
+            "response": response,
+            "data": AckNoticeDataResp.fromBuffer(response.data),
           };
         } else {
           _responseMap?[response.reqId] = {
-            "code": response.code,
-            "resp": response.data,
+            "response": response,
+            "data": response.data,
           };
         }
       }
@@ -347,12 +348,17 @@ class CoreSocket {
       await Future.delayed(const Duration(milliseconds: 5));
       Map<String, dynamic>? body = _responseMap?[reqId];
       if (toContinue && body != null) {
-        ResponseBody_Code code = body["code"];
-        if (code == ResponseBody_Code.Success) {
-          resp = body["resp"];
+        ResponseBody response = body["response"];
+        if (response.code == ResponseBody_Code.Success) {
+          resp = body["data"];
           if (onSuccess != null) onSuccess(resp as T);
         } else {
-          if (onError != null) onError(code.value, code.name);
+          if (onError != null) {
+            onError(
+              response.code.value,
+              utf8.decode(response.data),
+            );
+          }
         }
         _responseMap?.remove(reqId);
         return false;
