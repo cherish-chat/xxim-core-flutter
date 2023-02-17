@@ -140,11 +140,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<SetCxnParamsResp>(
+    return CoreResponse<SetCxnParamsResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<SetUserParamsResp?> setUserParams({
@@ -161,11 +163,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<SetUserParamsResp>(
+    return CoreResponse<SetUserParamsResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<BatchGetConvSeqResp?> batchGetConvSeq({
@@ -182,11 +186,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<BatchGetConvSeqResp>(
+    return CoreResponse<BatchGetConvSeqResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<GetMsgListResp?> batchGetMsgListByConvId({
@@ -203,11 +209,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<GetMsgListResp>(
+    return CoreResponse<GetMsgListResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<GetMsgByIdResp?> getMsgById({
@@ -224,11 +232,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<GetMsgByIdResp>(
+    return CoreResponse<GetMsgByIdResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<SendMsgListResp?> sendMsgList({
@@ -245,11 +255,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<SendMsgListResp>(
+    return CoreResponse<SendMsgListResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<ReadMsgResp?> sendReadMsg({
@@ -266,11 +278,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<ReadMsgResp>(
+    return CoreResponse<ReadMsgResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<EditMsgResp?> sendEditMsg({
@@ -287,11 +301,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<EditMsgResp>(
+    return CoreResponse<EditMsgResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<AckNoticeDataResp?> ackNoticeData({
@@ -308,11 +324,13 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<AckNoticeDataResp>(
+    return CoreResponse<AckNoticeDataResp>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
 
   Future<List<int>?> customRequest({
@@ -330,42 +348,56 @@ class CoreSocket {
     _webSocket?.sendData(
       request.writeToBuffer(),
     );
-    return _handleResponse<List<int>>(
+    return CoreResponse<List<int>>(
+      requestTimeout: requestTimeout,
       reqId: reqId,
+      responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
-    );
+    ).handle();
   }
+}
 
-  Future<T?> _handleResponse<T>({
-    required String reqId,
-    SuccessCallback<T>? onSuccess,
-    ErrorCallback? onError,
-  }) async {
+class CoreResponse<T> {
+  final Duration requestTimeout;
+  final String reqId;
+  final Map<String, Map<String, dynamic>>? responseMap;
+  final SuccessCallback<T>? onSuccess;
+  final ErrorCallback? onError;
+
+  CoreResponse({
+    required this.requestTimeout,
+    required this.reqId,
+    this.responseMap,
+    this.onSuccess,
+    this.onError,
+  });
+
+  Future<T?> handle() async {
     T? resp;
     bool toContinue = true;
     await Future.doWhile(() async {
       await Future.delayed(const Duration(milliseconds: 5));
-      Map<String, dynamic>? body = _responseMap?[reqId];
+      Map<String, dynamic>? body = responseMap?[reqId];
       if (toContinue && body != null) {
         ResponseBody response = body["response"];
         if (response.code == ResponseBody_Code.Success) {
           resp = body["data"];
-          if (onSuccess != null) onSuccess(resp as T);
+          if (onSuccess != null) onSuccess!(resp as T);
         } else {
           if (onError != null) {
-            onError(
+            onError!(
               response.code.value,
               utf8.decode(response.data),
             );
           }
         }
-        _responseMap?.remove(reqId);
+        responseMap?.remove(reqId);
         return false;
       }
       if (!toContinue) {
         if (onError != null) {
-          onError(
+          onError!(
             ResponseBody_Code.UnknownError.value,
             ResponseBody_Code.UnknownError.name,
           );
