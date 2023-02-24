@@ -39,7 +39,8 @@ class XXIMCore {
   /// 设置连接参数
   Future<bool>? setCxnParams({
     required String reqId,
-    required String rsaPublicKey,
+    required String packageId,
+    String rsaPublicKey = "",
     required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
@@ -47,6 +48,7 @@ class XXIMCore {
     return _coreSocket?.setCxnParams(
       reqId: reqId,
       rsaPublicKey: rsaPublicKey,
+      packageId: packageId,
       cxnParams: cxnParams,
       onSuccess: onSuccess,
       onError: onError,

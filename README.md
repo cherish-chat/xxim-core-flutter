@@ -40,9 +40,9 @@
 
      bool? status = await core.setCxnParams(
        reqId: "",
+       packageId: "",
        rsaPublicKey: "",
        req: CxnParams(
-         packageId: "",
          platform: "",
          deviceId: "",
          deviceModel: "",
