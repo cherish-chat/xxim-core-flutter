@@ -1,3 +1,4 @@
+import 'package:xxim_core_flutter/src/common/cxn_params.dart';
 import 'package:xxim_core_flutter/src/connect/core_callback.dart';
 import 'package:xxim_core_flutter/src/connect/core_socket.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
@@ -36,15 +37,17 @@ class XXIMCore {
   }
 
   /// 设置连接参数
-  Future<SetCxnParamsResp?>? setCxnParams({
+  Future<bool>? setCxnParams({
     required String reqId,
-    required SetCxnParamsReq req,
+    required String rsaPublicKey,
+    required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
   }) {
     return _coreSocket?.setCxnParams(
       reqId: reqId,
-      req: req,
+      rsaPublicKey: rsaPublicKey,
+      cxnParams: cxnParams,
       onSuccess: onSuccess,
       onError: onError,
     );

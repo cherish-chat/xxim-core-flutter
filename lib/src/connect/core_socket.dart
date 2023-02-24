@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:xxim_core_flutter/src/connect/core_callback.dart';
+import 'package:xxim_core_flutter/src/common/cxn_params.dart';
 import 'package:xxim_core_flutter/src/connect/protocol.dart';
 import 'package:xxim_core_flutter/src/listener/connect_listener.dart';
 import 'package:xxim_core_flutter/src/listener/receive_push_listener.dart';
 import 'package:xxim_core_flutter/src/proto/core.pb.dart';
+import 'package:xxim_core_flutter/src/tool/core_tool.dart';
 import 'src/socket_none.dart'
     if (dart.library.html) 'src/socket_html.dart'
     if (dart.library.io) 'src/socket_io.dart';
@@ -21,6 +23,8 @@ class CoreSocket {
 
   BaseWebSocket? _webSocket;
   Map<String, Map<String, dynamic>>? _responseMap;
+
+  CxnParams? _cxnParams;
 
   void connect(String wsUrl) {
     _webSocket = BaseWebSocket(
@@ -48,6 +52,7 @@ class CoreSocket {
     _webSocket = null;
     _responseMap?.clear();
     _responseMap = null;
+    _cxnParams = null;
   }
 
   bool isConnect() {
@@ -60,6 +65,15 @@ class CoreSocket {
         connectListener.success();
       }
     } else if (data is List<int>) {
+      if (_cxnParams != null) {
+        if (_cxnParams!.aesKey.isNotEmpty && _cxnParams!.aesIv.isNotEmpty) {
+          data = CoreTool.aesDecode(
+            key: CoreTool.md5Encode32(_cxnParams!.aesKey),
+            iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
+            bytes: data,
+          );
+        }
+      }
       PushBody body = PushBody.fromBuffer(data);
       if (body.event == PushEvent.PushMsgDataList) {
         receivePushListener.pushMsgDataList(
@@ -126,27 +140,67 @@ class CoreSocket {
     }
   }
 
-  Future<SetCxnParamsResp?> setCxnParams({
+  void _sendData(List<int> data) {
+    if (_cxnParams != null) {
+      if (_cxnParams!.aesKey.isNotEmpty && _cxnParams!.aesIv.isNotEmpty) {
+        data = CoreTool.aesEncode(
+          key: CoreTool.md5Encode32(_cxnParams!.aesKey),
+          iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
+          bytes: data,
+        );
+      }
+    }
+    _webSocket?.sendData(data);
+  }
+
+  Future<bool> setCxnParams({
     required String reqId,
-    required SetCxnParamsReq req,
+    String rsaPublicKey = "",
+    required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
-  }) {
+  }) async {
+    List<int> aesKey = [];
+    List<int> aesIv = [];
+    if (rsaPublicKey.isNotEmpty &&
+        cxnParams.aesKey.isNotEmpty &&
+        cxnParams.aesIv.isNotEmpty) {
+      _cxnParams = cxnParams;
+      aesKey = CoreTool.rsaEncode(
+        rsaPublicKey: rsaPublicKey,
+        value: cxnParams.aesKey,
+      );
+      aesIv = CoreTool.rsaEncode(
+        rsaPublicKey: rsaPublicKey,
+        value: cxnParams.aesIv,
+      );
+    }
     RequestBody request = RequestBody(
       reqId: reqId,
       method: Protocol.setCxnParams,
-      data: req.writeToBuffer(),
+      data: SetCxnParamsReq(
+        packageId: cxnParams.packageId,
+        platform: cxnParams.platform,
+        deviceId: cxnParams.deviceId,
+        deviceModel: cxnParams.deviceModel,
+        osVersion: cxnParams.osVersion,
+        appVersion: cxnParams.appVersion,
+        language: cxnParams.language,
+        networkUsed: cxnParams.networkUsed,
+        aesKey: aesKey,
+        aesIv: aesIv,
+        ext: CoreTool.utf8Encode(cxnParams.ext),
+      ).writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
-    return CoreResponse<SetCxnParamsResp>(
+    _sendData(request.writeToBuffer());
+    SetCxnParamsResp? resp = await CoreResponse<SetCxnParamsResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
       responseMap: _responseMap,
       onSuccess: onSuccess,
       onError: onError,
     ).handle();
+    return resp != null;
   }
 
   Future<SetUserParamsResp?> setUserParams({
@@ -160,9 +214,7 @@ class CoreSocket {
       method: Protocol.setUserParams,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<SetUserParamsResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -183,9 +235,7 @@ class CoreSocket {
       method: Protocol.batchGetConvSeq,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<BatchGetConvSeqResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -206,9 +256,7 @@ class CoreSocket {
       method: Protocol.batchGetMsgListByConvId,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<GetMsgListResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -229,9 +277,7 @@ class CoreSocket {
       method: Protocol.getMsgById,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<GetMsgByIdResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -252,9 +298,7 @@ class CoreSocket {
       method: Protocol.sendMsgList,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<SendMsgListResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -275,9 +319,7 @@ class CoreSocket {
       method: Protocol.sendReadMsg,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<ReadMsgResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -298,9 +340,7 @@ class CoreSocket {
       method: Protocol.sendEditMsg,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<EditMsgResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -321,9 +361,7 @@ class CoreSocket {
       method: Protocol.ackNoticeData,
       data: req.writeToBuffer(),
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<AckNoticeDataResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
@@ -345,9 +383,7 @@ class CoreSocket {
       method: method,
       data: bytes,
     );
-    _webSocket?.sendData(
-      request.writeToBuffer(),
-    );
+    _sendData(request.writeToBuffer());
     return CoreResponse<List<int>>(
       requestTimeout: requestTimeout,
       reqId: reqId,
