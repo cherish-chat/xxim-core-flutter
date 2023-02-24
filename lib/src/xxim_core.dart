@@ -47,8 +47,8 @@ class XXIMCore {
   }) {
     return _coreSocket?.setCxnParams(
       reqId: reqId,
-      rsaPublicKey: rsaPublicKey,
       packageId: packageId,
+      rsaPublicKey: rsaPublicKey,
       cxnParams: cxnParams,
       onSuccess: onSuccess,
       onError: onError,
