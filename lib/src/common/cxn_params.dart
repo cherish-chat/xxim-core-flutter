@@ -1,5 +1,4 @@
 class CxnParams {
-  final String packageId;
   final String platform;
   final String deviceId;
   final String deviceModel;
@@ -12,7 +11,6 @@ class CxnParams {
   final String ext;
 
   const CxnParams({
-    required this.packageId,
     required this.platform,
     required this.deviceId,
     required this.deviceModel,

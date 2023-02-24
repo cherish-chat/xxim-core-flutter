@@ -155,6 +155,7 @@ class CoreSocket {
 
   Future<bool> setCxnParams({
     required String reqId,
+    required String packageId,
     String rsaPublicKey = "",
     required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
@@ -179,7 +180,7 @@ class CoreSocket {
       reqId: reqId,
       method: Protocol.setCxnParams,
       data: SetCxnParamsReq(
-        packageId: cxnParams.packageId,
+        packageId: packageId,
         platform: cxnParams.platform,
         deviceId: cxnParams.deviceId,
         deviceModel: cxnParams.deviceModel,
