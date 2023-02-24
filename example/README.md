@@ -38,9 +38,11 @@
 
 ## 设置连接参数
 
-     SetCxnParamsResp? resp = await core.setCxnParams(
+     bool? status = await core.setCxnParams(
        reqId: "",
-       req: SetCxnParamsReq(
+       rsaPublicKey: "",
+       req: CxnParams(
+         packageId: "",
          platform: "",
          deviceId: "",
          deviceModel: "",
@@ -48,7 +50,9 @@
          appVersion: "",
          language: "",
          networkUsed: "",
-         ext: utf8.encode(""),
+         aesKey: "",
+         aesIv: "",
+         ext: "",
        ),
      );
 
@@ -114,7 +118,7 @@
              options: MsgData_Options(
                storageForServer: true,
                storageForClient: true,
-               needDecrypt: true,
+               needDecrypt: false,
                offlinePush: true,
                updateConvMsg: true,
                updateUnreadCount: true,

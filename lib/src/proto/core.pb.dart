@@ -453,6 +453,20 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
             : 'networkUsed',
         protoName: 'networkUsed')
     ..a<$core.List<$core.int>>(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'aesKey',
+        $pb.PbFieldType.OY,
+        protoName: 'aesKey')
+    ..a<$core.List<$core.int>>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'aesIv',
+        $pb.PbFieldType.OY,
+        protoName: 'aesIv')
+    ..a<$core.List<$core.int>>(
         11,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -471,6 +485,8 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     $core.String? appVersion,
     $core.String? language,
     $core.String? networkUsed,
+    $core.List<$core.int>? aesKey,
+    $core.List<$core.int>? aesIv,
     $core.List<$core.int>? ext,
   }) {
     final _result = create();
@@ -497,6 +513,12 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     }
     if (networkUsed != null) {
       _result.networkUsed = networkUsed;
+    }
+    if (aesKey != null) {
+      _result.aesKey = aesKey;
+    }
+    if (aesIv != null) {
+      _result.aesIv = aesIv;
     }
     if (ext != null) {
       _result.ext = ext;
@@ -650,16 +672,44 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearNetworkUsed() => clearField(8);
 
-  @$pb.TagNumber(11)
-  $core.List<$core.int> get ext => $_getN(8);
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get aesKey => $_getN(8);
 
-  @$pb.TagNumber(11)
-  set ext($core.List<$core.int> v) {
+  @$pb.TagNumber(9)
+  set aesKey($core.List<$core.int> v) {
     $_setBytes(8, v);
   }
 
+  @$pb.TagNumber(9)
+  $core.bool hasAesKey() => $_has(8);
+
+  @$pb.TagNumber(9)
+  void clearAesKey() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get aesIv => $_getN(9);
+
+  @$pb.TagNumber(10)
+  set aesIv($core.List<$core.int> v) {
+    $_setBytes(9, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasAesIv() => $_has(9);
+
+  @$pb.TagNumber(10)
+  void clearAesIv() => clearField(10);
+
   @$pb.TagNumber(11)
-  $core.bool hasExt() => $_has(8);
+  $core.List<$core.int> get ext => $_getN(10);
+
+  @$pb.TagNumber(11)
+  set ext($core.List<$core.int> v) {
+    $_setBytes(10, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasExt() => $_has(10);
 
   @$pb.TagNumber(11)
   void clearExt() => clearField(11);

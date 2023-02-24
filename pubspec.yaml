@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   web_socket_channel: ^2.3.0
   protobuf: ^2.1.0
+  encrypt: ^5.0.1
+  crypto: ^3.0.2
 
 dev_dependencies:
   flutter_test:
