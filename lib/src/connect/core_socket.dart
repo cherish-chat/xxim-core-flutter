@@ -66,13 +66,11 @@ class CoreSocket {
       }
     } else if (data is List<int>) {
       if (_cxnParams != null) {
-        if (_cxnParams!.aesKey.isNotEmpty && _cxnParams!.aesIv.isNotEmpty) {
-          data = CoreTool.aesDecode(
-            key: CoreTool.md5Encode32(_cxnParams!.aesKey),
-            iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
-            bytes: data,
-          );
-        }
+        data = CoreTool.aesDecode(
+          key: CoreTool.md5Encode32(_cxnParams!.aesKey),
+          iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
+          bytes: data,
+        );
       }
       PushBody body = PushBody.fromBuffer(data);
       if (body.event == PushEvent.PushMsgDataList) {
@@ -142,13 +140,11 @@ class CoreSocket {
 
   void _sendData(List<int> data) {
     if (_cxnParams != null) {
-      if (_cxnParams!.aesKey.isNotEmpty && _cxnParams!.aesIv.isNotEmpty) {
-        data = CoreTool.aesEncode(
-          key: CoreTool.md5Encode32(_cxnParams!.aesKey),
-          iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
-          bytes: data,
-        );
-      }
+      data = CoreTool.aesEncode(
+        key: CoreTool.md5Encode32(_cxnParams!.aesKey),
+        iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
+        bytes: data,
+      );
     }
     _webSocket?.sendData(data);
   }
@@ -193,7 +189,9 @@ class CoreSocket {
         ext: CoreTool.utf8Encode(cxnParams.ext),
       ).writeToBuffer(),
     );
-    _sendData(request.writeToBuffer());
+    _webSocket?.sendData(
+      request.writeToBuffer(),
+    );
     SetCxnParamsResp? resp = await CoreResponse<SetCxnParamsResp>(
       requestTimeout: requestTimeout,
       reqId: reqId,
