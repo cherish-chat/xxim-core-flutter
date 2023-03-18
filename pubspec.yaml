@@ -5,7 +5,7 @@ homepage: https://github.com/cherish-chat/xxim-core-flutter
 repository: https://github.com/cherish-chat/xxim-core-flutter
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=2.19.4 <3.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
