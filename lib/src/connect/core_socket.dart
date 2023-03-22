@@ -24,7 +24,8 @@ class CoreSocket {
   BaseWebSocket? _webSocket;
   Map<String, Map<String, dynamic>>? _responseMap;
 
-  CxnParams? _cxnParams;
+  String? _aesKey;
+  String? _aesIv;
 
   void connect(String wsUrl) {
     _webSocket = BaseWebSocket(
@@ -52,7 +53,8 @@ class CoreSocket {
     _webSocket = null;
     _responseMap?.clear();
     _responseMap = null;
-    _cxnParams = null;
+    _aesKey = null;
+    _aesIv = null;
   }
 
   bool isConnect() {
@@ -60,89 +62,93 @@ class CoreSocket {
   }
 
   void _onData(dynamic data) {
-    if (data is String) {
-      if (data == "connected") {
-        connectListener.success();
-      }
-    } else if (data is List<int>) {
-      if (_cxnParams != null) {
-        data = CoreTool.aesDecode(
-          key: CoreTool.md5Encode32(_cxnParams!.aesKey),
-          iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
-          bytes: data,
-        );
-      }
-      PushBody body = PushBody.fromBuffer(data);
-      if (body.event == PushEvent.PushMsgDataList) {
-        receivePushListener.pushMsgDataList(
-          MsgDataList.fromBuffer(body.data),
-        );
-      } else if (body.event == PushEvent.PushNoticeData) {
-        receivePushListener.pushNoticeData(
-          NoticeData.fromBuffer(body.data),
-        );
-      } else if (body.event == PushEvent.PushResponseBody) {
-        ResponseBody response = ResponseBody.fromBuffer(body.data);
-        if (response.method == Protocol.setCxnParams) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": SetCxnParamsResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.setUserParams) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": SetUserParamsResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.batchGetConvSeq) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": BatchGetConvSeqResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.batchGetMsgListByConvId) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": GetMsgListResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.getMsgById) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": GetMsgByIdResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.sendMsgList) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": SendMsgListResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.sendReadMsg) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": ReadMsgResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.sendEditMsg) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": EditMsgResp.fromBuffer(response.data),
-          };
-        } else if (response.method == Protocol.ackNoticeData) {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": AckNoticeDataResp.fromBuffer(response.data),
-          };
-        } else {
-          _responseMap?[response.reqId] = {
-            "response": response,
-            "data": response.data,
-          };
-        }
+    if (data is! List<int>) return;
+    if (_aesKey != null &&
+        _aesKey!.isNotEmpty &&
+        _aesIv != null &&
+        _aesIv!.isNotEmpty) {
+      data = CoreTool.aesDecode(
+        key: CoreTool.md5Encode32(_aesKey!),
+        iv: CoreTool.md5Encode16(_aesIv!),
+        bytes: data,
+      );
+    }
+    PushBody body = PushBody.fromBuffer(data);
+    if (body.event == PushEvent.PushAfterConnect) {
+      _aesIv = AfterConnectBody.fromBuffer(body.data).aesIv;
+      connectListener.success();
+    } else if (body.event == PushEvent.PushMsgDataList) {
+      receivePushListener.pushMsgDataList(
+        MsgDataList.fromBuffer(body.data),
+      );
+    } else if (body.event == PushEvent.PushNoticeData) {
+      receivePushListener.pushNoticeData(
+        NoticeData.fromBuffer(body.data),
+      );
+    } else if (body.event == PushEvent.PushResponseBody) {
+      ResponseBody response = ResponseBody.fromBuffer(body.data);
+      if (response.method == Protocol.setCxnParams) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": SetCxnParamsResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.setUserParams) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": SetUserParamsResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.batchGetConvSeq) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": BatchGetConvSeqResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.batchGetMsgListByConvId) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": GetMsgListResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.getMsgById) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": GetMsgByIdResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.sendMsgList) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": SendMsgListResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.sendReadMsg) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": ReadMsgResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.sendEditMsg) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": EditMsgResp.fromBuffer(response.data),
+        };
+      } else if (response.method == Protocol.ackNoticeData) {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": AckNoticeDataResp.fromBuffer(response.data),
+        };
+      } else {
+        _responseMap?[response.reqId] = {
+          "response": response,
+          "data": response.data,
+        };
       }
     }
   }
 
   void _sendData(List<int> data) {
-    if (_cxnParams != null) {
+    if (_aesKey != null &&
+        _aesKey!.isNotEmpty &&
+        _aesIv != null &&
+        _aesIv!.isNotEmpty) {
       data = CoreTool.aesEncode(
-        key: CoreTool.md5Encode32(_cxnParams!.aesKey),
-        iv: CoreTool.md5Encode16(_cxnParams!.aesIv),
+        key: CoreTool.md5Encode32(_aesKey!),
+        iv: CoreTool.md5Encode16(_aesIv!),
         bytes: data,
       );
     }
@@ -152,24 +158,26 @@ class CoreSocket {
   Future<bool> setCxnParams({
     required String reqId,
     required String packageId,
-    String rsaPublicKey = "",
+    required String rsaPublicKey,
+    required String aesKey,
     required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
   }) async {
-    List<int> aesKey = [];
-    List<int> aesIv = [];
+    List<int> aesKeyList = [];
+    List<int> aesIvList = [];
     if (rsaPublicKey.isNotEmpty &&
-        cxnParams.aesKey.isNotEmpty &&
-        cxnParams.aesIv.isNotEmpty) {
-      _cxnParams = cxnParams;
-      aesKey = CoreTool.rsaEncode(
+        aesKey.isNotEmpty &&
+        _aesIv != null &&
+        _aesIv!.isNotEmpty) {
+      _aesKey = aesKey;
+      aesKeyList = CoreTool.rsaEncode(
         rsaPublicKey: rsaPublicKey,
-        value: cxnParams.aesKey,
+        value: _aesKey!,
       );
-      aesIv = CoreTool.rsaEncode(
+      aesIvList = CoreTool.rsaEncode(
         rsaPublicKey: rsaPublicKey,
-        value: cxnParams.aesIv,
+        value: _aesIv!,
       );
     }
     RequestBody request = RequestBody(
@@ -184,8 +192,8 @@ class CoreSocket {
         appVersion: cxnParams.appVersion,
         language: cxnParams.language,
         networkUsed: cxnParams.networkUsed,
-        aesKey: aesKey,
-        aesIv: aesIv,
+        aesKey: aesKeyList,
+        aesIv: aesIvList,
         ext: CoreTool.utf8Encode(cxnParams.ext),
       ).writeToBuffer(),
     );

@@ -42,6 +42,7 @@
        reqId: "",
        packageId: "",
        rsaPublicKey: "",
+       aesKey: "",
        req: CxnParams(
          platform: "",
          deviceId: "",
@@ -50,8 +51,6 @@
          appVersion: "",
          language: "",
          networkUsed: "",
-         aesKey: "",
-         aesIv: "",
          ext: "",
        ),
      );
