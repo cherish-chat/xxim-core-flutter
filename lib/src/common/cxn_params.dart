@@ -7,7 +7,6 @@ class CxnParams {
   final String language;
   final String networkUsed;
   final String aesKey;
-  final String aesIv;
   final String ext;
 
   const CxnParams({
@@ -18,8 +17,7 @@ class CxnParams {
     required this.appVersion,
     required this.language,
     required this.networkUsed,
-    this.aesKey = "",
-    this.aesIv = "",
+    required this.aesKey,
     this.ext = "",
   });
 }

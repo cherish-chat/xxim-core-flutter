@@ -25,11 +25,17 @@ class PushEvent extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'PushResponseBody');
+  static const PushEvent PushAfterConnect = PushEvent._(
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'PushAfterConnect');
 
   static const $core.List<PushEvent> values = <PushEvent>[
     PushMsgDataList,
     PushNoticeData,
     PushResponseBody,
+    PushAfterConnect,
   ];
 
   static final $core.Map<$core.int, PushEvent> _byValue =
