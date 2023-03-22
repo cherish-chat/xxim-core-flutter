@@ -40,7 +40,8 @@ class XXIMCore {
   Future<bool>? setCxnParams({
     required String reqId,
     required String packageId,
-    String rsaPublicKey = "",
+    required String rsaPublicKey,
+    required String aesKey,
     required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
@@ -49,6 +50,7 @@ class XXIMCore {
       reqId: reqId,
       packageId: packageId,
       rsaPublicKey: rsaPublicKey,
+      aesKey: aesKey,
       cxnParams: cxnParams,
       onSuccess: onSuccess,
       onError: onError,

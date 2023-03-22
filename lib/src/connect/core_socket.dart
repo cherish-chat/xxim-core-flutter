@@ -159,22 +159,23 @@ class CoreSocket {
     required String reqId,
     required String packageId,
     required String rsaPublicKey,
+    required String aesKey,
     required CxnParams cxnParams,
     SuccessCallback<SetCxnParamsResp>? onSuccess,
     ErrorCallback? onError,
   }) async {
-    List<int> aesKey = [];
-    List<int> aesIv = [];
+    List<int> aesKeyList = [];
+    List<int> aesIvList = [];
     if (rsaPublicKey.isNotEmpty &&
-        cxnParams.aesKey.isNotEmpty &&
+        aesKey.isNotEmpty &&
         _aesIv != null &&
         _aesIv!.isNotEmpty) {
-      _aesKey = cxnParams.aesKey;
-      aesKey = CoreTool.rsaEncode(
+      _aesKey = aesKey;
+      aesKeyList = CoreTool.rsaEncode(
         rsaPublicKey: rsaPublicKey,
         value: _aesKey!,
       );
-      aesIv = CoreTool.rsaEncode(
+      aesIvList = CoreTool.rsaEncode(
         rsaPublicKey: rsaPublicKey,
         value: _aesIv!,
       );
@@ -191,8 +192,8 @@ class CoreSocket {
         appVersion: cxnParams.appVersion,
         language: cxnParams.language,
         networkUsed: cxnParams.networkUsed,
-        aesKey: aesKey,
-        aesIv: aesIv,
+        aesKey: aesKeyList,
+        aesIv: aesIvList,
         ext: CoreTool.utf8Encode(cxnParams.ext),
       ).writeToBuffer(),
     );
