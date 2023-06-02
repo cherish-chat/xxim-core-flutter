@@ -1,20 +1,20 @@
 name: xxim_core_flutter
 description: Xingxing is a 100% open source social platform, where everyone can build their own server and control the ownership of data.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/cherish-chat/xxim-core-flutter
 repository: https://github.com/cherish-chat/xxim-core-flutter
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: '>=3.0.2 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  web_socket_channel: ^2.3.0
+  web_socket_channel: ^2.4.0
   protobuf: ^2.1.0
   encrypt: ^5.0.1
-  crypto: ^3.0.2
+  crypto: ^3.0.3
 
 dev_dependencies:
   flutter_test:

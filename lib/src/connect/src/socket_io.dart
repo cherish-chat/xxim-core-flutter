@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/status.dart';
 
@@ -19,9 +20,12 @@ class BaseWebSocket {
   void connect(String url) {
     try {
       onConnecting();
+      HttpClient customClient = HttpClient();
+      customClient.findProxy = HttpClient.findProxyFromEnvironment;
       _wsChannel = IOWebSocketChannel.connect(
         url,
         pingInterval: const Duration(seconds: 2),
+        customClient: customClient,
       )..stream.listen(
           onData,
           onError: (error) {
